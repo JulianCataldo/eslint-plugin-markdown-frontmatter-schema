@@ -14,7 +14,8 @@ The API is kept very similar.
 
 Validate **YAML frontmatter** in your Markdown files using **JSON Schema** — right in ESLint.
 
-> 🚧 **This plugin is under active development.** Some features may change.
+> 🚧 **This plugin is under active development.** Some features may change!  
+> You can give it a try, it works fine but with remaining tuning on how schemas are loaded.
 
 This is a port of [remark-lint-frontmatter-schema](https://github.com/JulianCataldo/remark-lint-frontmatter-schema) that uses `remark-lint` rule API, but for ESLint with its now official Markdown language support (`@eslint/markdown`).
 
@@ -115,7 +116,7 @@ The schema is resolved relative to the Markdown file. Remote URLs (e.g. from Sch
 
 - ✅ Uses [AJV](https://ajv.js.org) for JSON Schema validation
 - 🧵 Bundles schema refs with [`json-schema-ref-parser`](https://github.com/APIDevTools/json-schema-ref-parser)
-- 🧠 Leverages ESLint [`@eslint/markdown`](https://eslint.org/docs/latest/user-guide/configuring/plugins#using-plugins-with-file-types) parser infrastructure
+- 🧠 Leverages ESLint [`@eslint/markdown`](https://eslint.org/docs/latest/user-guide/configuring/plugins#using-plugins-with-file-types) and [`eemeli/yaml`](https://github.com/eemeli/yaml) parser infrastructure
 - 🛠 Fix suggestions are inserted when `enum` values mismatch
 
 ---
@@ -124,6 +125,7 @@ The schema is resolved relative to the Markdown file. Remote URLs (e.g. from Sch
 
 - **Schema not found**: Make sure `$schema` path is correct or `defaultSchema` is set.
 - **No errors reported**: Check that `@eslint/markdown` config is applied, and frontmatter is parsed as YAML.
+- Ultimately, clone this project, install the dependencies and try the [fixtures](./fixtures) in your IDE.
 
 ---
 
@@ -140,4 +142,8 @@ The schema is resolved relative to the Markdown file. Remote URLs (e.g. from Sch
 - [`remark-lint-frontmatter-schema`](https://github.com/JulianCataldo/remark-lint-frontmatter-schema) — original `remark-lint` plugin
 - [JSON Schema](https://json-schema.org/)
 
----
+## 👀 Other Projects
+
+- [Web Elements Analyzer](https://github.com/JulianCataldo/web-elements-analyzer) — A cross-framework template analyzer, for deep insights on standard HTML, SVG and Custom Elements.
+- [Gracile](https://github.com/gracile-web/gracile) — A thin, full-stack, web framework, with standards in mind.
+- [JSON Schema Form Element](https://github.com/json-schema-form-element/jsfe) — A Custom Element that auto-generates forms, declaratively.
