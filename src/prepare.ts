@@ -1,5 +1,3 @@
-import type { Yaml } from 'mdast';
-
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createSyncFn } from 'synckit';
@@ -13,6 +11,7 @@ import type {
 	Result,
 	RuleViolation,
 	Url,
+	Yaml,
 } from './types.js';
 
 export const bundleSchema = createSyncFn(

@@ -1,6 +1,4 @@
-import type { Yaml } from 'mdast';
-
-import type { RuleViolation } from './types.js';
+import type { RuleViolation, Yaml } from './types.js';
 
 import {
 	getSchema,
@@ -8,7 +6,7 @@ import {
 	parseGlobalSchema,
 	parseInlineSchemaPath,
 } from './prepare.js';
-import { retrieveViolations, validateFrontmatter } from './validate.js';
+import { retrieveViolations, retrieveYamlParseErrors, validateFrontmatter } from './validate.js';
 
 /**
  * This is the main entrypoint for the rule that will provide reports for ESLint.
@@ -28,6 +26,12 @@ export function createReports(
 	if (!globalSchema.ok) return [globalSchema.error];
 
 	const { document, lineCounter, yamlJS } = parseFrontmatter(fileContent);
+
+	// MULTIPLE_DOCS is expected for markdown: the body after the closing --- is
+	// a second "document" as far as the YAML parser is concerned.
+	const yamlErrors = document.errors.filter(e => e.code !== 'MULTIPLE_DOCS');
+	if (yamlErrors.length > 0)
+		return retrieveYamlParseErrors(yamlErrors, yaml, lineCounter);
 
 	const inlineSchemaPath = parseInlineSchemaPath(yamlJS, filePath);
 

@@ -33,7 +33,7 @@ await test('ESLint plugin: Empty/No schema', async (t) => {
 
 		assert.deepStrictEqual(
 			results.at(0)?.messages.at(0)?.messageId,
-			'schemaNotFound',
+			'schemaMalformed',
 		);
 	});
 	//

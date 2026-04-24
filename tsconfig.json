@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
 
+    // Not strictly necessary in absolute, but when inside a monorepo+pnpm the
+    // types can get confused/lost.
+    "types": ["node"],
     "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "dist",
+    "rootDir": "src",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,

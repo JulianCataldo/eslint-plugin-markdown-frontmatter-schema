@@ -49,20 +49,22 @@ await test('ESLint plugin: Validate linked $schema in frontmatter', async (t) =>
 		const [result] = results;
 		assert.deepEqual(result.messages, [
 			{
-				column: 14,
-				endColumn: 14,
-				endLine: 3,
-				line: 3,
-				message: 'YAML schema validation error: must be string at /description',
+				// A missing property has no natural position, so the error ends up at
+				// the `---`.
+				column: 1,
+				endColumn: 4,
+				endLine: 1,
+				line: 1,
+				message: `YAML schema validation error: must have required property 'description' at root`,
 				nodeType: 'yaml',
 				ruleId: 'frontmatter-schema/frontmatter-schema',
 				severity: 2,
 			},
 			{
 				column: 11,
-				endColumn: 11,
-				endLine: 4,
-				line: 4,
+				endColumn: 23,
+				endLine: 3,
+				line: 3,
 				message:
 					'YAML schema validation error: must be equal to one of the allowed values at /category',
 				nodeType: 'yaml',
@@ -71,15 +73,15 @@ await test('ESLint plugin: Validate linked $schema in frontmatter', async (t) =>
 				suggestions: [
 					{
 						desc: 'Replace with "Book"',
-						fix: { range: [58, 64], text: 'Book' },
+						fix: { range: [42, 54], text: 'Book' },
 					},
 					{
 						desc: 'Replace with "Movie"',
-						fix: { range: [58, 64], text: 'Movie' },
+						fix: { range: [42, 54], text: 'Movie' },
 					},
 					{
 						desc: 'Replace with "Song"',
-						fix: { range: [58, 64], text: 'Song' },
+						fix: { range: [42, 54], text: 'Song' },
 					},
 				],
 			},

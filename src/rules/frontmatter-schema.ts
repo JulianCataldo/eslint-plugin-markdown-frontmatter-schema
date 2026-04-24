@@ -1,15 +1,14 @@
-import type { RuleModule } from '@eslint/markdown';
-
 import { createReports } from '../create-reports.js';
+import { Rule, Yaml } from '../types.js';
 
-export const frontmatterSchema: RuleModule = {
+export const frontmatterSchema: Rule.RuleModule = {
 	create(context) {
 		return {
-			yaml(node) {
+			yaml(node: Yaml) {
 				const filePath = context.physicalFilename;
 				const fileContent = context.sourceCode.getText();
 
-				const options = context.options[0];
+				const options: unknown = context.options[0];
 
 				const reports = createReports(filePath, fileContent, options, node);
 

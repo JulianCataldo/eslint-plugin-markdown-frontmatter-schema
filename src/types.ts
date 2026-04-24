@@ -1,5 +1,6 @@
-import type { RuleModule } from '@eslint/markdown';
 import type { ErrorObject } from 'ajv';
+import type { Rule } from 'eslint';
+export type { Rule } from 'eslint';
 
 import type { LoadSchemaAsync } from './schema-loader.worker.js';
 
@@ -21,9 +22,10 @@ export type LoadSchemaSync = (
  */
 export type Result<T, E> = { error: E; ok: false } | { ok: true; value: T };
 
-// NOTE: This type isn't easily accessible or constructible, that's why we pick it like this.
-export type RuleContext = Parameters<RuleModule['create']>[0];
-
+export type RuleContext = Rule.RuleContext;
 export type RuleViolation = Parameters<RuleContext['report']>[0];
+
+export type { ESLint } from 'eslint';
+export type { Yaml } from 'mdast';
 
 export type Url = string & { __urlBrand: never };
