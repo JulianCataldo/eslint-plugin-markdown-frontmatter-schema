@@ -1,0 +1,191 @@
+name: seedbed-excavation
+version: 1
+description:
+  Brownfield excavation workflow - survey → evidence → claims → corroboration →
+  outputs. Trust anchor is observed behavior, not confirmed intent; outputs
+  (participant specs, shadow ADRs, negative certificates) join the shared pool
+  carrying the epistemic marker. Scoped rules and the grade legend live in
+  openspec/schemas/seedbed-excavation/AGENTS.md.
+artifacts:
+  - id: survey
+    generates: survey.md
+    description:
+      Dig scope, driving question, risk list, evidence-source inventory
+    template: survey.md
+    instruction: >
+      Scope the dig before touching evidence. Read
+      openspec/schemas/seedbed-excavation/AGENTS.md first — it carries the grade
+      legend, thresholds, and the human-gate rules this flow enforces.
+
+
+      Record: the subject and the driving question this excavation must answer;
+      the mode (witnessed recovery — author or witnesses available — versus
+      archaeology with no witnesses; one flow serves both, evidence availability
+      caps grades); the risk list (what a wrong reconstruction would break, what
+      decisions wait on this dig); the evidence-source inventory (running
+      behavior, tests, VCS history, period documents, named witnesses, adjacent
+      docs); and the intended output kinds — an honest "unknown" is valid, and
+      archaeology may honestly end in only a negative certificate.
+
+
+      A dig survey MAY cite its originating campaign question from the
+      cartography (docs/excavation/) as its driving question; when the dig's
+      promoted output answers it, record the pool pointer back in the campaign.
+      Cartography carries zero pool authority — citing it never confirms a gate.
+
+
+      HUMAN GATE (scope): evidence collection MUST NOT begin until a human has
+      explicitly confirmed the survey scope. Record who confirmed and when in
+      the Scope confirmation section. Never confirm this gate yourself.
+
+
+      Attention budget: about one page. Terse — the survey is a scoping
+      instrument, not a report.
+    requires: []
+  - id: evidence
+    generates: evidence.md
+    description: Verbatim, append-only evidence ledger with provenance
+    template: evidence.md
+    instruction: >
+      Collect evidence into a verbatim, append-only ledger. Every entry carries
+      a stable id (E1, E2, …), source, semantic locator, collection date, and
+      evidence class (observed-behavior, vcs-history, period-document,
+      testimony, adjacent-doc, other). Keep excerpts exactly as found — ugly
+      logs, quirky code, broken prose. NEVER professionalize, paraphrase, or
+      polish ledger content; interpretation lives in claims.md, pointing back at
+      entry ids. Testimony is a first-class evidence class: record the witness
+      identity and date with the verbatim statement.
+
+
+      When intent is unrecoverable from artifacts, do NOT invent a plausible
+      story: emit a named testimony request in the Testimony requests section —
+      who to ask, what to ask, what it would corroborate — and leave it open
+      until answered or exhausted. An exhausted request is recorded honestly;
+      the downstream output may then be at most a negative certificate.
+
+
+      The ledger is append-only: correct a wrong entry by appending a correction
+      that references it, never by rewriting it.
+
+
+      When a claim that must anchor lacks sideways evidence and its subject is a
+      self-standing unit, propose a characterization test as the evidence
+      instrument (leaf tool, per use case — heuristic and loop in
+      openspec/schemas/seedbed-excavation/AGENTS.md); the human should not have
+      to triage that call.
+    requires:
+      - survey
+  - id: claims
+    generates: claims.md
+    description: Graded, falsifiable, attributed interpretation of the evidence
+    template: claims.md
+    instruction: >
+      Interpret the ledger as separate, attributed, revisable claims. Every
+      claim carries a stable id (C1, C2, …), one falsifiable statement, its
+      author (model, developer, or witness), evidence pointers (E-ids), an
+      explicit falsifier (what evidence would kill it), and a two-axis grade —
+      source reliability A–F × corroboration 1–6 — per the legend in
+      openspec/schemas/seedbed-excavation/AGENTS.md, resolved to its threshold
+      (anchor or hypothesis).
+
+
+      Grade caps: a claim about intent derived by inference alone is capped at
+      hypothesis on the corroboration axis until corroborated by testimony or
+      period documents; observed, re-runnable behavior may reach anchor. Claims
+      whose validity decays (eliminations, behavior snapshots) carry a
+      verified-as-of stamp.
+
+
+      HUMAN GATE (grades): grades you assign are proposals. A grade binds only
+      once a human confirms it in corroboration.md; list unconfirmed grades as
+      pending there. Never confirm a grade yourself — grading your own inference
+      is the theater this gate exists to prevent.
+    requires:
+      - evidence
+  - id: corroboration
+    generates: corroboration.md
+    description: Human-gate record - grade confirmations and output promotions
+    template: corroboration.md
+    instruction: >
+      Create the corroboration record: the acceptance-contract shape adapted to
+      excavation, with corroborators in the assessor role. Open with a Decision
+      surface listing everything awaiting a human: scope confirmation (pointer
+      to survey.md), grades awaiting confirmation (claim ids), outstanding
+      testimony requests (TR ids), and outputs awaiting promotion confirmation.
+      Below it, keep the two gate records current: one line per confirmed grade
+      (claim id, grade, corroborator, date) and one line per confirmed promotion
+      (output, destination, confirmer, date).
+
+
+      Corroboration is by evidence or named judgment, never self-attestation:
+      the drafting agent MUST NOT confirm its own grades or promotions. Record
+      revisions with their reason; never silently weaken a confirmed grade.
+    requires:
+      - claims
+  - id: outputs
+    generates: outputs/**/*.md
+    description: Marked recovered outputs plus the promotion checklist index
+    template: outputs.md
+    instruction: >
+      Draft the recovered outputs under outputs/ and index them. Create
+      outputs/index.md from the outputs.md template as the promotion checklist.
+      Draft each output beside it from its per-kind template in the excavation
+      schema's templates folder: participant-spec.md (a spec for the shared
+      pool), shadow-adr.md (a retrospective decision entering the ordinary ADR
+      lifecycle), negative-certificate.md (a dated elimination record for
+      docs/certificates/).
+
+
+      Every output template opens with the structural `epistemics` block —
+      origin, both grade axes, threshold, provenance pointers, and
+      verified-as-of where the content decays. The block is not optional
+      commentary: drafting an output without it is a template deviation, and an
+      output without it MUST NOT enter the pool. Set each output axis no
+      stronger than the weakest value among confirmed claims used for its
+      normative content or rationale; if any such claim is hypothesis-threshold,
+      the output is hypothesis-threshold. Derive normative content from
+      anchor-grade claims; hypothesis-grade material either stays in claims.md
+      or enters explicitly marked at hypothesis threshold.
+
+
+      HUMAN GATE (promotion): each output needs an explicit human promotion
+      confirmation recorded in corroboration.md before it is filed to its
+      destination. Destinations — participant spec:
+      openspec/specs/<capability>/spec.md; shadow ADR:
+      <planning-root>/docs/adr/NNNN-kebab-title.md as Status: proposed under the
+      existing lifecycle and numbering; negative certificate:
+      <planning-root>/docs/certificates/. If a destination already exists, keep
+      the draft separate and stop for a human destination or merge decision;
+      never overwrite it or relabel authored content with a file-level recovered
+      marker.
+    requires:
+      - corroboration
+apply:
+  requires:
+    - outputs
+  tracks: outputs/index.md
+  instruction: |
+    Apply is promotion: file each drafted output to its pool destination and
+    tick its checkbox in outputs/index.md. Promote only outputs whose human
+    promotion confirmation is recorded in corroboration.md; an unconfirmed
+    output stays in outputs/ unticked. Never file an output whose `epistemics`
+    block is missing or incomplete — unlabelled recovered knowledge is the
+    failure mode this schema exists to prevent.
+
+    If the destination exists, do not overwrite or merge automatically. Keep
+    the draft in outputs/ until a human selects a provenance-preserving
+    destination; a recovered file-level marker must never relabel authored
+    content.
+
+    Shadow ADRs are filed as Status: proposed and enter the ordinary ADR
+    lifecycle (numbering, review, immutability, supersession) unchanged.
+    Negative certificates carry a current verified-as-of stamp at filing.
+
+    NEVER tick the pool-entry gate task in outputs/index.md during apply; it
+    is closed only after a human verifies every promoted output carries its
+    marker and its recorded confirmation.
+
+    Scoped guidance in openspec/schemas/seedbed/AGENTS.md (retired-seed
+    context policy, parked work, terse artifacts, aftermath discipline)
+    applies to excavation changes too; the completion report follows the same
+    aftermath contract — pointers plus exceptions, no paraphrased artifacts.

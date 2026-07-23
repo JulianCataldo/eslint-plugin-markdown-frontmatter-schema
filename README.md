@@ -92,7 +92,7 @@ export default [
 
 ```md
 ---
-$schema: ../blog.schema.json
+'$schema': ../blog.schema.json
 title: Hello world
 category: Book
 ---

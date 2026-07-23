@@ -1,0 +1,741 @@
+name: seedbed
+version: 1
+description:
+  Default OpenSpec workflow - proposal → specs → acceptance → design → adr →
+  tasks (ADRs persist at <planning-root>/docs/adr/)
+artifacts:
+  - id: proposal
+    generates: proposal.md
+    description: Initial proposal document outlining the change
+    template: proposal.md
+    instruction: >
+      Create the proposal document that establishes WHY this change is needed.
+
+
+      Seed promotion (do this FIRST, before writing the proposal):
+
+      HARD RULE — seeds are human-managed. Never write a seed payload in any
+      lifecycle state: no append, repair, reflow, or verbatim transcription of
+      text the human supplied. Acting as the author's scribe is still writing.
+      Your only permitted operation on a seed file is the promotion move below,
+      and it is content-identical. When follow-up intent arrives in-session,
+      indicate instead: hand back append-ready text and its target location for
+      the human to apply, and treat the stated intent as confirmed planning
+      input while the file stays untouched.
+
+      If the request explicitly names a staged seed prompt under
+      openspec/seed-prompts/, promote it now. Do not scan for or promote seeds
+      that were not explicitly named.
+
+      1. Confirm the author consents to promotion and has reviewed the seed for
+      secrets and sensitive data; record whether it was redacted.
+
+      2. Move the file (prefer `git mv`) to
+      openspec/changes/<change>/seed-prompt.<ext>, preserving its original
+      extension and its content exactly. The promotion diff is a pure rename —
+      zero content insertions or deletions, no co-riding edit; pending follow-up
+      material is left for the human to append afterward.
+
+      3. Create openspec/changes/<change>/seed-prompt.meta.yaml with:
+      schema_version: 2, state: promoted, source_path, promoted_at (UTC
+      ISO-8601), redaction (the author's declaration), context_policy:
+      change-scoped, and promotion: (consented_by, secrets_review). Do NOT
+      record a content hash: the integrity boundary is established later, at
+      archival retirement, not at promotion.
+
+      A promoted seed stays open for append-only amendments until the change is
+      archived: the seed file remains the single home for the change's whole
+      prompt history (initial prompt plus every follow-up round, through
+      proposal, planning, and implementation alike). Amendments are
+      human-performed appends — wrapped in s-FOLLOWUP when the author uses
+      SpecMark, or a clearly appended section otherwise — and previously
+      ingested intent is never silently revised. The hard rule above holds
+      through every round: the human writes, you indicate — at most, suggest
+      edits for the human to perform. Model-identity attributes (such as llm)
+      may hold a `_` placeholder while models ingest the seed; treat
+      placeholders as valid content — they are restored at the archival
+      pre-check. Plain-prose .md, .txt, and .html seeds are equally valid —
+      SpecMark tags are optional and never a prerequisite for accepting an
+      amendment. An author may decline promotion entirely; the change then
+      proceeds without an archived seed and no step may pressure the author to
+      commit one.
+
+      Recommend (never require) committing after promotion and after each
+      appended follow-up, and keeping formatting-only diffs separate from
+      authored ones, so ordinary git history traces the pre-archival window.
+
+
+      Checkpointed follow-up steering: while working from a promoted seed,
+      recheck its appended tail and Git state at turn start, immediately before
+      finalizing durable planning artifacts or handing work back, and at major
+      artifact boundaries in a long pass — bounded observation, never a claim of
+      continuous monitoring. A structurally complete follow-up committed by the
+      human, or the same intent explicitly supplied or confirmed in the current
+      session, is confirmed planning input: integrate it when it stays within
+      the active change. A structurally complete but uncommitted append is
+      provisional steering: announce it, use it only for safe, reversible,
+      in-scope refinement, and label any remaining dependency on it at handoff.
+      An open, truncated, or malformed trailing round is draft-in-progress:
+      continue from the last complete round, never infer or repair its ending,
+      and recheck at the next checkpoint. A closed s-FOLLOWUP (or a clearly
+      delimited freeform append) signals structural completeness only — never
+      confirmation or authority. No filesystem observation authorizes external
+      actions, destructive operations, ADR verdicts, acceptance confirmation, or
+      material expansion beyond the active request; a provisional follow-up that
+      contradicts confirmed intent or would materially redirect the change
+      pauses for explicit user confirmation. Agents never edit the promoted seed
+      payload.
+
+
+      Store mesh and campaigns: cross-store context and citations follow the
+      canonical mesh policy (openspec/schemas/seedbed/AGENTS.md, "Store mesh") —
+      committed references, store-scoped command traversal with a visited set,
+      explicit degradation for unresolved stores, typed {store, kind, id}
+      pointers. A multi-store proposal campaign (a host change carrying
+      child-changes.yaml, lanes carrying campaign-lane.yaml) follows the
+      canonical campaign policy in openspec/schemas/seedbed/store-campaigns.md
+      for manifest/marker formats, preflight, reservation, write bounds, Git
+      reporting, archive-aware lookup, and resume.
+
+
+      Retired seeds elsewhere: while researching other changes you may read any
+      seed-prompt.meta.yaml for routing, but if it declares `context_policy:
+      explicit-only` do not load that seed payload unless the user explicitly
+      requests seed or provenance review.
+
+
+      Sections:
+
+      - **Why**: 1-2 sentences on the problem or opportunity. What problem does
+      this solve? Why now?
+
+      - **What Changes**: Bullet list of changes. Be specific about new
+      capabilities, modifications, or removals. Mark breaking changes with
+      **BREAKING**.
+
+      - **Capabilities**: Identify which specs will be created or modified:
+        - **New Capabilities**: List capabilities being introduced. Each becomes
+      a new `specs/<name>/spec.md`. Use kebab-case names (e.g., `user-auth`,
+      `data-export`).
+        - **Modified Capabilities**: List existing capabilities whose
+      REQUIREMENTS are changing. Only include if spec-level behavior changes
+      (not just implementation details). Each needs a delta spec file. Check
+      `openspec/specs/` for existing spec names. Leave empty if no requirement
+      changes. - **Impact**: Affected code, APIs, dependencies, or systems.
+
+
+      IMPORTANT: The Capabilities section is critical. It creates the contract
+      between
+
+      proposal and specs phases. Research existing specs before filling this in.
+
+      Each capability listed here will need a corresponding spec file.
+
+
+      Attention budget: about one page. Default to the tersest form that
+      preserves the decision-relevant content — keep nuance and logical
+      connectives, drop redundancy and unrequested elaboration. Spend depth on a
+      facet only when the author marks it uncertain or high-stakes ("still split
+      on the outcomes", "be thorough on X") or the work type inherently demands
+      it; exceeding the budget is a deviation needing that signal as its stated
+      reason, not free headroom. When scope is unsettled, carve the smallest
+      useful slice and name the deferred strata (follow-up iterations, parked
+      ideas) instead of elaborating every branch. Terse means less noise, never
+      less rigor. Focus on the "why" not the "how" — implementation details
+      belong in design.md.
+
+
+      Durable architectural decisions worth carrying across changes are
+      distilled into ADR files at <planning-root>/docs/adr/ by a later step
+      (after design).
+
+
+      This is the foundation - specs, design, adr, and tasks all build on this.
+    requires: []
+  - id: specs
+    generates: specs/**/*.md
+    description: Detailed specifications for the change
+    template: spec.md
+    instruction: >
+      Create specification files that define WHAT the system should do.
+
+
+      Create one spec file per capability listed in the proposal's Capabilities
+      section.
+
+      - New capabilities: use the exact kebab-case name from the proposal
+      (specs/<capability>/spec.md).
+
+      - Modified capabilities: use the existing spec folder name from
+      openspec/specs/<capability>/ when creating the delta spec at
+      specs/<capability>/spec.md.
+
+
+      Delta operations (use ## headers):
+
+      - **ADDED Requirements**: New capabilities
+
+      - **MODIFIED Requirements**: Changed behavior - MUST include full updated
+      content
+
+      - **REMOVED Requirements**: Deprecated features - MUST include **Reason**
+      and **Migration**
+
+      - **RENAMED Requirements**: Name changes only - use FROM:/TO: format
+
+
+      Format requirements:
+
+      - Each requirement: `### Requirement: <name>` followed by description
+
+      - Use SHALL/MUST for normative requirements (avoid should/may)
+
+      - Each scenario: `#### Scenario: <name>` with WHEN/THEN format
+
+      - **CRITICAL**: Scenarios MUST use exactly 4 hashtags (`####`). Using 3
+      hashtags or bullets will fail silently.
+
+      - Every requirement MUST have at least one scenario.
+
+
+      MODIFIED requirements workflow:
+
+      1. Locate the existing requirement in openspec/specs/<capability>/spec.md
+
+      2. Copy the ENTIRE requirement block (from `### Requirement:` through all
+      scenarios)
+
+      3. Paste under `## MODIFIED Requirements` and edit to reflect new behavior
+
+      4. Ensure header text matches exactly (whitespace-insensitive)
+
+
+      Common pitfall: Using MODIFIED with partial content loses detail at
+      archive time.
+
+      If adding new concerns without changing existing behavior, use ADDED
+      instead.
+
+
+      Example:
+
+      ```
+
+      ## ADDED Requirements
+
+
+      ### Requirement: User can export data
+
+      The system SHALL allow users to export their data in CSV format.
+
+
+      #### Scenario: Successful export
+
+      - **WHEN** user clicks "Export" button
+
+      - **THEN** system downloads a CSV file with all user data
+
+
+      ## REMOVED Requirements
+
+
+      ### Requirement: Legacy export
+
+      **Reason**: Replaced by new export system
+
+      **Migration**: Use new export endpoint at /api/v2/export
+
+      ```
+
+
+      Specs should be testable - each scenario is a potential test case.
+
+
+      Attention budget: about 3-6 requirements per capability with 1-2 scenarios
+      each. Default terse: keep nuance and logical connectives, drop redundancy
+      and unrequested elaboration — no edge-case inventories on your own
+      initiative. Go exhaustive on a facet only when the author flags it as
+      uncertain or high-stakes ("still split on the outcomes", "be thorough on
+      X") or the work type inherently demands it (e.g. porting against an
+      already-complete covering test suite); exceeding the budget needs that
+      signal as its stated reason. When scope is unsettled, spec the smallest
+      useful slice and name the deferred strata rather than speculatively
+      elaborating every branch.
+    requires:
+      - proposal
+  - id: acceptance
+    generates: acceptance.md
+    description: Confirmed acceptance contract and post-apply evidence ledger
+    template: acceptance.md
+    instruction: >
+      Create acceptance.md after the delta specs and before design. It is one
+      file with two moments: first a human-confirmed pre-apply contract, then a
+      post-apply evidence ledger whose rule ids remain stable. Read the
+      proposal, specs, and relevant project context before drafting it.
+
+
+      Ceremony tier — the dial: every contract declares a tier (waiver, light,
+      or full) that you propose from the change's blast radius — behavioral
+      scope, reversibility, who is affected — stating that reasoning in one
+      line; the human confirms tier and rules together as one cheap decision.
+      When torn between two notches, propose the higher. A waiver records why
+      acceptance rules are not warranted; light carries assessable-core rules
+      with file-level defaults; full carries the complete battery. Individual
+      rules may escalate above the file tier when their specific risk warrants
+      it. Attention budget: rule count proportional to tier — a light contract
+      typically holds a handful of compact rules; keep each rule terse (keep
+      nuance and logical connectives, drop redundancy) and never pad a tier to
+      look thorough — extra anatomy appears only where risk or an author depth
+      signal ("be thorough on X") earns it. Acceptance never disappears
+      silently: a change either carries rules or a recorded waiver, and a tier
+      proposal is never treated as confirmed without the human's decision.
+
+
+      Layout routes audiences: open the file with a Decision surface block — the
+      tier and its one-line rationale, rules awaiting confirmation or revision
+      (by id), judgment checks, surfaced conflicts, and (post-apply)
+      dispositions awaiting human verdicts — so every pending human decision is
+      readable from the top without wading through evidence protocol. Per-rule
+      sections follow with the evidence detail, clearly subordinate. Reference
+      rules by id in the decision surface instead of restating their text.
+      Routing moves placement, never rigor: no field is dropped by being routed.
+
+
+      Triage acceptance intent wherever it appears. Collect every s-ACCEPTANCE
+      and s-RULE node from the seed's thought tree, including nested s-SCENARIO,
+      s-GIVEN, s-WHEN, s-THEN, s-EXAMPLE, s-COUNTEREXAMPLE, and s-EXCEPTION
+      children. Normalize each rule exactly once, preserve traceability to its
+      origin, propose missing ids, assessors, and evidence, and surface
+      conflicts instead of silently resolving them. SpecMark is optional input:
+      give plain-prose seeds the same triage from their prose.
+
+
+      Proactively fill grounded gaps. Propose high-confidence, domain-typical
+      acceptance rules that the seed did not state, using the kind of
+      application, classic domain ontology, stakeholder goals, and broader
+      project context. Mark every inferred rule proposed, never fabricate an
+      ungrounded specific, and always give user-provided intent precedence.
+
+
+      Rule anatomy is tier-proportional. Every rule carries the assessable core:
+      a stable id, the intended outcome, at least one given/when/then scenario,
+      the required evidence, and a competent assessor (agent automation,
+      developer, QA, stakeholder, independent-model review, or a named human).
+      Declare file-level defaults once for priority (high/medium/low) and gate
+      strength (required/advisory); a rule states those fields only when it
+      deviates from the defaults, so every stated field carries signal — never
+      author zero-variance boilerplate. At the full tier each rule additionally
+      carries at least one example or counterexample plus forbidden shortcuts,
+      judgment checks, and explicit scope exceptions when applicable; at the
+      light tier those extras appear only on rules whose risk earns them. A
+      checked box without the assessable core is not an assessable rule.
+
+
+      Keep Status: proposed distinct from Status: confirmed. You may draft and
+      recommend rules, but never confirm them yourself: ask the human acting as
+      the three amigos to confirm, revise, or strike them. Human and
+      independent-model assessors imply no agent self-attestation. For an
+      independent-model review, prepare a self-contained review brief and ask
+      the developer to run the review; never spawn another vendor's tooling or
+      attest its outcome yourself.
+
+
+      Plan evidence with one job per layer: fake-clock tests for scheduler math,
+      telemetry for avoided work, narrow integration for final correctness, host
+      smoke for wiring, and human judgment for lived quality. Gather the
+      cheapest layer that proves each rule; never stretch one expensive
+      end-to-end vehicle to prove everything. If evidence depends on real
+      interaction feel or visible settling, prepare the cheapest assessable
+      preview, stop automation, and request human assessment. The following are
+      forbidden substitutions: sleep-heavy end-to-end loops imitating judgment,
+      weak timeouts presented as prompt behavior, fixture creation presented as
+      fixture confirmation, and telemetry presented as good user experience.
+
+
+      Leave each rule's disposition state and evidence/judgment slots empty
+      until /openspec-sb-assess. Once apply has begun, never silently weaken a
+      confirmed rule to match results. Record every revision with its reason and
+      effect, keeping the original wording recoverable from this file or git
+      history.
+    requires:
+      - proposal
+      - specs
+  - id: design
+    generates: design.md
+    description: Technical design document with implementation details
+    template: design.md
+    instruction: >
+      Create the design document that explains HOW to implement the change.
+
+
+      When to include design.md (create only if any apply):
+
+      - Cross-cutting change (multiple services/modules) or new architectural
+      pattern
+
+      - New external dependency or significant data model changes
+
+      - Security, performance, or migration complexity
+
+      - Ambiguity that benefits from technical decisions before coding
+
+
+      Prior decisions (read existing ADRs first):
+
+      Before writing, list every file in <planning-root>/docs/adr/. Build the
+      supersession graph from each ADR's Supersedes field — an ADR is no longer
+      in force if a later ADR's Supersedes points at it. Only the
+      currently-in-force ADRs (accepted, not superseded) constrain this design —
+      older superseded ADRs are historical context only and MUST NOT be treated
+      as live commitments. When the store's openspec/config.yaml context
+      declares an upstream decision authority (accepted ADRs in a referenced
+      store scoped globally or to this store), resolve those records through
+      store-scoped commands and include the in-scope, non-superseded ones in
+      the in-force set; if the authority store is unresolved, record the
+      decision context as degraded rather than assuming no upstream decisions
+      apply (see AGENTS.md, "Store mesh"). New design choices MUST be coherent
+      with the in-force set. If a current ADR needs to be revisited, do not
+      propose modifying it; flag it under Open Questions and let the adr step
+      record a new superseding ADR.
+
+      For ADRs listed in openspec/seedbed.adoption.json as present before
+      Seedbed adoption, preserve the files unchanged and interpret legacy status
+      case-insensitively. Accepted remains accepted without Decided metadata; a
+      status-less record is de-facto accepted unless it explicitly says
+      proposed, draft, rejected, or superseded. Respect explicit rejection and
+      supersession. This compatibility rule is only for the persistent
+      pre-adoption inventory; if no adoption boundary exists, infer no
+      grandfather exception. New ADRs follow Seedbed's strict shape.
+
+
+      Seed-prompt context: you may read any change's seed-prompt.meta.yaml for
+      routing (lifecycle state, context policy). If it declares `context_policy:
+      explicit-only` (a retired seed), do NOT load the adjacent seed-prompt
+      payload — here or in archived changes — unless the user explicitly
+      requests seed or provenance review. Never write a seed payload in any
+      lifecycle state — no append, repair, or verbatim transcription of
+      human-supplied text; indicate edits for the human to perform.
+
+
+      Recovered knowledge: pool artifacts opening with an `epistemics` block
+      (`origin: recovered`) are weighed by their marker, never quarantined —
+      anchor-threshold ones constrain the design like authored artifacts; for
+      `threshold: hypothesis` ones read the marker and summary only and do not
+      load the payload without an explicit user request (see
+      openspec/schemas/seedbed/AGENTS.md, "Recovered knowledge").
+
+
+      Sections:
+
+      - **Context**: Background, current state, constraints, stakeholders
+
+      - **Goals / Non-Goals**: What this design achieves and explicitly excludes
+
+      - **Decisions**: Key technical choices with rationale (why X over Y?).
+      Include alternatives considered for each decision.
+
+      - **Requirement coverage**: an explicit requirement-to-decision mapping.
+      For every requirement in this change's delta specs, name the decision(s)
+      that satisfy it. A requirement covered by no decision means the design is
+      incomplete; a decision motivated by no requirement must justify itself in
+      its rationale.
+
+      - **Risks / Trade-offs**: Known limitations, things that could go wrong.
+      Format: [Risk] → Mitigation
+
+      - **Migration Plan**: Steps to deploy, rollback strategy (if applicable)
+
+      - **Open Questions**: Outstanding decisions or unknowns to resolve.
+      Include any in-force ADRs that this design suggests revisiting — the adr
+      step will record the supersession.
+
+
+      Focus on architecture and approach, not line-by-line implementation.
+
+      Reference the proposal for motivation and specs for requirements.
+
+
+      Good design docs explain the "why" behind technical decisions.
+
+
+      Attention budget: about two pages, decisions-first. Default terse: keep
+      nuance and logical connectives, drop redundancy and unrequested
+      elaboration; expand only where the seed flags uncertainty or high stakes
+      ("still split on the outcomes", "be thorough on X") or the work type
+      demands it — edge cases, alternatives, and "heads up" notes on judgment
+      calls go to the flagged facet, not everywhere. Exceeding the budget is a
+      deviation needing that signal as its stated reason, not free headroom.
+    requires:
+      - proposal
+      - specs
+      - acceptance
+  - id: adr
+    generates: adr.md
+    description: Change-local ADR review manifest with durable ADR references
+    template: adr.md
+    instruction: >
+      Complete ADR review for this change by writing
+      openspec/changes/<change>/adr.md. This change-local file is a concise
+      review manifest and the OpenSpec completion marker for the adr artifact.
+      Existing files under <planning-root>/docs/adr/ are decision history and
+      context; they do not complete ADR review for a new change.
+
+
+      Durable Architecture Decision Records still live in
+      <planning-root>/docs/adr/ and persist across changes. The planning root is
+      the directory carrying this openspec/ harness — the repository root in a
+      single co-located setup, the package or project directory when one
+      repository hosts several planning roots. <planning-root>/docs/adr/ means
+      the docs/adr/ folder beside that openspec/ folder, never a folder inside
+      openspec/. ADR numbering and supersession are scoped per planning root. If
+      this change introduces a new durable architectural decision, create a
+      durable ADR at <planning-root>/docs/adr/NNNN-kebab-title.md and reference
+      it from openspec/changes/<change>/adr.md. Do not duplicate the full ADR
+      content in the manifest.
+
+
+      GRANDFATHERED ADRS — Files listed in openspec/seedbed.adoption.json are
+      immutable legacy history, not migration targets. Never edit them to add or
+      normalize Status, Decided, reviewer, date, filename, or formatting fields.
+      For this legacy inventory only, interpret status words case-insensitively;
+      accepted remains accepted without Decided metadata, and a record with no
+      parseable status is de-facto accepted unless it explicitly says proposed,
+      draft, rejected, or superseded. Respect explicit rejection and
+      supersession. Seedbed's strict status-block contract applies only to ADRs
+      created after adoption. Revisit or decide a legacy record through a new
+      conforming ADR, never by normalizing the old file.
+
+
+      IRON RULE — ADRs are immutable once accepted. You MUST NOT edit a prior
+      ADR file under any circumstance (not its Status, not its body, not its
+      date — nothing). To change a previously accepted decision, record a NEW
+      ADR whose Status is "accepted, supersedes ADR-NNNN" and whose
+      `Supersedes:` field names the prior one. Design consumers derive what is
+      currently in force by walking Supersedes links across the folder — the
+      prior ADR's contents stay frozen as a historical record.
+
+
+      Process:
+
+
+      1. Read every existing ADR in <planning-root>/docs/adr/ — plus, when the
+      store's config context declares an upstream decision authority, the
+      accepted in-scope records of that referenced store (resolved via
+      --store; explicit degradation if unresolved). Build the
+      supersession graph from each ADR's Supersedes field. Note the highest
+      sequence number in use. Apply the grandfathering interpretation above to
+      the pre-adoption inventory without changing its files. Record the
+      currently in-force ADRs reviewed in the change-local adr.md manifest.
+
+
+      2. Re-read design.md. Identify decisions that meet ALL of these:
+
+      - Establish a long-term architectural commitment (pattern, technology,
+      boundary, contract) — not a tactical implementation detail.
+
+      - Will affect future changes beyond this one.
+
+      - Either aren't already captured by a currently-in-force ADR, OR
+      intentionally diverge from one (in which case the new ADR supersedes the
+      prior).
+
+
+      3. For each qualifying decision, create a NEW file at
+      <planning-root>/docs/adr/NNNN-kebab-title.md, where NNNN is a 4-digit
+      sequence one greater than the highest existing under that planning root.
+      Use the harness's ADR format (MADR-short: title, status/date, context,
+      decision, consequences). If this decision replaces a prior in-force ADR,
+      set Status to "accepted, supersedes ADR-NNNN", populate the `Supersedes:`
+      field, and explain in Context why the prior decision is being revisited.
+      Do NOT touch the prior ADR's file — leave it exactly as it was. Reference
+      every new durable ADR file from openspec/changes/<change>/adr.md.
+
+
+      4. If nothing meets the bar, do not invent ADRs. The step still completes
+      by writing openspec/changes/<change>/adr.md with: - ADR review completed
+      for this change. - The in-force ADR context reviewed, or "none" if no
+      existing ADRs exist. - A statement that no major durable architectural
+      decisions were introduced.
+
+
+      Filename convention: NNNN-kebab-title.md (e.g.,
+      0042-use-postgres-for-catalog.md). Sequence is monotonic across the whole
+      repo and never reused.
+
+
+      Attention budget: the manifest is a pointer list — about one line per ADR
+      reviewed or created, no restated ADR content (the files under
+      <planning-root>/docs/adr/ are the source of truth); each new durable ADR
+      stays about one page of MADR-short. Default terse: keep nuance and logical
+      connectives, drop redundancy and unrequested elaboration; expand only
+      where the author flags a decision as uncertain or high-stakes. Exceeding
+      the budget needs that signal as its stated reason.
+    requires:
+      - design
+  - id: tasks
+    generates: tasks.md
+    description: Implementation checklist with trackable tasks
+    template: tasks.md
+    instruction: >
+      Create the task list that breaks down the implementation work.
+
+
+      **IMPORTANT: Follow the template below exactly.** The apply phase parses
+
+      checkbox format to track progress. Tasks not using `- [ ]` won't be
+      tracked.
+
+
+      Guidelines:
+
+      - Group related tasks under ## numbered headings
+
+      - Each task MUST be a checkbox: `- [ ] X.Y Task description`
+
+      - Tasks should be small enough to complete in one session
+
+      - Order tasks by dependency (what must be done first?)
+
+
+      Example:
+
+      ```
+
+      ## 1. Setup
+
+
+      - [ ] 1.1 Create new module structure
+
+      - [ ] 1.2 Add dependencies to package.json
+
+
+      ## 2. Core Implementation
+
+
+      - [ ] 2.1 Implement data export function
+
+      - [ ] 2.2 Add CSV formatting utilities
+
+      ```
+
+
+      Reference specs for what to build, design for how to build it, and
+      <planning-root>/docs/adr/ for the durable architectural commitments to
+      honor.
+
+      Each task should be verifiable - you know when it's done.
+
+
+      Attention budget: bare checkboxes — one line per task under grouped
+      headings, no narrative padding; a task names what and where, it never
+      restates the design. Default terse: drop redundancy and unrequested
+      elaboration; expand a task only when the author flags its facet as
+      uncertain or high-stakes. Exceeding the budget needs that signal as its
+      stated reason.
+
+
+      Once the author has reviewed the generated wave, recommend (never require)
+      committing the change directory as one scoped commit — the seedbed-tend skill
+      drafts the slice and subject on request, and nothing is committed without
+      explicit approval of the exact path set and message.
+    requires:
+      - specs
+      - acceptance
+      - adr
+apply:
+  requires:
+    - tasks
+  tracks: tasks.md
+  instruction: |
+    HARD RULE — seeds are human-managed: never write a seed payload in any
+    lifecycle state. No append, repair, reflow, or verbatim transcription of
+    text the human supplied — acting as the author's scribe is still writing
+    (the sole permitted seed operation, the content-identical promotion move,
+    happened at proposal time). When follow-up intent arrives in-session,
+    indicate: hand back append-ready text and its target location for the
+    human to apply, and treat the stated intent as confirmed planning input
+    while the file stays untouched.
+
+    Seed prompts stay amendable during implementation: a seed in
+    `state: promoted` accepts human-performed, append-only follow-up rounds
+    (s-FOLLOWUP in SpecMark, or a clearly appended section) at any point of
+    apply — implementation learnings may equally be reflected back into the
+    change's planning artifacts.
+    The integrity boundary is established later, at archival retirement (see
+    openspec/schemas/seedbed/AGENTS.md); a `state: retired` seed is closed —
+    direct new prompt material to a new staged seed or change.
+
+    Checkpointed follow-up steering: recheck the promoted seed's appended tail
+    and Git state at turn start, immediately before finalizing durable
+    planning artifacts or handing work back, and at major artifact boundaries
+    in a long pass — bounded observation, never continuous monitoring. A
+    structurally complete follow-up committed by the human, or the same intent
+    explicitly supplied or confirmed in the current session, is confirmed
+    planning input; a structurally complete but uncommitted append is
+    provisional steering — announce it, use it only for safe, reversible,
+    in-scope refinement, and label any remaining dependency at handoff; an
+    open, truncated, or malformed trailing round is draft-in-progress —
+    continue from the last complete round and never infer or repair its
+    ending. A closed s-FOLLOWUP (or clearly delimited freeform append) signals
+    structural completeness only, never confirmation or authority. No
+    filesystem observation authorizes external actions, destructive
+    operations, ADR verdicts, acceptance confirmation, or material expansion
+    beyond the active request; a contradicting or redirecting provisional
+    follow-up pauses for explicit user confirmation.
+
+    You may record one optional, free-form implementation.llm_hint in the
+    sidecar — a concise best-effort answer to which model executed the
+    implementation (a coarse description is fine for multi-model work; omit
+    it when unknown). Never parse, require, validate, or block on it, and
+    never treat it as exhaustive attribution.
+
+    Read context files and the confirmed acceptance contract before working
+    through pending tasks. Treat rejected, pending, or unable-to-assess
+    dispositions from an earlier /openspec-sb-assess round as first-class follow-up
+    work: fix their causes and produce the required evidence, without rewriting
+    the assessment disposition yourself. Treat only human-confirmed rules as
+    binding; if proposed rules still await confirmation, pause and request it.
+
+    Advisory commit points (never gates): at apply pre-flight, if the change
+    directory is dirty, recommend committing it at its live path first —
+    pre-archival seed traceability is ordinary git history. At apply
+    end, recommend one scoped aftermath commit of the task ticks and artifact
+    amendments (the seedbed-tend skill drafts slices and subjects on request).
+    Neither recommendation blocks progress, and no commit is ever executed
+    without explicit human approval of its exact path set and message.
+
+    Mark ordinary implementation tasks complete as you go, but NEVER tick an
+    acceptance-gate task during apply, even when every other task is complete.
+    Only /openspec-sb-assess may tick that task after verifying every required rule.
+    Apply ends with the change ready for assessment, not ready for archive.
+    When implementation work is complete, report remaining acceptance findings
+    and direct the developer to /openspec-sb-assess. Pause if you hit blockers or need
+    clarification.
+
+    Aftermath contract — the completion report: persisted artifacts are the
+    single source of truth and are never paraphrased. Reference the tasks
+    file, artifacts, and diff by pointer (file path, artifact name, rule id)
+    with at most a one-line role description each — no remashed task
+    descriptions; the reader is already nose-in tasks.md and the code diff.
+    Exceptions lead: warnings, wrinkles, deviations from plan, hard judgment
+    calls, blockers, and pending decisions come first; routine confirmation
+    follows, compressed. When nothing demands attention, the whole report is
+    about one line plus pointers — never manufacture volume to make
+    completion look substantial. If a vendor command's output template
+    conflicts with this (e.g. a "Completed This Session" re-list), this
+    schema instruction is the policy authority. Explicit user requests
+    override: when the user asks for a walkthrough, elaboration, or meta
+    commentary, provide it at the requested depth. End reports with pointers
+    plus wrinkles only.
+
+    Seed prompts: seed-prompt.meta.yaml is always readable for routing, but
+    when it declares `context_policy: explicit-only` (retired seed), do not
+    load the seed-prompt payload — in this change, others, or archives —
+    unless the user explicitly requests seed or provenance review.
+
+    Recovered knowledge during implementation: weigh `origin: recovered`
+    pool artifacts by their marker (hypothesis-threshold payloads stay
+    unloaded without an explicit request), and never accept an ungraded
+    model inference as the basis for deleting or breaking behavior — route
+    such questions to the excavation flow (openspec/schemas/seedbed-excavation/) for
+    anchor-grade evidence or a current negative certificate.

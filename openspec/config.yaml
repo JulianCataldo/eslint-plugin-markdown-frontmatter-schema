@@ -1,0 +1,42 @@
+schema: seedbed
+
+context: |
+  Store mesh (canonical policy: openspec/schemas/seedbed/AGENTS.md; campaigns:
+  openspec/schemas/seedbed/store-campaigns.md):
+  - Cross-store context flows through this file's committed `references:` list
+    and the per-machine store registry. OpenSpec renders one reference level;
+    reach deeper context by bouncing store-scoped commands — `openspec context
+    --store <id>`, `openspec show <item> --type spec|change --store <id>` —
+    carrying a visited set that terminates cycles. Never parse the machine
+    registry; treat CLI-printed physical roots as session-only data.
+  - A reference that does not resolve locally is explicit unknown context:
+    name the missing store id, keep the remote/register remedy, and record the
+    unresolved dependency in downstream artifacts instead of treating that
+    scope as empty.
+  - Persist cross-store pointers as typed identities — store, kind (spec or
+    change), id — cited to the owning store; never persist physical paths or
+    cross-store relative paths.
+  - Campaign changes additionally carry an opaque canonical-UUID generation in
+    their campaign manifest or lane marker. Resolve a generation-bearing
+    reference against the active slug plus every exact dated archive
+    candidate, accept exactly one id+generation match, and degrade explicitly
+    on zero or several matches. Non-campaign changes carry no such
+    archive-durability promise.
+  - A context-declared upstream decision authority (accepted ADRs in a
+    referenced store, scoped globally or to this store) is part of this
+    store's in-force decision set: resolve those records through the bounce
+    before planning or decision-flavored answers, and treat an unresolvable
+    authority store as degraded unknown context — never as "no upstream
+    decisions apply".
+
+# Per-artifact rules. Keys mirror the installed schema's artifact IDs.
+rules:
+  proposal: []
+  specs: []
+  acceptance: []
+  design: []
+  adr: []
+  tasks: []
+
+references:
+  - julian-oss-factory
