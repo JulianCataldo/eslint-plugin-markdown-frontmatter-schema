@@ -1,0 +1,16 @@
+schema_version: 2
+state: promoted
+source_path: openspec/seed-prompts/code-specs-relationships.html
+promoted_at: 2026-07-25T21:35:50Z
+redaction: >-
+  No explicit redaction declaration recorded; promotion was requested by the
+  author explicitly naming this seed. Content reviewed at promotion time
+  contains no apparent secrets or sensitive data.
+context_policy: change-scoped
+promotion:
+  consented_by: >-
+    Author, via explicit /openspec-propose invocation naming
+    openspec/seed-prompts/code-specs-relationships.html
+  secrets_review: >-
+    Implied by explicit invocation; no separate author declaration captured
+    in-session.

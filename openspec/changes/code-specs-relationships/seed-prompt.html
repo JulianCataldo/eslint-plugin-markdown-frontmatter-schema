@@ -11,7 +11,7 @@
 	<br />
 	Source are 425LOC. I think it's a new opportunity to test something OUTSIDE of
 	Seedbed, here.
-	<s-LATER></s-LATER>
+	<s-LATER>
 		If satisfactory, I'll find a way to make this an opt-in "tracking system".
 	</s-LATER>
 	I'll try to shape this as a generic, portable pattern, but NOTE THAT for now,
@@ -128,3 +128,30 @@
 		is written/modified, THEN we must have the relationships done.
 	</s-NEED>
 </s-ADR>
+
+<s-FOLLOWUP>
+	Don't bother with local specs creation.
+	<s-RATIONALE>
+		Will rerun a differently shaped spec upstream, in seedbed, once this pattern
+		is validated.
+	</s-RATIONALE>
+
+	So JUST straight create an ADR that POINTS TO
+	`docs/excavation/code-specs-relationships.md` that unroll the details.
+	<hr />
+	NO spec pipeline at all. This is an experimental probe.
+
+	<hr />
+	Finally DON'T mention unrelated stuff (missing referenced store…)
+</s-FOLLOWUP>
+
+<s-FOLLOWUP>
+	Do Seedbed take into account an "ADR only" shaped proposal/apply? So we keep
+	the seedprompt lifecycle, the timestamped archival etc.?
+
+	<s-HACK>
+		Maybe expurge EVERYTHING in code-specs-relationships that is not purely ADR
+		bound (the ADR is self contained), and we just have a slim 1/2 tasks +
+		laconic almost stubbed artifacts?
+	</s-HACK>
+</s-FOLLOWUP>
