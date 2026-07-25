@@ -1,0 +1,130 @@
+<s-ADR temp-name="code-specs-relationships" llm="fable-5-max">
+	I didn't started any specs excavations/new spec proposals YET.
+
+	<hr />
+
+	I'm in deep reflection about "Brownfield SDD" methodologies.
+	<br />
+
+	This repo has the advantage of having the original architect (me) to validate
+	(best effort) "specs after the fact".
+	<br />
+	Source are 425LOC. I think it's a new opportunity to test something OUTSIDE of
+	Seedbed, here.
+	<s-LATER></s-LATER>
+		If satisfactory, I'll find a way to make this an opt-in "tracking system".
+	</s-LATER>
+	I'll try to shape this as a generic, portable pattern, but NOTE THAT for now,
+	we are only challenging this in this project.
+
+	<s-FOUNDATION>
+		Take this ugly example (just <em>comprehend</em> the gist, don't pick dummy
+		naming or syntactic errands):
+		<script challenge-me="">
+			/**
+			 * ...
+			 * @spec [`cool-stuff`](../openspec/specs/foo/foo.md)
+			 * @spec [`cool-stuff`](./cool-stuff.md)
+			 * @spec [other-stuff - Sub section](./other-stuff.md#sub-section)
+			 * @adr 100 — [Foo bar baz](./some-link3.md#sub-section)
+			 */
+			export function foo() {
+				// ...
+				someCode();
+
+				/** @spec [`cool-stuff3`](./some-link3.md#sub-section)  */
+				someSpecifics();
+				// ...
+			}
+		</script>
+		Keep in mind the 'code/hover MD rendering' split, they need BOTH to be
+		visually pleasing and efficient. I insist because it's trickier than it
+		seems to please both.
+
+		<br />
+
+		Also keep in mind VSCode do some re-massaging (e.g adds `—` after @tag,
+		etc.) for its popup MD render.
+	</s-FOUNDATION>
+
+	<s-GIVEN>
+		The user never excavated. He just has the "cartography + campaigns" ready.
+	</s-GIVEN>
+	<s-WHEN> An excavation slice is done. </s-WHEN>
+
+	<s-GOAL>
+		Find a good balance for "more general scope" (@module level), middle level
+		(typically class/function), and lower level (spec sub-section, inline
+		JSDocs). Same as specs compounding.
+
+		<s-HUNCH>
+			We'll probably won't be able to list every single spec exhaustively. Or
+			maybe I'm overestimating this, and we can, but could find JSDocs notation
+			that can avoid too much '@spec' littering. Commas separated IDs? We'll see
+			in practice.
+		</s-HUNCH>
+	</s-GOAL>
+
+	<s-THEN> The LLM do a `code -> spec` mapping </s-THEN>
+
+	<s-GOAL>
+		Mechanical "SDD coverage" markers. It ensures an easier human review, with
+		the diff.
+	</s-GOAL>
+
+	<s-GOAL>
+		Since this eslint rule code is quite compact, in the end, I will be able to
+		tell "OK, ALL bits of code"
+	</s-GOAL>
+
+	<s-PROS>
+		No need to have lenghty JSDocs anymore (good for gradual context ingestion),
+		human/LLMs can have direct pointers, if the code is not self-sufficient for
+		their actual task at hand.
+	</s-PROS>
+
+	<s-CONS> It will arguably make the codebase a bit ugly. </s-CONS>
+
+	<s-NONGOAL>
+		Yak shaving the exact scripture conventions. My first example is really a
+		napkin draft
+	</s-NONGOAL>
+
+	<s-ACCEPTANCE>
+		I'll run the first excavation round. See what's produce, and (very probably)
+		refine the shape a bit. It will be heavily "wet finger human
+		judgment-based".
+
+		<s-RULE>
+			If it clicks for me during diffing, and the relationship is crisp, and
+			this pattern add value, it will already be a very good start worth
+			wrapping then officialize.
+			<s-RISK>
+				After the full excavation, I find that it doesn't add that much value
+				anymore because of the possible noise factor.
+			</s-RISK>
+		</s-RULE>
+
+		<s-GOAL>
+			Find a good affordance/verbosity/visual noise balance (MD bracket and
+			relative paths participate to the ugliness).
+		</s-GOAL>
+	</s-ACCEPTANCE>
+
+	<s-PRIOR-ART>
+		It's not unusual to see Jira ticket, PR numbers, ADR numbers etc. in
+		codebases in the wild. Freeform in comments, in `NOTE(NNN):`. What changes
+		here is <em>format conventionalization and mapping systematization</em>.
+	</s-PRIOR-ART>
+
+	<s-NEED>
+		This ADR must be explicitely attached to excavation workflows, as a
+		post-processing step (1 spec excavated => reference it in code, next,
+		repeat…).
+	</s-NEED>
+
+	<s-NEED>
+		Same for "regular" openspec commands. When 'apply' is fired, and fresh code
+		is written/modified, THEN we must have the relationships done.
+	</s-NEED>
+</s-ADR>
