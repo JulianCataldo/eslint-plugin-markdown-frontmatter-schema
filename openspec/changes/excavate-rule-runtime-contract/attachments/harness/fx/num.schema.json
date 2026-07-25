@@ -1,4 +1,4 @@
 {
-	"type": "object",
-	"properties": { "num": { "type": "integer" }, "title": {}, "desc": {} }
+  "type": "object",
+  "properties": { "num": { "type": "integer" }, "title": {}, "desc": {} }
 }

@@ -136,12 +136,12 @@ legacy codebase is a different activity with its own guide —
 
 ## What the installer guarantees
 
-| It will                                                                                           | It will not                                                         |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Preflight every target path — one conflict means **zero writes**, all reported                    | Overwrite an unexpected file silently                               |
-| Stamp truthful provenance: Seedbed's git commit + version, manifest written last                  | Stamp from a dirty Seedbed checkout — it refuses                    |
-| Replicate [`template/`](https://github.com/JulianCataldo/seedbed-sdd/tree/main/template) verbatim | Add anything to your dependency tree or `node_modules/`             |
-| Materialize the planning layer into exactly the roots you select                                  | Invent project structure — `--planning-root` directories must exist |
+| It will                                                                                           | It will not                                                                  |
+| ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Preflight every target path — one conflict means **zero writes**, all reported                    | Overwrite an unexpected file silently                                        |
+| Stamp truthful provenance: Seedbed's git commit + version, manifest written last                  | Stamp from a dirty Seedbed checkout — it refuses                             |
+| Replicate [`template/`](https://github.com/JulianCataldo/seedbed-sdd/tree/main/template) verbatim | Add anything to your dependency tree or `node_modules/`                      |
+| Materialize the planning layer into exactly the roots you select                                  | Invent project structure — `--planning-root` directories must exist          |
 | Preflight every root and the anchor before the **first** write                                    | Plant symlinks — except the one recorded bootstrap link when `.` is selected |
 
 ## Simulated install one: the monorepo (setup 3)
@@ -152,17 +152,17 @@ Solenne Studio's pnpm workspace ships `packages/app` and maintains
 <details>
 <summary><b>Simulated transcript</b> — fresh install, two project roots (condensed)</summary>
 
-| Who   | Beat                                                                                                                                                                                  |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| You   | "Install Seedbed. pnpm workspace; `packages/app` and `packages/lib` each plan their own work."                                                                                        |
-| Agent | Clones Seedbed to a temp dir, resolves the revision: "clean checkout at `<sha>` — install this?"                                                                                      |
-| You   | 🚧 Approve the exact commit                                                                                                                                                           |
-| Agent | Inspects every candidate root: no manifest, no predecessor schema, no `docs/adr/` → **fresh install**, setup 3                                                                        |
-| Agent | `install.mjs install . --planning-root packages/app --planning-root packages/lib` — all-target preflight passes; the anchor manifest plus two root-local planning manifests land      |
-| Agent | Reports ownership: the anchor manifest owns skills/settings/guides/SpecMark data once; each package owns its complete, materialized planning layer — schemas included, zero symlinks  |
-| You   | "Doesn't the _root_ need a planning layer too?"                                                                                                                                       |
-| Agent | "Only if your workspace itself plans repo-wide work — release scripts, CI, cross-package conventions. Say the word and I add `--planning-root .`; the packages then share its schema machinery through one recorded link each. Nothing forces it."|
-| You   | Commit the whole installation as one reviewable change                                                                                                                                |
+| Who   | Beat                                                                                                                                                                                                                                               |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| You   | "Install Seedbed. pnpm workspace; `packages/app` and `packages/lib` each plan their own work."                                                                                                                                                     |
+| Agent | Clones Seedbed to a temp dir, resolves the revision: "clean checkout at `<sha>` — install this?"                                                                                                                                                   |
+| You   | 🚧 Approve the exact commit                                                                                                                                                                                                                        |
+| Agent | Inspects every candidate root: no manifest, no predecessor schema, no `docs/adr/` → **fresh install**, setup 3                                                                                                                                     |
+| Agent | `install.mjs install . --planning-root packages/app --planning-root packages/lib` — all-target preflight passes; the anchor manifest plus two root-local planning manifests land                                                                   |
+| Agent | Reports ownership: the anchor manifest owns skills/settings/guides/SpecMark data once; each package owns its complete, materialized planning layer — schemas included, zero symlinks                                                               |
+| You   | "Doesn't the _root_ need a planning layer too?"                                                                                                                                                                                                    |
+| Agent | "Only if your workspace itself plans repo-wide work — release scripts, CI, cross-package conventions. Say the word and I add `--planning-root .`; the packages then share its schema machinery through one recorded link each. Nothing forces it." |
+| You   | Commit the whole installation as one reviewable change                                                                                                                                                                                             |
 
 Day-to-day afterwards: OpenSpec resolves the **nearest** `openspec/` root, so a
 workflow action run inside `packages/app` acts on that package's planning root.
@@ -209,11 +209,11 @@ Refresh is manifest-driven and conservative — **one ownership scope per
 invocation** — but it is **not** a merge:
 
 | Path state after the new template           | Refresh does                                                                 |
-| ------------------------------------------- | ----------------------------------------------------------------------------- |
+| ------------------------------------------- | ---------------------------------------------------------------------------- |
 | Managed before, still shipped               | **Overwritten.** There is no drift detection yet — commit local edits first  |
-| New in the template, absent on disk         | Claimed                                                                       |
-| New in the template, unmanaged file present | The **whole refresh aborts** for your judgment                                |
-| Dropped from the template                   | Preserved on disk with your local bytes; disowned from the inventory          |
+| New in the template, absent on disk         | Claimed                                                                      |
+| New in the template, unmanaged file present | The **whole refresh aborts** for your judgment                               |
+| Dropped from the template                   | Preserved on disk with your local bytes; disowned from the inventory         |
 | Owned by an unselected scope                | Byte-identical, always — anchor, siblings, and your deliberate dirt included |
 
 The overlay the selected scope owns — `openspec/config.yaml` for a planning
@@ -280,16 +280,16 @@ that combination or hand-copy the machinery over the link location afterward
 
 ## Do / Don't
 
-| Do                                                      | Don't                                                           |
-| ------------------------------------------------------- | --------------------------------------------------------------- |
-| Name the setup (1–4) before anything is written         | Let an agent guess the topology from vibes                      |
-| Approve the exact Seedbed commit being installed        | Install from a dirty or unreviewed checkout                     |
-| Commit local edits before any refresh                   | Expect drift detection — there is none yet                      |
-| Select `.` explicitly when the root should plan         | Assume the repo root is a planning seat by default              |
-| Refresh one scope at a time, from the anchor            | Run refresh inside a package as if it were standalone — refused |
-| Install first, `store register` second                  | Start with `openspec store setup` — its scaffold collides       |
-| Unwire a linked root by hand before extracting it       | Expect migration machinery — one shape, agent polyfills         |
-| Reinstall red-to-green when a manifest is lost          | Hand-craft manifest or adoption state                           |
+| Do                                                | Don't                                                           |
+| ------------------------------------------------- | --------------------------------------------------------------- |
+| Name the setup (1–4) before anything is written   | Let an agent guess the topology from vibes                      |
+| Approve the exact Seedbed commit being installed  | Install from a dirty or unreviewed checkout                     |
+| Commit local edits before any refresh             | Expect drift detection — there is none yet                      |
+| Select `.` explicitly when the root should plan   | Assume the repo root is a planning seat by default              |
+| Refresh one scope at a time, from the anchor      | Run refresh inside a package as if it were standalone — refused |
+| Install first, `store register` second            | Start with `openspec store setup` — its scaffold collides       |
+| Unwire a linked root by hand before extracting it | Expect migration machinery — one shape, agent polyfills         |
+| Reinstall red-to-green when a manifest is lost    | Hand-craft manifest or adoption state                           |
 
 ## Where things land
 

@@ -1,8 +1,8 @@
 {
-	"type": "object",
-	"properties": {
-		"kind": { "enum": ["Movie", "Song"] },
-		"title": { "type": "string" }
-	},
-	"required": ["kind"]
+  "type": "object",
+  "properties": {
+    "kind": { "enum": ["Movie", "Song"] },
+    "title": { "type": "string" }
+  },
+  "required": ["kind"]
 }

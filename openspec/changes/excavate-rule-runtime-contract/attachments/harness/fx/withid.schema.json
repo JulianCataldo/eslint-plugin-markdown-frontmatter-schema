@@ -1,6 +1,6 @@
 {
-	"$id": "https://example.com/withid.json",
-	"type": "object",
-	"required": ["title"],
-	"properties": { "title": { "type": "string" } }
+  "$id": "https://example.com/withid.json",
+  "type": "object",
+  "required": ["title"],
+  "properties": { "title": { "type": "string" } }
 }

@@ -9,8 +9,7 @@ description:
 artifacts:
   - id: survey
     generates: survey.md
-    description:
-      Dig scope, driving question, risk list, evidence-source inventory
+    description: Dig scope, driving question, risk list, evidence-source inventory
     template: survey.md
     instruction: >
       Scope the dig before touching evidence. Read

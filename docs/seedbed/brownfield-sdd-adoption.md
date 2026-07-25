@@ -133,7 +133,7 @@ but slipping.
 
 | Who   | Beat                                                                                                                                                                                                 |
 | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| You   | `/seedbed-excavate tariff-rules` — that's the whole brief                                                                                                                                               |
+| You   | `/seedbed-excavate tariff-rules` — that's the whole brief                                                                                                                                            |
 | Agent | Bounded reconnaissance; drafts `survey.md`: subject, driving question ("which tariff behaviors must survive the next rewrite?"), mode: witnessed recovery, risks, sources (test suite, git, **you**) |
 | You   | 🚧 **Gate 1** — trim one risk, confirm scope                                                                                                                                                         |
 | Agent | Ledger fills: test-suite excerpts verbatim, git blame trails; then the interview: _"Why does zone 9 bypass the discount table?"_                                                                     |

@@ -28,7 +28,7 @@ Recon delta (2026-07-26; all campaign pointers verified live):
   multi-file semantics are unknown: `$id` re-registration may throw mid-lint;
   no memoization implies per-file re-bundle/re-fetch.
 - Q6 refinement — meta options schema declares `defaultSchema: {type:
-  'object'}` (`src/rules/frontmatter-schema.ts:41`) while `parseGlobalSchema`
+'object'}` (`src/rules/frontmatter-schema.ts:41`) while `parseGlobalSchema`
   accepts strings (`src/prepare.ts:89`): ESLint core options validation may
   make the string branch unreachable.
 - GitHub tracker recon (steward-directed, 2026-07-26). Steward testimony this
@@ -94,7 +94,7 @@ claim.
   and non-`https://` `$schema` forms (`http://`, protocol-relative, `file:`,
   absolute); malformed-YAML behavior (is `yamlSyntaxError` reachable);
   options matrix `['error']` / `['error', {}]` / `['error',
-  {defaultSchema}]`; whole-file-parse offset correctness (YAML-lookalike
+{defaultSchema}]`; whole-file-parse offset correctness (YAML-lookalike
   markdown bodies, multi-document text); enum suggestion shape (restores
   executable evidence for `src/validate.ts:65-69`); multi-file same-schema
   pass (`$id` re-compile, worker call count); `$schema` key vs

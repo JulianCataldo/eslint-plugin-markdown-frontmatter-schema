@@ -11,10 +11,9 @@ Code→SDD relationships are `@spec`/`@adr` tags carrying monikers, not
 Markdown links — as JSDoc tags at declaration level, as `// @spec` line
 comments at module and inline levels (see Placement):
 
-- ``@spec `<spec-id>``` — the backticked spec id alone, no path or anchor.
-  Sub-requirements/scenarios group under it, one per line, as
-  `+ <verbatim heading text>` — prefixes ("Requirement:", "Scenario:")
-  dropped; `+` reads like `-` in Markdown (hover renders it as a list) and
+- ``@spec `<spec-id>```— the backticked spec id alone, no path or anchor.
+Sub-requirements/scenarios group under it, one per line, as`+ <verbatim heading text>`— prefixes ("Requirement:", "Scenario:")
+dropped;`+`reads like`-` in Markdown (hover renders it as a list) and
   fits better in raw JSDoc.
 - `@adr <NNNN> — [<title>](<relative-path>.md)` — number-first, scanning like
   the familiar "ADR-123" idiom. Untouched by the moniker round; reshape when
@@ -68,7 +67,7 @@ inserts `—` after the tag name, reflows custom tags) — validate the grammar 
 hovering a sample before first real use, and adjust if the render breaks
 (e.g. a literal leading `—` in `@adr` colliding with the inserted one).
 Moniker shape verified 2026-07-26 on `retrieveViolations` in src/validate.ts:
-the popup shows ``*@spec* — `<spec-id>``` with the `+` lines rendered as a
+the popup shows ``*@spec* — `<spec-id>```with the`+` lines rendered as a
 Markdown bullet list.
 
 ## Workflow hooks — mappings land in the motivating diff

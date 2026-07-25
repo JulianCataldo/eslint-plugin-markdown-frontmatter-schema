@@ -276,7 +276,7 @@ The API is kept very similar.
   git@github.com:JulianCataldo/eslint-plugin-markdown-frontmatter-schema.git
 - Locator: `git log --format='%h %ad %s' --date=short`, full history;
   HEAD = b549418 at collection (b549418 landed mid-session after E8–E14
-  were excerpted; it touches only eslint.config.js and openspec/*, so the
+  were excerpted; it touches only eslint.config.js and openspec/\*, so the
   source excerpts hold for it too)
 - Collected: 2026-07-26 (dates corrected in the restructure; the first
   transcription was wrong — see E17)
@@ -298,7 +298,7 @@ c477455 2025-07-25 chore: init
 
 - Source: npm registry
 - Locator: `npm view eslint-plugin-markdown-frontmatter-schema version
-  dist-tags`
+dist-tags`
 - Collected: 2026-07-26
 - Class: other
 
@@ -477,7 +477,7 @@ Replace with \"Movie\"
   default (root required error at 1:1).
 
 ```text
-Schema is malformed 
+Schema is malformed
 Value \"./enum.schema.json\" should be object.
 Unexpected property \"bogus\"
 ```
@@ -514,7 +514,7 @@ no schema with key or ref \"https://json-schema.org/draft/2020-12/schema\"
 ```text
 ENOENT: no such file or directory
 unexpected end of the stream within a flow collection (2:1)
-Error downloading https://127.0.0.1:9/x.schema.json 
+Error downloading https://127.0.0.1:9/x.schema.json
 fetch failed
 ```
 

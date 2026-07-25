@@ -1,2282 +1,2282 @@
 {
-	"version": "0.0.0",
-	"tags": [
-		{
-			"name": "script",
-			"description": "A special container that preserves its children -verbatim-, without breaking HTML tooling with arbitrary code extracts. Supports embedded language formatting.\n\n---\n\n`type` — Stable local anchor for references, extraction, or later tooling.  \n`lang` — Stable local anchor for references, extraction, or later tooling.",
-			"attributes": [
-				{
-					"name": "type",
-					"description": "Stable local anchor for references, extraction, or later tooling.",
-					"values": [
-						{
-							"name": "reference"
-						},
-						{
-							"name": "example"
-						},
-						{
-							"name": "verbatim"
-						}
-					]
-				},
-				{
-					"name": "lang",
-					"description": "Stable local anchor for references, extraction, or later tooling.",
-					"values": [
-						{
-							"name": "html"
-						},
-						{
-							"name": "ts"
-						},
-						{
-							"name": "tsx"
-						},
-						{
-							"name": "vue"
-						},
-						{
-							"name": "markdown"
-						},
-						{
-							"name": "rust"
-						},
-						{
-							"name": "go"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "s-SPEC",
-			"description": "Root container for a seed that may graduate into a formal spec, OpenSpec change, ADR, or task set.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`name` — Human-readable name for this seed item.  \n`temp-name` — Temporary name before a stable spec/change name exists.  \n`parent` — Parent seed, change, or other containing work item this material descends from.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`authors` — Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants.  \n`llm` — Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "name",
-					"description": "Human-readable name for this seed item."
-				},
-				{
-					"name": "temp-name",
-					"description": "Temporary name before a stable spec/change name exists."
-				},
-				{
-					"name": "parent",
-					"description": "Parent seed, change, or other containing work item this material descends from."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "authors",
-					"description": "Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants."
-				},
-				{
-					"name": "llm",
-					"description": "Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore."
-				}
-			]
-		},
-		{
-			"name": "s-EXPLORATION",
-			"description": "A free-form container for the initial exploration prompt (and its follow ups) that can get prepended in a seed prompt (outside of SPEC), for historical and contextual reasons.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`name` — Human-readable name for this seed item.  \n`temp-name` — Temporary name before a stable spec/change name exists.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`authors` — Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants.  \n`llm` — Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "name",
-					"description": "Human-readable name for this seed item."
-				},
-				{
-					"name": "temp-name",
-					"description": "Temporary name before a stable spec/change name exists."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "authors",
-					"description": "Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants."
-				},
-				{
-					"name": "llm",
-					"description": "Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore."
-				}
-			]
-		},
-		{
-			"name": "s-FOLLOWUP",
-			"description": "Append-only follow-up round (review, correction, continuation) added to a promoted seed without revising prior authored intent.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`type` — Kind of follow-up round (for example review).  \n`stage` — Workflow stage during which this round happened.  \n`llm` — Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore.  \n`authors` — Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "type",
-					"description": "Kind of follow-up round (for example review).",
-					"values": [
-						{
-							"name": "review"
-						},
-						{
-							"name": "correction"
-						},
-						{
-							"name": "continuation"
-						}
-					]
-				},
-				{
-					"name": "stage",
-					"description": "Workflow stage during which this round happened.",
-					"valueSet": "stage"
-				},
-				{
-					"name": "llm",
-					"description": "Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore."
-				},
-				{
-					"name": "authors",
-					"description": "Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				}
-			]
-		},
-		{
-			"name": "s-SEED",
-			"description": "Raw or semi-structured prompt seed preserving author intent before cleanup.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`name` — Human-readable name for this seed item.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "name",
-					"description": "Human-readable name for this seed item."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				}
-			]
-		},
-		{
-			"name": "s-PROMPT",
-			"description": "Prompt text or prompt fragment intended for an LLM or SDD harness.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`action` — Requested operation or mode of work.  \n`target` — Target concept, file, symbol, surface, or artifact.  \n`priority` — Relative importance for the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "action",
-					"description": "Requested operation or mode of work.",
-					"valueSet": "action"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				}
-			]
-		},
-		{
-			"name": "s-SCOPE",
-			"description": "Explicit interpretation boundary for messy prose or nested thought.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`kind` — Coarse kind of content or artifact.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "kind",
-					"description": "Coarse kind of content or artifact."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "binding",
-					"description": "How strongly the wrapped content should constrain interpretation.",
-					"valueSet": "binding"
-				}
-			]
-		},
-		{
-			"name": "s-CONTEXT",
-			"description": "Background premises, situational facts, or assumptions needed to interpret the surrounding seed material.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`kind` — Coarse kind of content or artifact.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "kind",
-					"description": "Coarse kind of content or artifact."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "binding",
-					"description": "How strongly the wrapped content should constrain interpretation.",
-					"valueSet": "binding"
-				}
-			]
-		},
-		{
-			"name": "s-RAW",
-			"description": "Unstructured author thoughts, fragments, or notes retained as contextual input before they are refined into stronger semantic material.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`kind` — Coarse kind of content or artifact.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.  \n`confidence` — Author confidence in the wrapped content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "kind",
-					"description": "Coarse kind of content or artifact."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "binding",
-					"description": "How strongly the wrapped content should constrain interpretation.",
-					"valueSet": "binding"
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				}
-			]
-		},
-		{
-			"name": "s-META",
-			"description": "Instruction about how to read, parse, or treat the surrounding seed text.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.  \n`priority` — Relative importance for the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "binding",
-					"description": "How strongly the wrapped content should constrain interpretation.",
-					"valueSet": "binding"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				}
-			]
-		},
-		{
-			"name": "s-NOTE",
-			"description": "Supplementary observation, annotation, or reminder that informs the surrounding material without becoming a requirement by itself.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-READING-MODE",
-			"description": "Temporary reading rule for a sample, passage, or exercise; not necessarily a design requirement.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "binding",
-					"description": "How strongly the wrapped content should constrain interpretation.",
-					"valueSet": "binding"
-				}
-			]
-		},
-		{
-			"name": "s-HARD",
-			"description": "Binding instruction, invariant, or constraint that should not be downgraded into a suggestion.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				}
-			]
-		},
-		{
-			"name": "s-SOFT",
-			"description": "Advisory guidance that can be challenged or refined.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-CONSTRAINT",
-			"description": "Normative requirement shaping acceptable outputs or implementations.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-NONGOAL",
-			"description": "Explicit non-goal; preserve the boundary and avoid spending effort there.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				}
-			]
-		},
-		{
-			"name": "s-IGNORE",
-			"description": "Content preserved for context or audit but not to be operationalized.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "binding",
-					"description": "How strongly the wrapped content should constrain interpretation.",
-					"valueSet": "binding"
-				}
-			]
-		},
-		{
-			"name": "s-VERBATIM",
-			"description": "Content whose exact wording, spelling, casing, or syntax should be preserved.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`medium` — Source medium associated with this content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				}
-			]
-		},
-		{
-			"name": "s-LATER",
-			"description": "Future, postponed, backlog, or nice-to-have content that should not hijack the current pass.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				}
-			]
-		},
-		{
-			"name": "s-CURRENT",
-			"description": "Content about the current state, current pass, or implemented reality.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`confidence` — Author confidence in the wrapped content.  \n`medium` — Source medium associated with this content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				}
-			]
-		},
-		{
-			"name": "s-STOP",
-			"description": "Boundary indicating where the current pass should stop.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				}
-			]
-		},
-		{
-			"name": "s-HUNCH",
-			"description": "Author intuition or tentative design idea; useful but not golden.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-IDEA",
-			"description": "Candidate thought, possible direction, or uncommitted concept offered for consideration.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-PROPOSAL",
-			"description": "Proposed direction, API, design, command, or feature shape.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-CAVEAT",
-			"description": "Limitation, caveat, complication, or conditional warning.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-USECASE",
-			"description": "A concrete projection for a considered feature, grounded in the real world. For semi-structured steps, use SCENARIO instead.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-ACCEPTANCE",
-			"description": "Acceptance cluster collecting one or more s-RULE invariants from anywhere in a seed's thought tree.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-RULE",
-			"description": "One assessable invariant within an s-ACCEPTANCE cluster. May contain s-SCENARIO (with s-GIVEN, s-WHEN, and s-THEN), s-EXAMPLE, s-COUNTEREXAMPLE, and s-EXCEPTION children.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-EXCEPTION",
-			"description": "Explicit carve-out from an s-RULE, kept visible rather than buried; typically nested inside that rule.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-SCENARIO",
-			"description": "More structured than a use case. Used for wrapping GIVEN-WHEN-THEN step vocabulary (Behavior Driven Dev.).\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-GIVEN",
-			"description": "Known state. Used in a SCENARIO.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-WHEN",
-			"description": "Key action. Used in a SCENARIO.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-THEN",
-			"description": "Observable output. Used in a SCENARIO.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-BOYSCOUT",
-			"description": "A chore, a refactor, an enhancement or an addressed technical debt that can be embedded alongside current changes.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`priority` — Relative importance for the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				}
-			]
-		},
-		{
-			"name": "s-REMEDY",
-			"description": "Possible remedy, mitigation, fallback, or corrective path.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-METHODOLOGY",
-			"description": "How to approach the subject at hand. Heuristics, mindset, practical recipes (custom or well-known)…\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-DISCLAIMER",
-			"description": "Authorial disclaimer about uncertainty, lack of challenge, or framing.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-RANT",
-			"description": "Low-filter frustration or contextual complaint; use as signal, not as a requirement by default.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`priority` — Relative importance for the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				}
-			]
-		},
-		{
-			"name": "s-ANALOGY",
-			"description": "Imprecise analogy used to communicate shape or intuition without exact engineering terminology.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-EXAMPLE",
-			"description": "Concrete example, scenario, sample command, or sample flow.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.  \n`status` — Lifecycle or implementation status of the wrapped content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "role",
-					"description": "Role played by the wrapped material.",
-					"valueSet": "material-role"
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				}
-			]
-		},
-		{
-			"name": "s-COUNTEREXAMPLE",
-			"description": "Example of a wrong, excluded, or undesirable behavior.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "role",
-					"description": "Role played by the wrapped material.",
-					"valueSet": "material-role"
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-PROBLEM",
-			"description": "Current problem, pain point, or motivating issue.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-GIST",
-			"description": "Concise central takeaway or compressed statement of the surrounding idea.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`priority` — Relative importance for the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				}
-			]
-		},
-		{
-			"name": "s-GOAL",
-			"description": "Desired outcome or direction of travel.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-NEED",
-			"description": "Needed behavior, capability, primitive, or result.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-QUESTION",
-			"description": "Open question, decision point, or unresolved ambiguity.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`mode` — Mode used to interpret or answer the wrapped content.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "mode",
-					"description": "Mode used to interpret or answer the wrapped content."
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-APPROVAL",
-			"description": "A topic that needs to be discussed and validated by one or many peers before the spec. can be implemented. Can be materialized as a task to fulfill.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-DELEGATE",
-			"description": "Area where the model or reader is invited to exercise judgment rather than merely obey a sketch.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-PROBE",
-			"description": "Small action or experiment intended to learn whether something is achievable.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`action` — Requested operation or mode of work.  \n`priority` — Relative importance for the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "action",
-					"description": "Requested operation or mode of work.",
-					"valueSet": "action"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-FOUNDATION",
-			"description": "Non-negotiable primitive or base layer that must be correct before higher layers.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-ITERATION",
-			"description": "Iteration budget or good-enough boundary for a layered implementation pass.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`priority` — Relative importance for the current pass.  \n`status` — Lifecycle or implementation status of the wrapped content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				}
-			]
-		},
-		{
-			"name": "s-PASS",
-			"description": "Initial pass, refinement pass, or deliberately incomplete layer.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-PARITY",
-			"description": "Feature parity, porting equivalence, or comparison matrix concern.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`target` — Target concept, file, symbol, surface, or artifact.  \n`artifact-kind` — Kind of artifact represented or requested.  \n`status` — Lifecycle or implementation status of the wrapped content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				},
-				{
-					"name": "artifact-kind",
-					"description": "Kind of artifact represented or requested.",
-					"valueSet": "artifact-kind"
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				}
-			]
-		},
-		{
-			"name": "s-RISK",
-			"description": "Potential failure mode, edge case, or design danger.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`priority` — Relative importance for the current pass.  \n`confidence` — Author confidence in the wrapped content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				}
-			]
-		},
-		{
-			"name": "s-UNKNOWN-OK",
-			"description": "Explicit permission to proceed despite known non-exhaustive edge-case analysis.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`scope` — Region of text or work item affected by this element.  \n`confidence` — Author confidence in the wrapped content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				}
-			]
-		},
-		{
-			"name": "s-MATERIAL",
-			"description": "Provided material whose role should be explicit: context, reference, target, source, or output.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`role` — Role played by the wrapped material.  \n`path` — Filesystem path or project-relative path.  \n`medium` — Source medium associated with this content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "role",
-					"description": "Role played by the wrapped material.",
-					"valueSet": "material-role"
-				},
-				{
-					"name": "path",
-					"description": "Filesystem path or project-relative path."
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				}
-			]
-		},
-		{
-			"name": "s-REF",
-			"description": "Reference to a file, symbol, document, project, issue, URL, or prior seed.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`ref` — Reference to another local id, external artifact, file, symbol, or URL.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "ref",
-					"description": "Reference to another local id, external artifact, file, symbol, or URL."
-				},
-				{
-					"name": "role",
-					"description": "Role played by the wrapped material.",
-					"valueSet": "material-role"
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				}
-			]
-		},
-		{
-			"name": "s-FILE",
-			"description": "File path or file-like artifact used as context, reference, target, or output.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`path` — Filesystem path or project-relative path.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "path",
-					"description": "Filesystem path or project-relative path."
-				},
-				{
-					"name": "role",
-					"description": "Role played by the wrapped material.",
-					"valueSet": "material-role"
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				}
-			]
-		},
-		{
-			"name": "s-TARGET",
-			"description": "Primary work target, symbol, file, surface, or conceptual object.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`target` — Target concept, file, symbol, surface, or artifact.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				},
-				{
-					"name": "role",
-					"description": "Role played by the wrapped material.",
-					"valueSet": "material-role"
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				}
-			]
-		},
-		{
-			"name": "s-OUTPUT",
-			"description": "Expected output shape, artifact, format, or response contract.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`artifact-kind` — Kind of artifact represented or requested.  \n`medium` — Source medium associated with this content.  \n`priority` — Relative importance for the current pass.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "artifact-kind",
-					"description": "Kind of artifact represented or requested.",
-					"valueSet": "artifact-kind"
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				}
-			]
-		},
-		{
-			"name": "s-ARTIFACT",
-			"description": "Artifact to create, update, inspect, or preserve.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`artifact-kind` — Kind of artifact represented or requested.  \n`path` — Filesystem path or project-relative path.  \n`status` — Lifecycle or implementation status of the wrapped content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "artifact-kind",
-					"description": "Kind of artifact represented or requested.",
-					"valueSet": "artifact-kind"
-				},
-				{
-					"name": "path",
-					"description": "Filesystem path or project-relative path."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				}
-			]
-		},
-		{
-			"name": "s-CODE",
-			"description": "Code or code-like payload requiring special preservation or language treatment.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`medium` — Source medium associated with this content.  \n`role` — Role played by the wrapped material.  \n`path` — Filesystem path or project-relative path.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "medium",
-					"description": "Source medium associated with this content.",
-					"valueSet": "medium"
-				},
-				{
-					"name": "role",
-					"description": "Role played by the wrapped material.",
-					"valueSet": "material-role"
-				},
-				{
-					"name": "path",
-					"description": "Filesystem path or project-relative path."
-				}
-			]
-		},
-		{
-			"name": "s-PATH",
-			"description": "Filesystem or project-relative path mentioned in the seed.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`path` — Filesystem path or project-relative path.  \n`role` — Role played by the wrapped material.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "path",
-					"description": "Filesystem path or project-relative path."
-				},
-				{
-					"name": "role",
-					"description": "Role played by the wrapped material.",
-					"valueSet": "material-role"
-				}
-			]
-		},
-		{
-			"name": "s-GLOSSARY",
-			"description": "Glossary block for project-specific terms, shortcuts, or local jargon.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`status` — Lifecycle or implementation status of the wrapped content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				}
-			]
-		},
-		{
-			"name": "s-TERM",
-			"description": "Single term, acronym, alias, or local jargon item.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`name` — Human-readable name for this seed item.  \n`ref` — Reference to another local id, external artifact, file, symbol, or URL.  \n`status` — Lifecycle or implementation status of the wrapped content.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "name",
-					"description": "Human-readable name for this seed item."
-				},
-				{
-					"name": "ref",
-					"description": "Reference to another local id, external artifact, file, symbol, or URL."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				}
-			]
-		},
-		{
-			"name": "s-RATIONALE",
-			"description": "Reasoning or justification that explains why a direction, requirement, or decision should be preferred.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "confidence",
-					"description": "Author confidence in the wrapped content.",
-					"valueSet": "confidence"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-PROS",
-			"description": "Benefits, advantages, or favorable consequences of an option, typically paired with s-CONS.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-CONS",
-			"description": "Costs, drawbacks, risks, or unfavorable consequences of an option, typically paired with s-PROS.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`scope` — Region of text or work item affected by this element.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "impact",
-					"description": "Whether the content blocks, delays, or merely informs the current pass.",
-					"valueSet": "impact"
-				},
-				{
-					"name": "scope",
-					"description": "Region of text or work item affected by this element.",
-					"valueSet": "scope"
-				}
-			]
-		},
-		{
-			"name": "s-ADR",
-			"description": "Architecture decision record material, including a proposed or recorded architectural decision.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "status",
-					"description": "Lifecycle or implementation status of the wrapped content.",
-					"valueSet": "status"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-TASK",
-			"description": "Concrete unit of work requested from the reader or model.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`action` — Requested operation or mode of work.  \n`priority` — Relative importance for the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "action",
-					"description": "Requested operation or mode of work.",
-					"valueSet": "action"
-				},
-				{
-					"name": "priority",
-					"description": "Relative importance for the current pass.",
-					"valueSet": "priority"
-				},
-				{
-					"name": "target",
-					"description": "Target concept, file, symbol, surface, or artifact."
-				}
-			]
-		},
-		{
-			"name": "s-REL",
-			"description": "Explicit relationship edge between two seed nodes or concepts.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`from` — Source node or concept for a relation.  \n`to` — Target node or concept for a relation.  \n`type` — Relationship kind between source and target.",
-			"attributes": [
-				{
-					"name": "id",
-					"description": "Stable local anchor for references, extraction, or later tooling."
-				},
-				{
-					"name": "from",
-					"description": "Source node or concept for a relation."
-				},
-				{
-					"name": "to",
-					"description": "Target node or concept for a relation."
-				},
-				{
-					"name": "type",
-					"description": "Relationship kind between source and target.",
-					"valueSet": "relation-type"
-				}
-			]
-		}
-	],
-	"globalAttributes": [
-		{
-			"name": "origin",
-			"description": "Provenance of the wrapped material, such as a human, LLM, code generator, or external source."
-		},
-		{
-			"name": "challenge-me",
-			"description": "Boolean invitation to critically test, dispute, or improve the wrapped idea rather than accepting it at face value."
-		}
-	],
-	"valueSets": [
-		{
-			"name": "confidence",
-			"values": [
-				{
-					"name": "low",
-					"description": "Weak confidence; treat as tentative and challengeable."
-				},
-				{
-					"name": "medium",
-					"description": "Moderate confidence; use, but verify assumptions."
-				},
-				{
-					"name": "high",
-					"description": "Strong confidence; prefer unless contradicted."
-				},
-				{
-					"name": "certain",
-					"description": "Author considers this effectively settled."
-				},
-				{
-					"name": "total",
-					"description": "Colloquial maximum confidence; equivalent to very strong author commitment."
-				}
-			]
-		},
-		{
-			"name": "priority",
-			"values": [
-				{
-					"name": "low",
-					"description": "Useful but not central to the current pass."
-				},
-				{
-					"name": "normal",
-					"description": "Default importance for the current pass."
-				},
-				{
-					"name": "high",
-					"description": "Important; should noticeably shape the answer."
-				},
-				{
-					"name": "critical",
-					"description": "Must strongly shape the answer or block progress if ignored."
-				}
-			]
-		},
-		{
-			"name": "impact",
-			"values": [
-				{
-					"name": "blocking",
-					"description": "Blocks the current pass until addressed."
-				},
-				{
-					"name": "non-blocking",
-					"description": "Known issue, but safe to proceed for now."
-				},
-				{
-					"name": "unknown",
-					"description": "Impact is not yet known."
-				},
-				{
-					"name": "deferred",
-					"description": "Intentionally left for a later pass."
-				}
-			]
-		},
-		{
-			"name": "status",
-			"values": [
-				{
-					"name": "current",
-					"description": "Applies to the current implementation or current pass."
-				},
-				{
-					"name": "future",
-					"description": "Preserve for future work; do not implement now by default."
-				},
-				{
-					"name": "draft",
-					"description": "Unsettled draft material."
-				},
-				{
-					"name": "planned",
-					"description": "Accepted direction, but not done yet."
-				},
-				{
-					"name": "implemented",
-					"description": "Already implemented or considered present."
-				},
-				{
-					"name": "deprecated",
-					"description": "Known stale direction or no longer preferred."
-				},
-				{
-					"name": "unknown",
-					"description": "Status is unclear."
-				}
-			]
-		},
-		{
-			"name": "binding",
-			"values": [
-				{
-					"name": "hard",
-					"description": "Binding instruction or constraint."
-				},
-				{
-					"name": "soft",
-					"description": "Advisory hint; can be challenged."
-				},
-				{
-					"name": "exploratory",
-					"description": "Use for exploration, not final commitment."
-				},
-				{
-					"name": "verbatim",
-					"description": "Preserve exact wording or spelling."
-				},
-				{
-					"name": "ignore",
-					"description": "Do not operationalize this content."
-				}
-			]
-		},
-		{
-			"name": "scope",
-			"values": [
-				{
-					"name": "inline",
-					"description": "Applies only to the wrapped text."
-				},
-				{
-					"name": "following",
-					"description": "Applies to the following block or region."
-				},
-				{
-					"name": "previous",
-					"description": "Applies to the preceding block or region."
-				},
-				{
-					"name": "surrounding",
-					"description": "Applies to the surrounding local passage."
-				},
-				{
-					"name": "section",
-					"description": "Applies to the current section."
-				},
-				{
-					"name": "document",
-					"description": "Applies to the whole document."
-				}
-			]
-		},
-		{
-			"name": "material-role",
-			"values": [
-				{
-					"name": "context",
-					"description": "Provided to understand the task."
-				},
-				{
-					"name": "reference",
-					"description": "Reference material; do not modify unless instructed."
-				},
-				{
-					"name": "target",
-					"description": "Primary place to work or change."
-				},
-				{
-					"name": "example",
-					"description": "Illustrative sample, not exhaustive."
-				},
-				{
-					"name": "counterexample",
-					"description": "Illustrates what should not happen."
-				},
-				{
-					"name": "source",
-					"description": "Input source for extraction or analysis."
-				},
-				{
-					"name": "output",
-					"description": "Expected destination or generated artifact."
-				},
-				{
-					"name": "unknown",
-					"description": "Role is intentionally or currently unclear."
-				}
-			]
-		},
-		{
-			"name": "action",
-			"values": [
-				{
-					"name": "propose",
-					"description": "Suggest a design or direction."
-				},
-				{
-					"name": "analyze",
-					"description": "Examine and explain structure, tradeoffs, or implications."
-				},
-				{
-					"name": "implement",
-					"description": "Produce code or concrete changes."
-				},
-				{
-					"name": "refactor",
-					"description": "Change structure without changing intended behavior."
-				},
-				{
-					"name": "port",
-					"description": "Recreate behavior across languages, runtimes, or surfaces."
-				},
-				{
-					"name": "compare",
-					"description": "Contrast options or prior art."
-				},
-				{
-					"name": "extract",
-					"description": "Pull structured information from messy input."
-				},
-				{
-					"name": "generate",
-					"description": "Produce an artifact from the seed."
-				},
-				{
-					"name": "validate",
-					"description": "Check correctness, consistency, or completeness."
-				}
-			]
-		},
-		{
-			"name": "question-mode",
-			"values": [
-				{
-					"name": "decide",
-					"description": "Model should make a reasoned decision."
-				},
-				{
-					"name": "explore",
-					"description": "Model should explore options without forcing closure."
-				},
-				{
-					"name": "ask-if-blocked",
-					"description": "Model may ask only if blocked by ambiguity."
-				},
-				{
-					"name": "defer",
-					"description": "Keep as unresolved for later."
-				},
-				{
-					"name": "answer-now",
-					"description": "Attempt to answer in the current pass."
-				}
-			]
-		},
-		{
-			"name": "relation-type",
-			"values": [
-				{
-					"name": "supports",
-					"description": "Source strengthens or motivates target."
-				},
-				{
-					"name": "conflicts",
-					"description": "Source is in tension with target."
-				},
-				{
-					"name": "blocks",
-					"description": "Source prevents target until resolved."
-				},
-				{
-					"name": "requires",
-					"description": "Source depends on target being true or done."
-				},
-				{
-					"name": "refines",
-					"description": "Source narrows or clarifies target."
-				},
-				{
-					"name": "derives-from",
-					"description": "Source was derived from target."
-				},
-				{
-					"name": "example-of",
-					"description": "Source is an example of target."
-				},
-				{
-					"name": "counterexample-of",
-					"description": "Source is a counterexample to target."
-				},
-				{
-					"name": "related-to",
-					"description": "Loose relationship without a stronger type."
-				},
-				{
-					"name": "supersedes",
-					"description": "Source replaces or overrides target."
-				}
-			]
-		},
-		{
-			"name": "artifact-kind",
-			"values": [
-				{
-					"name": "proposal",
-					"description": "Design or direction proposal."
-				},
-				{
-					"name": "design",
-					"description": "Technical design document or section."
-				},
-				{
-					"name": "tasks",
-					"description": "Task list or execution plan."
-				},
-				{
-					"name": "adr",
-					"description": "Architecture decision record."
-				},
-				{
-					"name": "spec",
-					"description": "Formal or semi-formal specification."
-				},
-				{
-					"name": "test",
-					"description": "Test plan or test artifact."
-				},
-				{
-					"name": "matrix",
-					"description": "Comparison, parity, or tracking matrix."
-				},
-				{
-					"name": "codegen",
-					"description": "Generated source or generated project artifact."
-				},
-				{
-					"name": "report",
-					"description": "Analysis report or diagnostic summary."
-				},
-				{
-					"name": "prompt",
-					"description": "Prompt or prompt seed artifact."
-				}
-			]
-		},
-		{
-			"name": "medium",
-			"values": [
-				{
-					"name": "markdown",
-					"description": "Markdown or Markdown-like text."
-				},
-				{
-					"name": "html",
-					"description": "HTML or normalized markup."
-				},
-				{
-					"name": "typescript",
-					"description": "TypeScript source."
-				},
-				{
-					"name": "tsx",
-					"description": "TypeScript JSX/TSX source."
-				},
-				{
-					"name": "jsx",
-					"description": "JavaScript JSX source."
-				},
-				{
-					"name": "astro",
-					"description": "Astro single-file component."
-				},
-				{
-					"name": "vue",
-					"description": "Vue single-file component."
-				},
-				{
-					"name": "svelte",
-					"description": "Svelte single-file component."
-				},
-				{
-					"name": "lit-html",
-					"description": "Lit html template literal."
-				},
-				{
-					"name": "css",
-					"description": "CSS or CSS-like source."
-				},
-				{
-					"name": "json",
-					"description": "JSON data."
-				},
-				{
-					"name": "yaml",
-					"description": "YAML data."
-				},
-				{
-					"name": "other",
-					"description": "Other or mixed medium."
-				}
-			]
-		},
-		{
-			"name": "surface",
-			"values": [
-				{
-					"name": "cli",
-					"description": "Command-line interface surface."
-				},
-				{
-					"name": "mcp",
-					"description": "Model Context Protocol surface."
-				},
-				{
-					"name": "js-api",
-					"description": "JavaScript API surface."
-				},
-				{
-					"name": "vscode",
-					"description": "VS Code extension or editor surface."
-				},
-				{
-					"name": "lsp",
-					"description": "Language Server Protocol surface."
-				},
-				{
-					"name": "devtools",
-					"description": "Developer tools view or integration."
-				},
-				{
-					"name": "internal",
-					"description": "Internal backend or capability layer."
-				},
-				{
-					"name": "docs",
-					"description": "Documentation surface."
-				},
-				{
-					"name": "tests",
-					"description": "Testing or validation surface."
-				}
-			]
-		},
-		{
-			"name": "transport",
-			"values": [
-				{
-					"name": "direct",
-					"description": "Direct in-process API call."
-				},
-				{
-					"name": "json-rpc",
-					"description": "JSON-RPC transport or request protocol."
-				},
-				{
-					"name": "lsp",
-					"description": "Language Server Protocol transport or request lane."
-				},
-				{
-					"name": "mcp",
-					"description": "Model Context Protocol transport or server surface."
-				},
-				{
-					"name": "stdio",
-					"description": "Standard input/output process communication."
-				},
-				{
-					"name": "http",
-					"description": "HTTP transport."
-				},
-				{
-					"name": "websocket",
-					"description": "WebSocket transport."
-				},
-				{
-					"name": "wasm",
-					"description": "WebAssembly boundary or host-guest link."
-				},
-				{
-					"name": "unknown",
-					"description": "Transport is not decided."
-				}
-			]
-		},
-		{
-			"name": "booleanish",
-			"values": [
-				{
-					"name": "yes",
-					"description": "Affirmative value."
-				},
-				{
-					"name": "no",
-					"description": "Negative value."
-				},
-				{
-					"name": "maybe",
-					"description": "Uncertain or conditional value."
-				}
-			]
-		},
-		{
-			"name": "stage",
-			"values": [
-				{
-					"name": "proposal",
-					"description": "While shaping the proposal."
-				},
-				{
-					"name": "specs",
-					"description": "While drafting spec deltas."
-				},
-				{
-					"name": "design",
-					"description": "While designing."
-				},
-				{
-					"name": "adr",
-					"description": "During ADR review."
-				},
-				{
-					"name": "tasks",
-					"description": "While planning tasks."
-				},
-				{
-					"name": "apply",
-					"description": "During implementation."
-				},
-				{
-					"name": "archive",
-					"description": "At archival."
-				}
-			]
-		}
-	]
+  "version": "0.0.0",
+  "tags": [
+    {
+      "name": "script",
+      "description": "A special container that preserves its children -verbatim-, without breaking HTML tooling with arbitrary code extracts. Supports embedded language formatting.\n\n---\n\n`type` — Stable local anchor for references, extraction, or later tooling.  \n`lang` — Stable local anchor for references, extraction, or later tooling.",
+      "attributes": [
+        {
+          "name": "type",
+          "description": "Stable local anchor for references, extraction, or later tooling.",
+          "values": [
+            {
+              "name": "reference"
+            },
+            {
+              "name": "example"
+            },
+            {
+              "name": "verbatim"
+            }
+          ]
+        },
+        {
+          "name": "lang",
+          "description": "Stable local anchor for references, extraction, or later tooling.",
+          "values": [
+            {
+              "name": "html"
+            },
+            {
+              "name": "ts"
+            },
+            {
+              "name": "tsx"
+            },
+            {
+              "name": "vue"
+            },
+            {
+              "name": "markdown"
+            },
+            {
+              "name": "rust"
+            },
+            {
+              "name": "go"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "s-SPEC",
+      "description": "Root container for a seed that may graduate into a formal spec, OpenSpec change, ADR, or task set.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`name` — Human-readable name for this seed item.  \n`temp-name` — Temporary name before a stable spec/change name exists.  \n`parent` — Parent seed, change, or other containing work item this material descends from.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`authors` — Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants.  \n`llm` — Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "name",
+          "description": "Human-readable name for this seed item."
+        },
+        {
+          "name": "temp-name",
+          "description": "Temporary name before a stable spec/change name exists."
+        },
+        {
+          "name": "parent",
+          "description": "Parent seed, change, or other containing work item this material descends from."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "authors",
+          "description": "Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants."
+        },
+        {
+          "name": "llm",
+          "description": "Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore."
+        }
+      ]
+    },
+    {
+      "name": "s-EXPLORATION",
+      "description": "A free-form container for the initial exploration prompt (and its follow ups) that can get prepended in a seed prompt (outside of SPEC), for historical and contextual reasons.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`name` — Human-readable name for this seed item.  \n`temp-name` — Temporary name before a stable spec/change name exists.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`authors` — Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants.  \n`llm` — Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "name",
+          "description": "Human-readable name for this seed item."
+        },
+        {
+          "name": "temp-name",
+          "description": "Temporary name before a stable spec/change name exists."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "authors",
+          "description": "Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants."
+        },
+        {
+          "name": "llm",
+          "description": "Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore."
+        }
+      ]
+    },
+    {
+      "name": "s-FOLLOWUP",
+      "description": "Append-only follow-up round (review, correction, continuation) added to a promoted seed without revising prior authored intent.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`type` — Kind of follow-up round (for example review).  \n`stage` — Workflow stage during which this round happened.  \n`llm` — Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore.  \n`authors` — Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "type",
+          "description": "Kind of follow-up round (for example review).",
+          "values": [
+            {
+              "name": "review"
+            },
+            {
+              "name": "correction"
+            },
+            {
+              "name": "continuation"
+            }
+          ]
+        },
+        {
+          "name": "stage",
+          "description": "Workflow stage during which this round happened.",
+          "valueSet": "stage"
+        },
+        {
+          "name": "llm",
+          "description": "Model that treats (reads, reviews, or answers) the wrapped prompt; may hold a `_` placeholder until the archival restore."
+        },
+        {
+          "name": "authors",
+          "description": "Comma-separated authors of the wrapped content: humans (e.g. emails) and/or LLM participants."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        }
+      ]
+    },
+    {
+      "name": "s-SEED",
+      "description": "Raw or semi-structured prompt seed preserving author intent before cleanup.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`name` — Human-readable name for this seed item.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "name",
+          "description": "Human-readable name for this seed item."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        }
+      ]
+    },
+    {
+      "name": "s-PROMPT",
+      "description": "Prompt text or prompt fragment intended for an LLM or SDD harness.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`action` — Requested operation or mode of work.  \n`target` — Target concept, file, symbol, surface, or artifact.  \n`priority` — Relative importance for the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "action",
+          "description": "Requested operation or mode of work.",
+          "valueSet": "action"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        }
+      ]
+    },
+    {
+      "name": "s-SCOPE",
+      "description": "Explicit interpretation boundary for messy prose or nested thought.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`kind` — Coarse kind of content or artifact.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "kind",
+          "description": "Coarse kind of content or artifact."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "binding",
+          "description": "How strongly the wrapped content should constrain interpretation.",
+          "valueSet": "binding"
+        }
+      ]
+    },
+    {
+      "name": "s-CONTEXT",
+      "description": "Background premises, situational facts, or assumptions needed to interpret the surrounding seed material.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`kind` — Coarse kind of content or artifact.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "kind",
+          "description": "Coarse kind of content or artifact."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "binding",
+          "description": "How strongly the wrapped content should constrain interpretation.",
+          "valueSet": "binding"
+        }
+      ]
+    },
+    {
+      "name": "s-RAW",
+      "description": "Unstructured author thoughts, fragments, or notes retained as contextual input before they are refined into stronger semantic material.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`kind` — Coarse kind of content or artifact.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.  \n`confidence` — Author confidence in the wrapped content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "kind",
+          "description": "Coarse kind of content or artifact."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "binding",
+          "description": "How strongly the wrapped content should constrain interpretation.",
+          "valueSet": "binding"
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        }
+      ]
+    },
+    {
+      "name": "s-META",
+      "description": "Instruction about how to read, parse, or treat the surrounding seed text.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.  \n`priority` — Relative importance for the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "binding",
+          "description": "How strongly the wrapped content should constrain interpretation.",
+          "valueSet": "binding"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        }
+      ]
+    },
+    {
+      "name": "s-NOTE",
+      "description": "Supplementary observation, annotation, or reminder that informs the surrounding material without becoming a requirement by itself.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-READING-MODE",
+      "description": "Temporary reading rule for a sample, passage, or exercise; not necessarily a design requirement.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "binding",
+          "description": "How strongly the wrapped content should constrain interpretation.",
+          "valueSet": "binding"
+        }
+      ]
+    },
+    {
+      "name": "s-HARD",
+      "description": "Binding instruction, invariant, or constraint that should not be downgraded into a suggestion.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        }
+      ]
+    },
+    {
+      "name": "s-SOFT",
+      "description": "Advisory guidance that can be challenged or refined.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-CONSTRAINT",
+      "description": "Normative requirement shaping acceptable outputs or implementations.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-NONGOAL",
+      "description": "Explicit non-goal; preserve the boundary and avoid spending effort there.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        }
+      ]
+    },
+    {
+      "name": "s-IGNORE",
+      "description": "Content preserved for context or audit but not to be operationalized.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`binding` — How strongly the wrapped content should constrain interpretation.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "binding",
+          "description": "How strongly the wrapped content should constrain interpretation.",
+          "valueSet": "binding"
+        }
+      ]
+    },
+    {
+      "name": "s-VERBATIM",
+      "description": "Content whose exact wording, spelling, casing, or syntax should be preserved.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`medium` — Source medium associated with this content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        }
+      ]
+    },
+    {
+      "name": "s-LATER",
+      "description": "Future, postponed, backlog, or nice-to-have content that should not hijack the current pass.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        }
+      ]
+    },
+    {
+      "name": "s-CURRENT",
+      "description": "Content about the current state, current pass, or implemented reality.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`confidence` — Author confidence in the wrapped content.  \n`medium` — Source medium associated with this content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        }
+      ]
+    },
+    {
+      "name": "s-STOP",
+      "description": "Boundary indicating where the current pass should stop.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        }
+      ]
+    },
+    {
+      "name": "s-HUNCH",
+      "description": "Author intuition or tentative design idea; useful but not golden.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-IDEA",
+      "description": "Candidate thought, possible direction, or uncommitted concept offered for consideration.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-PROPOSAL",
+      "description": "Proposed direction, API, design, command, or feature shape.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-CAVEAT",
+      "description": "Limitation, caveat, complication, or conditional warning.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-USECASE",
+      "description": "A concrete projection for a considered feature, grounded in the real world. For semi-structured steps, use SCENARIO instead.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-ACCEPTANCE",
+      "description": "Acceptance cluster collecting one or more s-RULE invariants from anywhere in a seed's thought tree.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-RULE",
+      "description": "One assessable invariant within an s-ACCEPTANCE cluster. May contain s-SCENARIO (with s-GIVEN, s-WHEN, and s-THEN), s-EXAMPLE, s-COUNTEREXAMPLE, and s-EXCEPTION children.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-EXCEPTION",
+      "description": "Explicit carve-out from an s-RULE, kept visible rather than buried; typically nested inside that rule.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-SCENARIO",
+      "description": "More structured than a use case. Used for wrapping GIVEN-WHEN-THEN step vocabulary (Behavior Driven Dev.).\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-GIVEN",
+      "description": "Known state. Used in a SCENARIO.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-WHEN",
+      "description": "Key action. Used in a SCENARIO.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-THEN",
+      "description": "Observable output. Used in a SCENARIO.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-BOYSCOUT",
+      "description": "A chore, a refactor, an enhancement or an addressed technical debt that can be embedded alongside current changes.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`priority` — Relative importance for the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        }
+      ]
+    },
+    {
+      "name": "s-REMEDY",
+      "description": "Possible remedy, mitigation, fallback, or corrective path.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-METHODOLOGY",
+      "description": "How to approach the subject at hand. Heuristics, mindset, practical recipes (custom or well-known)…\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-DISCLAIMER",
+      "description": "Authorial disclaimer about uncertainty, lack of challenge, or framing.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-RANT",
+      "description": "Low-filter frustration or contextual complaint; use as signal, not as a requirement by default.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`priority` — Relative importance for the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        }
+      ]
+    },
+    {
+      "name": "s-ANALOGY",
+      "description": "Imprecise analogy used to communicate shape or intuition without exact engineering terminology.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-EXAMPLE",
+      "description": "Concrete example, scenario, sample command, or sample flow.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.  \n`status` — Lifecycle or implementation status of the wrapped content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "role",
+          "description": "Role played by the wrapped material.",
+          "valueSet": "material-role"
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        }
+      ]
+    },
+    {
+      "name": "s-COUNTEREXAMPLE",
+      "description": "Example of a wrong, excluded, or undesirable behavior.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "role",
+          "description": "Role played by the wrapped material.",
+          "valueSet": "material-role"
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-PROBLEM",
+      "description": "Current problem, pain point, or motivating issue.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-GIST",
+      "description": "Concise central takeaway or compressed statement of the surrounding idea.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`priority` — Relative importance for the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        }
+      ]
+    },
+    {
+      "name": "s-GOAL",
+      "description": "Desired outcome or direction of travel.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-NEED",
+      "description": "Needed behavior, capability, primitive, or result.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-QUESTION",
+      "description": "Open question, decision point, or unresolved ambiguity.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`mode` — Mode used to interpret or answer the wrapped content.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "mode",
+          "description": "Mode used to interpret or answer the wrapped content."
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-APPROVAL",
+      "description": "A topic that needs to be discussed and validated by one or many peers before the spec. can be implemented. Can be materialized as a task to fulfill.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-DELEGATE",
+      "description": "Area where the model or reader is invited to exercise judgment rather than merely obey a sketch.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-PROBE",
+      "description": "Small action or experiment intended to learn whether something is achievable.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`action` — Requested operation or mode of work.  \n`priority` — Relative importance for the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "action",
+          "description": "Requested operation or mode of work.",
+          "valueSet": "action"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-FOUNDATION",
+      "description": "Non-negotiable primitive or base layer that must be correct before higher layers.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-ITERATION",
+      "description": "Iteration budget or good-enough boundary for a layered implementation pass.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`priority` — Relative importance for the current pass.  \n`status` — Lifecycle or implementation status of the wrapped content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        }
+      ]
+    },
+    {
+      "name": "s-PASS",
+      "description": "Initial pass, refinement pass, or deliberately incomplete layer.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-PARITY",
+      "description": "Feature parity, porting equivalence, or comparison matrix concern.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`target` — Target concept, file, symbol, surface, or artifact.  \n`artifact-kind` — Kind of artifact represented or requested.  \n`status` — Lifecycle or implementation status of the wrapped content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        },
+        {
+          "name": "artifact-kind",
+          "description": "Kind of artifact represented or requested.",
+          "valueSet": "artifact-kind"
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        }
+      ]
+    },
+    {
+      "name": "s-RISK",
+      "description": "Potential failure mode, edge case, or design danger.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`priority` — Relative importance for the current pass.  \n`confidence` — Author confidence in the wrapped content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        }
+      ]
+    },
+    {
+      "name": "s-UNKNOWN-OK",
+      "description": "Explicit permission to proceed despite known non-exhaustive edge-case analysis.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`scope` — Region of text or work item affected by this element.  \n`confidence` — Author confidence in the wrapped content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        }
+      ]
+    },
+    {
+      "name": "s-MATERIAL",
+      "description": "Provided material whose role should be explicit: context, reference, target, source, or output.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`role` — Role played by the wrapped material.  \n`path` — Filesystem path or project-relative path.  \n`medium` — Source medium associated with this content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "role",
+          "description": "Role played by the wrapped material.",
+          "valueSet": "material-role"
+        },
+        {
+          "name": "path",
+          "description": "Filesystem path or project-relative path."
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        }
+      ]
+    },
+    {
+      "name": "s-REF",
+      "description": "Reference to a file, symbol, document, project, issue, URL, or prior seed.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`ref` — Reference to another local id, external artifact, file, symbol, or URL.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "ref",
+          "description": "Reference to another local id, external artifact, file, symbol, or URL."
+        },
+        {
+          "name": "role",
+          "description": "Role played by the wrapped material.",
+          "valueSet": "material-role"
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        }
+      ]
+    },
+    {
+      "name": "s-FILE",
+      "description": "File path or file-like artifact used as context, reference, target, or output.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`path` — Filesystem path or project-relative path.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "path",
+          "description": "Filesystem path or project-relative path."
+        },
+        {
+          "name": "role",
+          "description": "Role played by the wrapped material.",
+          "valueSet": "material-role"
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        }
+      ]
+    },
+    {
+      "name": "s-TARGET",
+      "description": "Primary work target, symbol, file, surface, or conceptual object.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`target` — Target concept, file, symbol, surface, or artifact.  \n`role` — Role played by the wrapped material.  \n`medium` — Source medium associated with this content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        },
+        {
+          "name": "role",
+          "description": "Role played by the wrapped material.",
+          "valueSet": "material-role"
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        }
+      ]
+    },
+    {
+      "name": "s-OUTPUT",
+      "description": "Expected output shape, artifact, format, or response contract.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`artifact-kind` — Kind of artifact represented or requested.  \n`medium` — Source medium associated with this content.  \n`priority` — Relative importance for the current pass.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "artifact-kind",
+          "description": "Kind of artifact represented or requested.",
+          "valueSet": "artifact-kind"
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        }
+      ]
+    },
+    {
+      "name": "s-ARTIFACT",
+      "description": "Artifact to create, update, inspect, or preserve.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`artifact-kind` — Kind of artifact represented or requested.  \n`path` — Filesystem path or project-relative path.  \n`status` — Lifecycle or implementation status of the wrapped content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "artifact-kind",
+          "description": "Kind of artifact represented or requested.",
+          "valueSet": "artifact-kind"
+        },
+        {
+          "name": "path",
+          "description": "Filesystem path or project-relative path."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        }
+      ]
+    },
+    {
+      "name": "s-CODE",
+      "description": "Code or code-like payload requiring special preservation or language treatment.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`medium` — Source medium associated with this content.  \n`role` — Role played by the wrapped material.  \n`path` — Filesystem path or project-relative path.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "medium",
+          "description": "Source medium associated with this content.",
+          "valueSet": "medium"
+        },
+        {
+          "name": "role",
+          "description": "Role played by the wrapped material.",
+          "valueSet": "material-role"
+        },
+        {
+          "name": "path",
+          "description": "Filesystem path or project-relative path."
+        }
+      ]
+    },
+    {
+      "name": "s-PATH",
+      "description": "Filesystem or project-relative path mentioned in the seed.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`path` — Filesystem path or project-relative path.  \n`role` — Role played by the wrapped material.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "path",
+          "description": "Filesystem path or project-relative path."
+        },
+        {
+          "name": "role",
+          "description": "Role played by the wrapped material.",
+          "valueSet": "material-role"
+        }
+      ]
+    },
+    {
+      "name": "s-GLOSSARY",
+      "description": "Glossary block for project-specific terms, shortcuts, or local jargon.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`scope` — Region of text or work item affected by this element.  \n`status` — Lifecycle or implementation status of the wrapped content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        }
+      ]
+    },
+    {
+      "name": "s-TERM",
+      "description": "Single term, acronym, alias, or local jargon item.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`name` — Human-readable name for this seed item.  \n`ref` — Reference to another local id, external artifact, file, symbol, or URL.  \n`status` — Lifecycle or implementation status of the wrapped content.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "name",
+          "description": "Human-readable name for this seed item."
+        },
+        {
+          "name": "ref",
+          "description": "Reference to another local id, external artifact, file, symbol, or URL."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        }
+      ]
+    },
+    {
+      "name": "s-RATIONALE",
+      "description": "Reasoning or justification that explains why a direction, requirement, or decision should be preferred.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`confidence` — Author confidence in the wrapped content.  \n`scope` — Region of text or work item affected by this element.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "confidence",
+          "description": "Author confidence in the wrapped content.",
+          "valueSet": "confidence"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-PROS",
+      "description": "Benefits, advantages, or favorable consequences of an option, typically paired with s-CONS.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-CONS",
+      "description": "Costs, drawbacks, risks, or unfavorable consequences of an option, typically paired with s-PROS.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`priority` — Relative importance for the current pass.  \n`impact` — Whether the content blocks, delays, or merely informs the current pass.  \n`scope` — Region of text or work item affected by this element.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "impact",
+          "description": "Whether the content blocks, delays, or merely informs the current pass.",
+          "valueSet": "impact"
+        },
+        {
+          "name": "scope",
+          "description": "Region of text or work item affected by this element.",
+          "valueSet": "scope"
+        }
+      ]
+    },
+    {
+      "name": "s-ADR",
+      "description": "Architecture decision record material, including a proposed or recorded architectural decision.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`status` — Lifecycle or implementation status of the wrapped content.  \n`priority` — Relative importance for the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "status",
+          "description": "Lifecycle or implementation status of the wrapped content.",
+          "valueSet": "status"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-TASK",
+      "description": "Concrete unit of work requested from the reader or model.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`action` — Requested operation or mode of work.  \n`priority` — Relative importance for the current pass.  \n`target` — Target concept, file, symbol, surface, or artifact.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "action",
+          "description": "Requested operation or mode of work.",
+          "valueSet": "action"
+        },
+        {
+          "name": "priority",
+          "description": "Relative importance for the current pass.",
+          "valueSet": "priority"
+        },
+        {
+          "name": "target",
+          "description": "Target concept, file, symbol, surface, or artifact."
+        }
+      ]
+    },
+    {
+      "name": "s-REL",
+      "description": "Explicit relationship edge between two seed nodes or concepts.\n\n---\n\n`id` — Stable local anchor for references, extraction, or later tooling.  \n`from` — Source node or concept for a relation.  \n`to` — Target node or concept for a relation.  \n`type` — Relationship kind between source and target.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "Stable local anchor for references, extraction, or later tooling."
+        },
+        {
+          "name": "from",
+          "description": "Source node or concept for a relation."
+        },
+        {
+          "name": "to",
+          "description": "Target node or concept for a relation."
+        },
+        {
+          "name": "type",
+          "description": "Relationship kind between source and target.",
+          "valueSet": "relation-type"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [
+    {
+      "name": "origin",
+      "description": "Provenance of the wrapped material, such as a human, LLM, code generator, or external source."
+    },
+    {
+      "name": "challenge-me",
+      "description": "Boolean invitation to critically test, dispute, or improve the wrapped idea rather than accepting it at face value."
+    }
+  ],
+  "valueSets": [
+    {
+      "name": "confidence",
+      "values": [
+        {
+          "name": "low",
+          "description": "Weak confidence; treat as tentative and challengeable."
+        },
+        {
+          "name": "medium",
+          "description": "Moderate confidence; use, but verify assumptions."
+        },
+        {
+          "name": "high",
+          "description": "Strong confidence; prefer unless contradicted."
+        },
+        {
+          "name": "certain",
+          "description": "Author considers this effectively settled."
+        },
+        {
+          "name": "total",
+          "description": "Colloquial maximum confidence; equivalent to very strong author commitment."
+        }
+      ]
+    },
+    {
+      "name": "priority",
+      "values": [
+        {
+          "name": "low",
+          "description": "Useful but not central to the current pass."
+        },
+        {
+          "name": "normal",
+          "description": "Default importance for the current pass."
+        },
+        {
+          "name": "high",
+          "description": "Important; should noticeably shape the answer."
+        },
+        {
+          "name": "critical",
+          "description": "Must strongly shape the answer or block progress if ignored."
+        }
+      ]
+    },
+    {
+      "name": "impact",
+      "values": [
+        {
+          "name": "blocking",
+          "description": "Blocks the current pass until addressed."
+        },
+        {
+          "name": "non-blocking",
+          "description": "Known issue, but safe to proceed for now."
+        },
+        {
+          "name": "unknown",
+          "description": "Impact is not yet known."
+        },
+        {
+          "name": "deferred",
+          "description": "Intentionally left for a later pass."
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "values": [
+        {
+          "name": "current",
+          "description": "Applies to the current implementation or current pass."
+        },
+        {
+          "name": "future",
+          "description": "Preserve for future work; do not implement now by default."
+        },
+        {
+          "name": "draft",
+          "description": "Unsettled draft material."
+        },
+        {
+          "name": "planned",
+          "description": "Accepted direction, but not done yet."
+        },
+        {
+          "name": "implemented",
+          "description": "Already implemented or considered present."
+        },
+        {
+          "name": "deprecated",
+          "description": "Known stale direction or no longer preferred."
+        },
+        {
+          "name": "unknown",
+          "description": "Status is unclear."
+        }
+      ]
+    },
+    {
+      "name": "binding",
+      "values": [
+        {
+          "name": "hard",
+          "description": "Binding instruction or constraint."
+        },
+        {
+          "name": "soft",
+          "description": "Advisory hint; can be challenged."
+        },
+        {
+          "name": "exploratory",
+          "description": "Use for exploration, not final commitment."
+        },
+        {
+          "name": "verbatim",
+          "description": "Preserve exact wording or spelling."
+        },
+        {
+          "name": "ignore",
+          "description": "Do not operationalize this content."
+        }
+      ]
+    },
+    {
+      "name": "scope",
+      "values": [
+        {
+          "name": "inline",
+          "description": "Applies only to the wrapped text."
+        },
+        {
+          "name": "following",
+          "description": "Applies to the following block or region."
+        },
+        {
+          "name": "previous",
+          "description": "Applies to the preceding block or region."
+        },
+        {
+          "name": "surrounding",
+          "description": "Applies to the surrounding local passage."
+        },
+        {
+          "name": "section",
+          "description": "Applies to the current section."
+        },
+        {
+          "name": "document",
+          "description": "Applies to the whole document."
+        }
+      ]
+    },
+    {
+      "name": "material-role",
+      "values": [
+        {
+          "name": "context",
+          "description": "Provided to understand the task."
+        },
+        {
+          "name": "reference",
+          "description": "Reference material; do not modify unless instructed."
+        },
+        {
+          "name": "target",
+          "description": "Primary place to work or change."
+        },
+        {
+          "name": "example",
+          "description": "Illustrative sample, not exhaustive."
+        },
+        {
+          "name": "counterexample",
+          "description": "Illustrates what should not happen."
+        },
+        {
+          "name": "source",
+          "description": "Input source for extraction or analysis."
+        },
+        {
+          "name": "output",
+          "description": "Expected destination or generated artifact."
+        },
+        {
+          "name": "unknown",
+          "description": "Role is intentionally or currently unclear."
+        }
+      ]
+    },
+    {
+      "name": "action",
+      "values": [
+        {
+          "name": "propose",
+          "description": "Suggest a design or direction."
+        },
+        {
+          "name": "analyze",
+          "description": "Examine and explain structure, tradeoffs, or implications."
+        },
+        {
+          "name": "implement",
+          "description": "Produce code or concrete changes."
+        },
+        {
+          "name": "refactor",
+          "description": "Change structure without changing intended behavior."
+        },
+        {
+          "name": "port",
+          "description": "Recreate behavior across languages, runtimes, or surfaces."
+        },
+        {
+          "name": "compare",
+          "description": "Contrast options or prior art."
+        },
+        {
+          "name": "extract",
+          "description": "Pull structured information from messy input."
+        },
+        {
+          "name": "generate",
+          "description": "Produce an artifact from the seed."
+        },
+        {
+          "name": "validate",
+          "description": "Check correctness, consistency, or completeness."
+        }
+      ]
+    },
+    {
+      "name": "question-mode",
+      "values": [
+        {
+          "name": "decide",
+          "description": "Model should make a reasoned decision."
+        },
+        {
+          "name": "explore",
+          "description": "Model should explore options without forcing closure."
+        },
+        {
+          "name": "ask-if-blocked",
+          "description": "Model may ask only if blocked by ambiguity."
+        },
+        {
+          "name": "defer",
+          "description": "Keep as unresolved for later."
+        },
+        {
+          "name": "answer-now",
+          "description": "Attempt to answer in the current pass."
+        }
+      ]
+    },
+    {
+      "name": "relation-type",
+      "values": [
+        {
+          "name": "supports",
+          "description": "Source strengthens or motivates target."
+        },
+        {
+          "name": "conflicts",
+          "description": "Source is in tension with target."
+        },
+        {
+          "name": "blocks",
+          "description": "Source prevents target until resolved."
+        },
+        {
+          "name": "requires",
+          "description": "Source depends on target being true or done."
+        },
+        {
+          "name": "refines",
+          "description": "Source narrows or clarifies target."
+        },
+        {
+          "name": "derives-from",
+          "description": "Source was derived from target."
+        },
+        {
+          "name": "example-of",
+          "description": "Source is an example of target."
+        },
+        {
+          "name": "counterexample-of",
+          "description": "Source is a counterexample to target."
+        },
+        {
+          "name": "related-to",
+          "description": "Loose relationship without a stronger type."
+        },
+        {
+          "name": "supersedes",
+          "description": "Source replaces or overrides target."
+        }
+      ]
+    },
+    {
+      "name": "artifact-kind",
+      "values": [
+        {
+          "name": "proposal",
+          "description": "Design or direction proposal."
+        },
+        {
+          "name": "design",
+          "description": "Technical design document or section."
+        },
+        {
+          "name": "tasks",
+          "description": "Task list or execution plan."
+        },
+        {
+          "name": "adr",
+          "description": "Architecture decision record."
+        },
+        {
+          "name": "spec",
+          "description": "Formal or semi-formal specification."
+        },
+        {
+          "name": "test",
+          "description": "Test plan or test artifact."
+        },
+        {
+          "name": "matrix",
+          "description": "Comparison, parity, or tracking matrix."
+        },
+        {
+          "name": "codegen",
+          "description": "Generated source or generated project artifact."
+        },
+        {
+          "name": "report",
+          "description": "Analysis report or diagnostic summary."
+        },
+        {
+          "name": "prompt",
+          "description": "Prompt or prompt seed artifact."
+        }
+      ]
+    },
+    {
+      "name": "medium",
+      "values": [
+        {
+          "name": "markdown",
+          "description": "Markdown or Markdown-like text."
+        },
+        {
+          "name": "html",
+          "description": "HTML or normalized markup."
+        },
+        {
+          "name": "typescript",
+          "description": "TypeScript source."
+        },
+        {
+          "name": "tsx",
+          "description": "TypeScript JSX/TSX source."
+        },
+        {
+          "name": "jsx",
+          "description": "JavaScript JSX source."
+        },
+        {
+          "name": "astro",
+          "description": "Astro single-file component."
+        },
+        {
+          "name": "vue",
+          "description": "Vue single-file component."
+        },
+        {
+          "name": "svelte",
+          "description": "Svelte single-file component."
+        },
+        {
+          "name": "lit-html",
+          "description": "Lit html template literal."
+        },
+        {
+          "name": "css",
+          "description": "CSS or CSS-like source."
+        },
+        {
+          "name": "json",
+          "description": "JSON data."
+        },
+        {
+          "name": "yaml",
+          "description": "YAML data."
+        },
+        {
+          "name": "other",
+          "description": "Other or mixed medium."
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "values": [
+        {
+          "name": "cli",
+          "description": "Command-line interface surface."
+        },
+        {
+          "name": "mcp",
+          "description": "Model Context Protocol surface."
+        },
+        {
+          "name": "js-api",
+          "description": "JavaScript API surface."
+        },
+        {
+          "name": "vscode",
+          "description": "VS Code extension or editor surface."
+        },
+        {
+          "name": "lsp",
+          "description": "Language Server Protocol surface."
+        },
+        {
+          "name": "devtools",
+          "description": "Developer tools view or integration."
+        },
+        {
+          "name": "internal",
+          "description": "Internal backend or capability layer."
+        },
+        {
+          "name": "docs",
+          "description": "Documentation surface."
+        },
+        {
+          "name": "tests",
+          "description": "Testing or validation surface."
+        }
+      ]
+    },
+    {
+      "name": "transport",
+      "values": [
+        {
+          "name": "direct",
+          "description": "Direct in-process API call."
+        },
+        {
+          "name": "json-rpc",
+          "description": "JSON-RPC transport or request protocol."
+        },
+        {
+          "name": "lsp",
+          "description": "Language Server Protocol transport or request lane."
+        },
+        {
+          "name": "mcp",
+          "description": "Model Context Protocol transport or server surface."
+        },
+        {
+          "name": "stdio",
+          "description": "Standard input/output process communication."
+        },
+        {
+          "name": "http",
+          "description": "HTTP transport."
+        },
+        {
+          "name": "websocket",
+          "description": "WebSocket transport."
+        },
+        {
+          "name": "wasm",
+          "description": "WebAssembly boundary or host-guest link."
+        },
+        {
+          "name": "unknown",
+          "description": "Transport is not decided."
+        }
+      ]
+    },
+    {
+      "name": "booleanish",
+      "values": [
+        {
+          "name": "yes",
+          "description": "Affirmative value."
+        },
+        {
+          "name": "no",
+          "description": "Negative value."
+        },
+        {
+          "name": "maybe",
+          "description": "Uncertain or conditional value."
+        }
+      ]
+    },
+    {
+      "name": "stage",
+      "values": [
+        {
+          "name": "proposal",
+          "description": "While shaping the proposal."
+        },
+        {
+          "name": "specs",
+          "description": "While drafting spec deltas."
+        },
+        {
+          "name": "design",
+          "description": "While designing."
+        },
+        {
+          "name": "adr",
+          "description": "During ADR review."
+        },
+        {
+          "name": "tasks",
+          "description": "While planning tasks."
+        },
+        {
+          "name": "apply",
+          "description": "During implementation."
+        },
+        {
+          "name": "archive",
+          "description": "At archival."
+        }
+      ]
+    }
+  ]
 }

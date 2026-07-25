@@ -6,8 +6,8 @@ license: MIT
 compatibility: Requires openspec CLI.
 metadata:
   author: openspec
-  version: "1.0"
-  generatedBy: "1.6.0"
+  version: '1.0'
+  generatedBy: '1.6.0'
 ---
 
 Sync delta specs from a change to main specs.
@@ -31,6 +31,7 @@ This is an **agent-driven** operation - you will read delta specs and directly e
 2. **Resolve change context**
 
    Run:
+
    ```bash
    openspec status --change "<name>" --json
    ```
@@ -40,6 +41,7 @@ This is an **agent-driven** operation - you will read delta specs and directly e
    Use `artifactPaths.specs.existingOutputPaths` from the status JSON as the list of delta spec files.
 
    Each delta spec file contains sections like:
+
    - `## ADDED Requirements` - New requirements to add
    - `## MODIFIED Requirements` - Changes to existing requirements
    - `## REMOVED Requirements` - Requirements to remove
@@ -57,32 +59,38 @@ This is an **agent-driven** operation - you will read delta specs and directly e
 
    c. **Apply changes intelligently**:
 
-      **ADDED Requirements:**
-      - If requirement doesn't exist in main spec → add it
-      - If requirement already exists → update it to match (treat as implicit MODIFIED)
+   **ADDED Requirements:**
 
-      **MODIFIED Requirements:**
-      - Find the requirement in main spec
-      - Apply the changes - this can be:
-        - Adding new scenarios (don't need to copy existing ones)
-        - Modifying existing scenarios
-        - Changing the requirement description
-      - Preserve scenarios/content not mentioned in the delta
+   - If requirement doesn't exist in main spec → add it
+   - If requirement already exists → update it to match (treat as implicit MODIFIED)
 
-      **REMOVED Requirements:**
-      - Remove the entire requirement block from main spec
+   **MODIFIED Requirements:**
 
-      **RENAMED Requirements:**
-      - Find the FROM requirement, rename to TO
+   - Find the requirement in main spec
+   - Apply the changes - this can be:
+     - Adding new scenarios (don't need to copy existing ones)
+     - Modifying existing scenarios
+     - Changing the requirement description
+   - Preserve scenarios/content not mentioned in the delta
+
+   **REMOVED Requirements:**
+
+   - Remove the entire requirement block from main spec
+
+   **RENAMED Requirements:**
+
+   - Find the FROM requirement, rename to TO
 
    d. **Create new main spec** if capability doesn't exist yet:
-      - Create `openspec/specs/<capability>/spec.md`
-      - Add Purpose section (can be brief, mark as TBD)
-      - Add Requirements section with the ADDED requirements
+
+   - Create `openspec/specs/<capability>/spec.md`
+   - Add Purpose section (can be brief, mark as TBD)
+   - Add Requirements section with the ADDED requirements
 
 5. **Show summary**
 
    After applying all changes, summarize:
+
    - Which capabilities were updated
    - What changes were made (requirements added/modified/removed/renamed)
 
@@ -92,16 +100,20 @@ This is an **agent-driven** operation - you will read delta specs and directly e
 ## ADDED Requirements
 
 ### Requirement: New Feature
+
 The system SHALL do something new.
 
 #### Scenario: Basic case
+
 - **WHEN** user does X
 - **THEN** system does Y
 
 ## MODIFIED Requirements
 
 ### Requirement: Existing Feature
+
 #### Scenario: New scenario to add
+
 - **WHEN** user does A
 - **THEN** system does B
 
@@ -118,8 +130,9 @@ The system SHALL do something new.
 **Key Principle: Intelligent Merging**
 
 Unlike programmatic merging, you can apply **partial updates**:
+
 - To add a scenario, just include that scenario under MODIFIED - don't copy existing scenarios
-- The delta represents *intent*, not a wholesale replacement
+- The delta represents _intent_, not a wholesale replacement
 - Use your judgment to merge changes sensibly
 
 **Output On Success**
@@ -141,6 +154,7 @@ Main specs are now updated. The change remains active - archive when implementat
 ```
 
 **Guardrails**
+
 - Read both delta and main specs before making changes
 - Preserve existing content not mentioned in delta
 - If something is unclear, ask for clarification

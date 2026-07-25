@@ -59,7 +59,7 @@ by `pnpm build && pnpm test` — plus the harness captures (E22–E31).
   read, and validation runs on the recovered object (duplicate keys:
   last-wins). No code path emits the declared `yamlSyntaxError` messageId.
 - By: Claude Fable 5 (dig agent)
-- Evidence: E29, E23, E30 (B-*), E11, E13, E32
+- Evidence: E29, E23, E30 (B-\*), E11, E13, E32
 - Falsified by: any input observed producing a `yamlSyntaxError` report, or
   a malformed-YAML input whose syntax problem surfaces in any report
 - Grade: A1 — anchor
@@ -187,7 +187,7 @@ by `pnpm build && pnpm test` — plus the harness captures (E22–E31).
 - Claim: The module-singleton Ajv plus per-call `compile` crashes the lint
   run on real-world schemas: a second compile of any `$id`-carrying schema
   (second file, or relint of the SAME file, e.g. IDE save) throws `schema
-  with key or id "…" already exists`, and any schema declaring the
+with key or id "…" already exists`, and any schema declaring the
   draft-2020-12 meta-schema throws `no schema with key or ref …`. Both
   surface as rule crashes, not reports.
 - By: Claude Fable 5 (dig agent)

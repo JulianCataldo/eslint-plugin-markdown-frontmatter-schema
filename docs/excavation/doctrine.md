@@ -80,7 +80,7 @@ dependency).
   (`src/rules/frontmatter-schema.ts:30-35`); enum suggestions surfaced in IDEs
   (`README.md:109-111`).
 - **T3 — CI/CLI pipelines**: error reports drive exit codes; `meta.fixable:
-  'code'` is declared (`src/rules/frontmatter-schema.ts:27`) yet no report
+'code'` is declared (`src/rules/frontmatter-schema.ts:27`) yet no report
   ever attaches a `fix` (only `suggest`, `src/validate.ts:62-70`); remote
   schemas are fetched synchronously during the lint pass
   (`src/schema-loader.worker.ts:15`).

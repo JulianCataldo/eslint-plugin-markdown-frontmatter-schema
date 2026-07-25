@@ -1,5 +1,5 @@
 ---
-title: "Test Document"
+title: 'Test Document'
 description: 42
 ---
 
