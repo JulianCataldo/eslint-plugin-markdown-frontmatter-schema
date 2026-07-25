@@ -2,6 +2,9 @@ import type { RuleModule } from '@eslint/markdown';
 
 import { createReports } from '../create-reports.js';
 
+/**
+ * @spec `rule-runtime-contract`
+ */
 export const frontmatterSchema: RuleModule = {
 	create(context) {
 		return {
@@ -24,6 +27,8 @@ export const frontmatterSchema: RuleModule = {
 			recommended: true,
 			url: 'https://github.com/JulianCataldo/remark-lint-frontmatter-schema',
 		},
+		// @spec `rule-runtime-contract`
+		// + `meta.fixable` is inert
 		fixable: 'code',
 
 		hasSuggestions: true,
@@ -31,9 +36,13 @@ export const frontmatterSchema: RuleModule = {
 			fixDescription: 'Fix the frontmatter by replacing with a valid value.',
 			schemaMalformed: 'Schema is malformed ',
 			schemaNotFound: 'Schema not found for frontmatter at "{{schemaPath}}"',
+			// @spec `rule-runtime-contract`
+			// + Malformed YAML frontmatter is never reported
 			yamlSyntaxError: 'Invalid YAML frontmatter syntax.',
 		},
 
+		// @spec `rule-runtime-contract`
+		// + Options-shape edges
 		schema: [
 			{
 				additionalProperties: false,

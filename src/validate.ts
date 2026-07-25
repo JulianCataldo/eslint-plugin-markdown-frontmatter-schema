@@ -22,6 +22,9 @@ addFormats(ajv);
  * @param node - The root AST node of the document.
  * @param lineCounter - The line counter to map positions.
  * @returns The violations for incoming errors, if any.
+ * @spec `rule-runtime-contract`
+ * + Point locations with a 1:1 root default
+ * + Suggestions exist only for enum violations
  */
 export function retrieveViolations(
 	errors: ErrorObject[],
@@ -79,6 +82,8 @@ export function retrieveViolations(
  * @param frontmatter - The parsed frontmatter object.
  * @param schema - The JSON schema to validate against.
  * @returns An array of validation error objects.
+ * @spec `rule-runtime-contract`
+ * + Known crash classes in repeated compilation
  */
 export function validateFrontmatter(
 	frontmatter: AnyFrontmatter,

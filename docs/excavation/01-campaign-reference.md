@@ -11,39 +11,43 @@ Gap class throughout: behavior-without-either, except where noted.
 
 Dig `excavate-rule-runtime-contract` covers Q1–Q6 as one sizeable chunk (Q7
 stays out — own dig, shared with campaign 03). Survey scope confirmed by the
-steward 2026-07-26; evidence collection under way.
+steward 2026-07-26; evidence complete (E1–E33, 27 locked characterization
+tests); grades C1–C16 and the promotion both confirmed by the steward
+2026-07-26 — the participant spec is filed to the pool. Q1–Q6 are
+`answered`; Q7 is the campaign's remaining open question (own dig, shared
+with campaign 03).
 
-- [ ] Q1 (`in-dig` → `excavate-rule-runtime-contract`) — What is the exact schema resolution contract? Inline
+- [x] Q1 (`answered` → `openspec/specs/rule-runtime-contract/spec.md`) — What is the exact schema resolution contract? Inline
   `$schema` beats `defaultSchema` via `??` (`src/create-reports.ts:34`);
   relative paths resolve against the markdown file's dir
   (`src/prepare.ts:118`); only the literal prefix `https://` is treated as a
   URL (`src/prepare.ts:115`) — what happens to `http://`, protocol-relative,
   or `file:` values (they fall into local path resolution)?
-- [ ] Q2 (`in-dig` → `excavate-rule-runtime-contract`) — What happens on malformed YAML frontmatter?
+- [x] Q2 (`answered` → `openspec/specs/rule-runtime-contract/spec.md`) — What happens on malformed YAML frontmatter?
   `parseDocument` errors are never read; `document.toJS() ?? {}`
   (`src/prepare.ts:64`) means broken YAML likely validates `{}` and yields
   misleading required-property errors. Is the declared `yamlSyntaxError`
   messageId (`src/rules/frontmatter-schema.ts:34`) reachable at all today?
-- [ ] Q3 (`in-dig` → `excavate-rule-runtime-contract`) — What is the schema loading contract? Synchronous synckit
+- [x] Q3 (`answered` → `openspec/specs/rule-runtime-contract/spec.md`) — What is the schema loading contract? Synchronous synckit
   worker per `bundleSchema` call with no memoization (`src/prepare.ts:18-20`)
   — is a remote schema re-fetched for every linted file? Failure path:
   `console.warn` to stderr outside ESLint plus generic `schemaNotFound`
   (`src/schema-loader.worker.ts:21-25`). Offline/timeout semantics for remote
   schemas are unobserved (coverage gap: worker lines 21-25).
-- [ ] Q4 (`in-dig` → `excavate-rule-runtime-contract`) — What exactly is validated? The full frontmatter object
+- [x] Q4 (`answered` → `openspec/specs/rule-runtime-contract/spec.md`) — What exactly is validated? The full frontmatter object
   including the `$schema` key itself (`src/create-reports.ts:30-37`) — how
   does that interact with `additionalProperties: false` schemas? The whole
   markdown file text is parsed as YAML with file-global offsets
   (`src/create-reports.ts:30`, loc mapping `src/validate.ts:44-52`) — which
   assumptions make the line/column numbers land correctly?
-- [ ] Q5 (`in-dig` → `excavate-rule-runtime-contract`) — What is the suggestion/fix contract? Suggestions exist
+- [x] Q5 (`answered` → `openspec/specs/rule-runtime-contract/spec.md`) — What is the suggestion/fix contract? Suggestions exist
   only for `enum` errors, with absolute text ranges
   (`src/validate.ts:62-70`); `meta.fixable: 'code'` is set
   (`src/rules/frontmatter-schema.ts:27`) but no `fix` is ever attached — does
   `--fix` ever modify a file? Note: the suggestion branch currently has zero
   executable evidence (c8: `src/validate.ts:65-69` uncovered since the
   fixture changed — see 02-Q1).
-- [ ] Q6 (`in-dig` → `excavate-rule-runtime-contract`) — What is the options-shape contract at the edges? Trace
+- [x] Q6 (`answered` → `openspec/specs/rule-runtime-contract/spec.md`) — What is the options-shape contract at the edges? Trace
   suggests `['error', {}]` (options present, no `defaultSchema`) short-circuits
   `parseGlobalSchema` to `false` and falls into the `schemaMalformed` guard
   (`src/prepare.ts:81-95`), while `['error']` yields `undefined` and proceeds
@@ -79,4 +83,8 @@ steward 2026-07-26; evidence collection under way.
 
 ## Accrual
 
-(no pool artifacts yet)
+- `openspec/specs/rule-runtime-contract/spec.md` — recovered participant
+  spec (epistemics B2, anchor; schema-ingestion zone explicitly
+  non-ratified per steward testimony), promoted 2026-07-26 from dig
+  `excavate-rule-runtime-contract`. Executable twin:
+  `src/tests/runtime-contract.characterization.test.ts` (27 locked tests).

@@ -15,6 +15,10 @@ import type {
 	Url,
 } from './types.js';
 
+/**
+ * @spec `rule-runtime-contract`
+ * + Zero memoization in schema loading
+ */
 export const bundleSchema = createSyncFn(
 	join(dirname(fileURLToPath(import.meta.url)), './schema-loader.worker.js'),
 ) as LoadSchemaSync;
@@ -24,6 +28,9 @@ export const bundleSchema = createSyncFn(
  * @param pathOrSchema - The current markdown file path
  * @param node - The current YAML node.
  * @returns The schema result, or a preformatted ESLint rule violation.
+ * @spec `rule-runtime-contract`
+ * + Loader failures degrade to a warning plus `schemaNotFound`
+ * + Non-string inline `$schema` is silently ignored
  */
 export function getSchema(
 	pathOrSchema: AbsolutePath | AnyJSONSchema | undefined | Url,
@@ -52,6 +59,9 @@ export function getSchema(
  * Parse the YAML frontmatter raw string.
  * @param yamlContent - The raw YAML content as a string.
  * @returns An object containing the parsed document, JS representation, and a LineCounter instance.
+ * @spec `rule-runtime-contract`
+ * + The whole markdown file is parsed as one YAML stream
+ * + Malformed YAML frontmatter is never reported
  */
 export function parseFrontmatter(yamlContent: string): {
 	document: Document.Parsed;
@@ -71,6 +81,8 @@ export function parseFrontmatter(yamlContent: string): {
  * @param options - User provided options, from ESLint config.
  * @param node - The current YAML node.
  * @returns A path to a schema on disk, or an unknown JSON schema object.
+ * @spec `rule-runtime-contract`
+ * + Options-shape edges
  */
 export function parseGlobalSchema(
 	options: unknown,
@@ -102,6 +114,9 @@ export function parseGlobalSchema(
  * @param yamlJS - The YAML frontmatter unknown object.
  * @param filePath - The current markdown file path.
  * @returns A path to a schema on disk, or an unknown JSON schema object.
+ * @spec `rule-runtime-contract`
+ * + Only the literal `https://` prefix is a URL
+ * + Non-string inline `$schema` is silently ignored
  */
 export function parseInlineSchemaPath(
 	yamlJS: AnyFrontmatter,

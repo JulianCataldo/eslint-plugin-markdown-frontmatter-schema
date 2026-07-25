@@ -252,3 +252,12 @@
 		</s-REMEDY>
 	</s-PROPOSAL>
 </s-FOLLOWUP>
+
+<s-FOLLOWUP>
+	Appendix: For "module level jsdocs", ETERNAL problem with JSDocs parsers: they
+	will attach it to the next symbol, SAME problem as with "inline", unscoped
+	JSDocs; the module scope is ALSO not "capturable" meaningfully via jsdocs
+	(even with `@module`…).
+
+	<s-REMEDY> We user `//`, too </s-REMEDY>
+</s-FOLLOWUP>

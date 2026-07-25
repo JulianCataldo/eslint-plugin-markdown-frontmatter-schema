@@ -1,3 +1,6 @@
+// @spec `rule-runtime-contract`
+// + Zero memoization in schema loading
+// + Loader failures degrade to a warning plus `schemaNotFound`
 import type { JSONSchema7 } from 'json-schema';
 
 import $RefParser from '@apidevtools/json-schema-ref-parser';

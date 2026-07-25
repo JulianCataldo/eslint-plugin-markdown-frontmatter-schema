@@ -17,6 +17,7 @@ import { retrieveViolations, validateFrontmatter } from './validate.js';
  * @param options - User options.
  * @param yaml - The YAML frontmatter literal data.
  * @returns The rule violations.
+ * @spec `rule-runtime-contract`
  */
 export function createReports(
 	filePath: string,
@@ -31,6 +32,8 @@ export function createReports(
 
 	const inlineSchemaPath = parseInlineSchemaPath(yamlJS, filePath);
 
+	// @spec `rule-runtime-contract`
+	// + Inline `$schema` wins over `defaultSchema`
 	const schema = getSchema(inlineSchemaPath ?? globalSchema.value, yaml);
 	if (!schema.ok) return [schema.error];
 

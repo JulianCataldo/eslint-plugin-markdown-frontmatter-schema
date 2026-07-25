@@ -12,11 +12,14 @@
  * instead of inheriting the repo eslint.config.js, so the locked behavior
  * does not depend on the dogfood config.
  */
+// Executable twin of the recovered participant spec:
+// @spec `rule-runtime-contract`
+
 import markdown from '@eslint/markdown';
 import { Linter } from 'eslint';
 import * as assert from 'node:assert/strict';
-import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 
 import frontmatterSchema from '../index.js';
 
@@ -29,13 +32,17 @@ const linter = new Linter();
 
 type RuleOptions = unknown[];
 
+/**
+ *
+ * @param ruleOptions
+ */
 function config(ruleOptions: RuleOptions) {
 	return [
 		{
 			files: ['**/*.md'],
 			language: 'markdown/gfm',
 			languageOptions: { frontmatter: 'yaml' },
-			plugins: { markdown, 'frontmatter-schema': frontmatterSchema },
+			plugins: { 'frontmatter-schema': frontmatterSchema, markdown },
 			rules: {
 				'frontmatter-schema/frontmatter-schema': ruleOptions,
 			},
@@ -43,6 +50,12 @@ function config(ruleOptions: RuleOptions) {
 	] as never;
 }
 
+/**
+ *
+ * @param md
+ * @param ruleOptions
+ * @param filename
+ */
 function lint(md: string, ruleOptions: RuleOptions, filename = DOC) {
 	return linter.verify(md, config(ruleOptions), filename);
 }
