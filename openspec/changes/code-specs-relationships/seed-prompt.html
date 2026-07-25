@@ -155,3 +155,100 @@
 		laconic almost stubbed artifacts?
 	</s-HACK>
 </s-FOLLOWUP>
+
+<s-FOLLOWUP>
+	<s-PROPOSAL>
+		New shape I've fiddled with, much cleaner, readable, character economic.
+		Still fully mappable.
+		<hr />
+
+		Before:
+
+		<script>
+			/**
+			 * ...
+			 * @spec [`rule-runtime-contract`](../openspec/specs/rule-runtime-contract/spec.md#requirement-loader-failures-degrade-to-a-warning-plus-schemanotfound)
+			 * @spec [`rule-runtime-contract`](../openspec/specs/rule-runtime-contract/spec.md#requirement-non-string-inline-schema-is-silently-ignored)
+			 */
+			function foo() {}
+		</script>
+
+		After:
+
+		<script>
+			/**
+			 * ...
+			 * @spec `rule-runtime-contract`
+			 * + Loader failures degrade to a warning plus `schemaNotFound`
+			 * + Non-string inline `$schema` is silently ignored
+			 */
+			function foo() {}
+		</script>
+
+		<ul>
+			<li>
+				Group sub-req/scenarios under `spec-name` (`rule-runtime-contract`)
+			</li>
+			<li>
+				Use + (same as - in MD), for… IDK. It's just pretty, it fits better
+			</li>
+			<li>Drop the prefixes (Scenario, Req…)</li>
+		</ul>
+
+		<s-RATIONALE>
+			Cmd+P, paste `rule-runtime-contract`, enter => goes to file. It's a bit
+			like a "moniker" (not quite an ID, but close).
+			<br />
+			<s-PROS> Avoid littering code with UGLY markdown links </s-PROS>
+
+			<s-CONS>
+				The hover is less useful now, and bouncing is arguably slower.
+			</s-CONS>
+		</s-RATIONALE>
+		<s-RATIONALE>
+			Select "Non-string inline `$schema` is silently ignored", Cmd+Shift+F =>
+			Goes to the spec sub section. Slugified heading ARE NOT GREPPABLE.
+		</s-RATIONALE>
+	</s-PROPOSAL>
+
+	<s-PROPOSAL>
+		For inline comments that like
+		<script>
+			function foo() {
+				const stuff = 'aaa';
+
+				// ...
+
+				/**
+				 * ...
+				 * @spec `bar`
+				 * + Baz
+				 */
+				const stuff2 = 'bbb';
+				const stuff3 = 'bbb';
+
+				// ...
+			}
+		</script>
+		We don't have a real scope AND JSDocs are not really supposed to be used
+		like that! They are ATTACHED to the NEXT symbol.
+
+		<s-REMEDY>
+			We switch to `// @spec` (like `// @ts-ignore…`). We loose hover, but we
+			gain semantic clarity. Plus, hover link is dropped. We then loose less
+			than priorly.
+
+			<s-NOTE>
+				"Clean Code" => Well scoped functions => Granular req/scenario mapping
+				capability.
+				<br />
+				"Giant scopes" => not `// @spec` friendly PLUS indicative of "unclean
+				code" (corollary).
+				<br />
+				Meaning: not being able to map a scope cleanly (even if it's a bit loose
+				in the internal paths covering) is a symptom of an upstream cause. Not
+				our role to refactor here. We should just fallback to "grosser" scoping.
+			</s-NOTE>
+		</s-REMEDY>
+	</s-PROPOSAL>
+</s-FOLLOWUP>
