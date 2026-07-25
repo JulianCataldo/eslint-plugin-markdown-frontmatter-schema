@@ -1,0 +1,46 @@
+Error loading schema from /Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/http:/json.schemastore.org/prettierrc.json: Error opening file "/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/http:/json.schemastore.org/prettierrc.json" 
+ENOENT: no such file or directory, open '/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/http:/json.schemastore.org/prettierrc.json'
+Error loading schema from /Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/nope.schema.json: Error opening file "/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/nope.schema.json" 
+ENOENT: no such file or directory, open '/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/nope.schema.json'
+▶ Characterization: schema resolution (campaign 01 Q1)
+  ✔ relative inline $schema resolves against the md dir (48.97172ms)
+  ✔ inline $schema wins over defaultSchema (3.568263ms)
+  ✔ http:// is NOT a URL: resolved as a local path (4.307526ms)
+  ✔ non-string inline $schema is ignored; message leaks its placeholder (1.490557ms)
+✔ Characterization: schema resolution (campaign 01 Q1) (59.574555ms)
+▶ Characterization: malformed YAML frontmatter (campaign 01 Q2)
+  ✔ tab-indent YAML: parser recovers, NO report at all (2.22285ms)
+  ✔ recovered content is validated; violations map inside the broken block (2.826643ms)
+  ✔ duplicate keys: last value wins silently (2.179952ms)
+✔ Characterization: malformed YAML frontmatter (campaign 01 Q2) (7.831537ms)
+▶ Characterization: validated payload and locations (campaign 01 Q4)
+  ✔ the $schema key itself is part of the validated object (3.134968ms)
+  ✔ root-level errors land at 1:1 (the opening fence) (2.391099ms)
+  ✔ markdown body is parsed as extra YAML documents and ignored (5.970265ms)
+✔ Characterization: validated payload and locations (campaign 01 Q4) (11.961014ms)
+▶ Characterization: suggestions and --fix (campaign 01 Q5)
+  ✔ enum violations carry replacement suggestions with absolute ranges (2.337707ms)
+  ✔ --fix never modifies the file (meta.fixable is inert) (2.353228ms)
+✔ Characterization: suggestions and --fix (campaign 01 Q5) (5.026726ms)
+▶ Characterization: options shapes at the edges (campaign 01 Q6)
+  ✔ ['error'] with no schema anywhere: schemaNotFound (1.106872ms)
+  ✔ ['error', {}]: schemaMalformed (diverges from the red desired-behavior test) (0.721728ms)
+  ✔ schemas-only options (the declared glob map): schemaMalformed, option unread (0.773694ms)
+  ✔ string defaultSchema is rejected at config validation time (0.790749ms)
+✔ Characterization: options shapes at the edges (campaign 01 Q6) (3.804438ms)
+▶ Characterization: Ajv singleton edges (campaign 01 Q3/Q4 recon delta)
+  ✔ second compile of an $id-carrying schema crashes the lint run (5.171822ms)
+  ✔ draft-2020-12 meta-schema crashes the lint run (1.820107ms)
+✔ Characterization: Ajv singleton edges (campaign 01 Q3/Q4 recon delta) (7.26808ms)
+▶ Characterization: loader edges (campaign 01 Q3)
+  ✔ missing local schema: schemaNotFound with the resolved absolute path (1.393937ms)
+  ✔ YAML-format schema files load and validate (undocumented capability) (3.388496ms)
+✔ Characterization: loader edges (campaign 01 Q3) (5.066788ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 484.204168

@@ -1,0 +1,4 @@
+
+> eslint-plugin-markdown-frontmatter-schema@0.0.1 build /Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema
+> tsc
+

@@ -1,0 +1,225 @@
+
+> eslint-plugin-markdown-frontmatter-schema@0.0.1 test /Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema
+> c8 node --enable-source-maps --test dist/tests/**.test.js
+
+{
+  results: [
+    {
+      filePath: '/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/empty-frontmatter.md',
+      messages: [
+        {
+          ruleId: 'frontmatter-schema/frontmatter-schema',
+          severity: 2,
+          message: 'Schema is malformed ',
+          line: 1,
+          column: 1,
+          nodeType: 'yaml',
+          messageId: 'schemaMalformed',
+          endLine: 3,
+          endColumn: 4
+        }
+      ],
+      suppressedMessages: [],
+      errorCount: 1,
+      fatalErrorCount: 0,
+      warningCount: 0,
+      fixableErrorCount: 0,
+      fixableWarningCount: 0,
+      source: '---\n\n---\n',
+      usedDeprecatedRules: [Getter]
+    }
+  ]
+}
+▶ ESLint plugin: Empty/No schema
+  ✖ Empty frontmatter (2300.285031ms)
+✖ ESLint plugin: Empty/No schema (2303.1762ms)
+▶ ESLint plugin: Globally associated
+  ✔ Valid: Should produce errors (2341.749136ms)
+✔ ESLint plugin: Globally associated (2344.233304ms)
+▶ ESLint plugin: Validate linked $schema in frontmatter
+  ✔ Valid: Should pass without errors (2341.347203ms)
+  ✖ Invalid: Should not pass, with 2 errors (1014.588724ms)
+✖ ESLint plugin: Validate linked $schema in frontmatter (3358.987109ms)
+Error loading schema from /Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/http:/json.schemastore.org/prettierrc.json: Error opening file "/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/http:/json.schemastore.org/prettierrc.json" 
+ENOENT: no such file or directory, open '/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/http:/json.schemastore.org/prettierrc.json'
+Error loading schema from /Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/nope.schema.json: Error opening file "/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/nope.schema.json" 
+ENOENT: no such file or directory, open '/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/fixtures/characterization/nope.schema.json'
+▶ Characterization: schema resolution (campaign 01 Q1)
+  ✔ relative inline $schema resolves against the md dir (62.655478ms)
+  ✔ inline $schema wins over defaultSchema (3.826851ms)
+  ✔ http:// is NOT a URL: resolved as a local path (4.496281ms)
+  ✔ non-string inline $schema is ignored; message leaks its placeholder (1.642425ms)
+✔ Characterization: schema resolution (campaign 01 Q1) (74.122133ms)
+▶ Characterization: malformed YAML frontmatter (campaign 01 Q2)
+  ✔ tab-indent YAML: parser recovers, NO report at all (2.283984ms)
+  ✔ recovered content is validated; violations map inside the broken block (2.589037ms)
+  ✔ duplicate keys: last value wins silently (2.100528ms)
+✔ Characterization: malformed YAML frontmatter (campaign 01 Q2) (7.407084ms)
+▶ Characterization: validated payload and locations (campaign 01 Q4)
+  ✔ the $schema key itself is part of the validated object (3.635919ms)
+  ✔ root-level errors land at 1:1 (the opening fence) (2.351437ms)
+  ✔ markdown body is parsed as extra YAML documents and ignored (5.763445ms)
+✔ Characterization: validated payload and locations (campaign 01 Q4) (12.203206ms)
+▶ Characterization: suggestions and --fix (campaign 01 Q5)
+  ✔ enum violations carry replacement suggestions with absolute ranges (2.757665ms)
+  ✔ --fix never modifies the file (meta.fixable is inert) (2.841077ms)
+✔ Characterization: suggestions and --fix (campaign 01 Q5) (5.956672ms)
+▶ Characterization: options shapes at the edges (campaign 01 Q6)
+  ✔ ['error'] with no schema anywhere: schemaNotFound (1.258954ms)
+  ✔ ['error', {}]: schemaMalformed (diverges from the red desired-behavior test) (0.963185ms)
+  ✔ schemas-only options (the declared glob map): schemaMalformed, option unread (0.939505ms)
+  ✔ string defaultSchema is rejected at config validation time (0.844784ms)
+✔ Characterization: options shapes at the edges (campaign 01 Q6) (4.460766ms)
+▶ Characterization: Ajv singleton edges (campaign 01 Q3/Q4 recon delta)
+  ✔ second compile of an $id-carrying schema crashes the lint run (5.957701ms)
+  ✔ draft-2020-12 meta-schema crashes the lint run (1.656164ms)
+✔ Characterization: Ajv singleton edges (campaign 01 Q3/Q4 recon delta) (7.953362ms)
+▶ Characterization: loader edges (campaign 01 Q3)
+  ✔ missing local schema: schemaNotFound with the resolved absolute path (1.868043ms)
+  ✔ YAML-format schema files load and validate (undocumented capability) (4.515079ms)
+✔ Characterization: loader edges (campaign 01 Q3) (6.68657ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 30
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3976.049219
+
+✖ failing tests:
+
+test at src/tests/empty-no.test.ts:23:10
+✖ Empty frontmatter (2300.285031ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + 'schemaMalformed'
+  - 'schemaNotFound'
+           ^
+  
+      at TestContext.<anonymous> (/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/src/tests/empty-no.test.ts:34:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async TestContext.<anonymous> (/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/src/tests/empty-no.test.ts:23:2)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+      at async <anonymous> (/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/src/tests/empty-no.test.ts:10:1) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'schemaMalformed',
+    expected: 'schemaNotFound',
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at src/tests/inline-linked.test.ts:40:10
+✖ Invalid: Should not pass, with 2 errors (1014.588724ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      {
+  +     column: 1,
+  +     endColumn: 1,
+  +     endLine: 1,
+  +     line: 1,
+  +     message: 'YAML schema validation error: must be string at root',
+  -     column: 14,
+  -     endColumn: 14,
+  -     endLine: 3,
+  -     line: 3,
+  -     message: 'YAML schema validation error: must be string at /description',
+        nodeType: 'yaml',
+        ruleId: 'frontmatter-schema/frontmatter-schema',
+        severity: 2
+      },
+      {
+  +     column: 1,
+  +     endColumn: 1,
+  +     endLine: 1,
+  +     line: 1,
+  +     message: 'YAML schema validation error: must match exactly one schema in oneOf at root',
+  -     column: 11,
+  -     endColumn: 11,
+  -     endLine: 4,
+  -     line: 4,
+  -     message: 'YAML schema validation error: must be equal to one of the allowed values at /category',
+        nodeType: 'yaml',
+        ruleId: 'frontmatter-schema/frontmatter-schema',
+        severity: 2,
+  -     suggestions: [
+  -       {
+  -         desc: 'Replace with "Book"',
+  -         fix: {
+  -           range: [
+  -             58,
+  -             64
+  -           ],
+  -           text: 'Book'
+  -         }
+  -       },
+  -       {
+  -         desc: 'Replace with "Movie"',
+  -         fix: {
+  -           range: [
+  -             58,
+  -             64
+  -           ],
+  -           text: 'Movie'
+  -         }
+  -       },
+  -       {
+  -         desc: 'Replace with "Song"',
+  -         fix: {
+  -           range: [
+  -             58,
+  -             64
+  -           ],
+  -           text: 'Song'
+  -         }
+  -       }
+  -     ]
+      },
+  +   {
+  +     column: 13,
+  +     endColumn: 13,
+  +     endLine: 2,
+  +     line: 2,
+  +     message: 'YAML schema validation error: must be integer at /printWidth',
+  +     nodeType: 'yaml',
+  +     ruleId: 'frontmatter-schema/frontmatter-schema',
+  +     severity: 2
+  +   }
+    ]
+  
+      at TestContext.<anonymous> (/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/src/tests/inline-linked.test.ts:50:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async TestContext.<anonymous> (/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/src/tests/inline-linked.test.ts:40:2)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+      at async <anonymous> (/Volumes/n_1024a-Projects/Repositories/packages/eslint-plugin-markdown-frontmatter-schema/src/tests/inline-linked.test.ts:11:1) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { ruleId: 'frontmatter-schema/frontmatter-schema', severity: 2, message: 'YAML schema validation error: must be string at root', line: 1, column: 1, nodeType: 'yaml', endLine: 1, endColumn: 1 }, { ruleId: 'frontmatter-schema/frontmatter-schema', severity: 2, message: 'YAML schema validation error: must match exactly one schema in oneOf at root', line: 1, column: 1, nodeType: 'yaml', endLine: 1, endColumn: 1 }, { ruleId: 'frontmatter-schema/frontmatter-schema', severity: 2, message: 'YAML schema validation error: must be integer at /printWidth', line: 2, column: 13, nodeType: 'yaml', endLine: 2, endColumn: 13 } ],
+    expected: [ { column: 14, endColumn: 14, endLine: 3, line: 3, message: 'YAML schema validation error: must be string at /description', nodeType: 'yaml', ruleId: 'frontmatter-schema/frontmatter-schema', severity: 2 }, { column: 11, endColumn: 11, endLine: 4, line: 4, message: 'YAML schema validation error: must be equal to one of the allowed values at /category', nodeType: 'yaml', ruleId: 'frontmatter-schema/frontmatter-schema', severity: 2, suggestions: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+---------------------------------------|---------|----------|---------|---------|-------------------
+File                                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------------------|---------|----------|---------|---------|-------------------
+All files                              |     100 |    92.06 |     100 |     100 |                   
+ ...plugin-markdown-frontmatter-schema |     100 |      100 |     100 |     100 |                   
+  eslint.config.js                     |     100 |      100 |     100 |     100 |                   
+ ...in-markdown-frontmatter-schema/src |     100 |    91.22 |     100 |     100 |                   
+  create-reports.ts                    |     100 |      100 |     100 |     100 |                   
+  index.ts                             |     100 |      100 |     100 |     100 |                   
+  prepare.ts                           |     100 |    88.46 |     100 |     100 | 41,64,86          
+  schema-loader.worker.ts              |     100 |       80 |     100 |     100 | 22                
+  validate.ts                          |     100 |    94.44 |     100 |     100 | 35                
+ ...kdown-frontmatter-schema/src/rules |     100 |      100 |     100 |     100 |                   
+  frontmatter-schema.ts                |     100 |      100 |     100 |     100 |                   
+ ...kdown-frontmatter-schema/src/tests |     100 |      100 |     100 |     100 |                   
+  test-utilities.ts                    |     100 |      100 |     100 |     100 |                   
+---------------------------------------|---------|----------|---------|---------|-------------------
+ ELIFECYCLE  Test failed. See above for more details.

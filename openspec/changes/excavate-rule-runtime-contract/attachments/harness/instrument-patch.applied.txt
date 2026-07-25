@@ -1,0 +1,7 @@
+import { appendFileSync as __digAppend } from 'node:fs';
+const __digCountFile = process.env.DIG_COUNT_FILE;
+const __bundleSchemaInner = createSyncFn(join(dirname(fileURLToPath(import.meta.url)), './schema-loader.worker.js'));
+export const bundleSchema = (arg) => {
+    if (__digCountFile) __digAppend(__digCountFile, JSON.stringify({ arg: typeof arg === 'string' ? arg : '[object schema]' }) + '\n');
+    return __bundleSchemaInner(arg);
+};

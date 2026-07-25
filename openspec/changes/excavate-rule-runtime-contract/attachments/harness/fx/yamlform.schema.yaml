@@ -1,0 +1,6 @@
+type: object
+required:
+  - yamltitle
+properties:
+  yamltitle:
+    type: string
