@@ -1,0 +1,25 @@
+== identity ==
+10e458fb9647191eb452d061e6c95e658227b1c2 | Andrew Petersen <kirbysayshi@gmail.com> | 2026-04-24 01:28:25 -0400 | fix: root errors were always tied to frontmatter start (---)
+== commits on branch (main...) ==
+10e458f Andrew Petersen 2026-04-24 fix: root errors were always tied to frontmatter start (---)
+== diffstat vs merge-base ==
+ fixtures/additional-property.invalid.md       |   6 ++
+ fixtures/sample-with-linked-remote-schema.md  |  13 ++++
+ fixtures/sample-with-linked-schema.invalid.md |  10 +--
+ fixtures/yaml-tab-indent.invalid.md           |   7 ++
+ package.json                                  |   5 +-
+ src/create-reports.ts                         |  12 ++--
+ src/index.ts                                  |   3 +-
+ src/prepare.ts                                |   3 +-
+ src/rules/frontmatter-schema.ts               |   9 ++-
+ src/tests/additional-properties.test.ts       |  52 ++++++++++++++
+ src/tests/empty-no.test.ts                    |   2 +-
+ src/tests/inline-linked.test.ts               |  24 ++++---
+ src/tests/yaml-syntax.test.ts                 |  69 ++++++++++++++++++
+ src/types.ts                                  |  10 +--
+ src/validate.ts                               | 100 ++++++++++++++++++++------
+ tsconfig.json                                 |  11 ++-
+ 16 files changed, 272 insertions(+), 64 deletions(-)
+== negative check: defaultSchema/meta.schema in rules-file diff ==
+0
+(count of 'defaultSchema' occurrences in that diff above)

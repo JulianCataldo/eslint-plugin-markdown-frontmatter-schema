@@ -111,12 +111,15 @@ claim.
   2025-08-07) — thin but dated.
 - Period documents: `README.md` (`--fix` claim, "API kept very similar"),
   `meta.docs.url` pointing at the upstream repo.
-- GitHub tracker (period documents + third-party testimony; collected
-  verbatim into the ledger post-gate): issue #1 — reporter VityaSchel, Q4 loc
-  complaint + Q6 `defaultSchema` "expected object" in the wild + owner intent
-  reply; PR #2 — kirbysayshi, unmerged fix for the Q4 root-error mapping with
-  new Q2/Q3/Q4 fixtures and tests (desired-behavior evidence, not
-  current-behavior).
+- GitHub tracker (period documents + third-party testimony): issue #1 —
+  reporter VityaSchel, Q4 loc complaint + Q6 `defaultSchema` "expected
+  object" in the wild + owner intent reply (verbatim in the ledger, its sole
+  durable home); PR #2 — Andrew Petersen (kirbysayshi), unmerged fix for the
+  Q4 root-error mapping with new Q2/Q3/Q4 fixtures and tests
+  (desired-behavior evidence, not current-behavior) — referenced as a
+  locally fetched SHA-pinned branch with high-level findings in the ledger,
+  diffs re-derived from git on demand; authorship preserved for future
+  credit.
 - Witnesses: Julian Cataldo (author/steward) — named testimony channel for
   intent claims; external, reachable via the tracker if needed: VityaSchel
   (issue #1 reporter), kirbysayshi (PR #2 author).
