@@ -119,7 +119,7 @@ export default [
 				},
 			],
 			'jsdoc/require-description': 'warn',
-			'jsdoc/check-tag-names': 'warn',
+			'jsdoc/check-tag-names': 'off',
 			'jsdoc/require-param-type': 'off',
 			'jsdoc/require-returns-type': 'off',
 

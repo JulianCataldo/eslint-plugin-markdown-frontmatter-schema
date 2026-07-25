@@ -29,6 +29,13 @@ context: |
     authority store as degraded unknown context — never as "no upstream
     decisions apply".
 
+  Code→spec relationship annotations (ADR 0001):
+  - Mandatory post-processing hooks — after an excavation slice promotes a
+    spec, and after an apply pass writes or modifies code, record the
+    code→spec/ADR relationships as JSDoc annotations per
+    docs/adr/0001-code-spec-relationship-annotations.md (details unrolled in
+    its companion doc, docs/excavation/code-specs-relationships.md).
+
 # Per-artifact rules. Keys mirror the installed schema's artifact IDs.
 rules:
   proposal: []

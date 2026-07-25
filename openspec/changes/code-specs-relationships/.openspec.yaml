@@ -1,2 +1,4 @@
 schema: seedbed
 created: 2026-07-25
+implementation:
+  llm_hint: Claude Fable 5 (claude-fable-5), single-model apply pass

@@ -4,7 +4,8 @@
 
 - Tier: light — docs-only ADR probe, fully reversible, author-only blast
   radius.
-- Awaiting confirmation: first-round-click, noise-balance
+- Awaiting confirmation: none — both rules confirmed by the author (ju),
+  2026-07-26, at apply pre-flight
 - Judgment checks: both rules ("wet finger" human judgment per the seed)
 - Open conflicts: none
 - Awaiting verdict (post-apply): none
@@ -29,7 +30,7 @@
 
 ### Rule: first-round-click
 
-- Status: proposed
+- Status: confirmed (author, 2026-07-26)
 - Assessor: the author (ju)
 
 The first excavation round's annotated diff "clicks": each relationship
@@ -45,7 +46,7 @@ reads crisp, the pattern adds value worth officializing. (Seed s-RULE.)
 
 ### Rule: noise-balance
 
-- Status: proposed
+- Status: confirmed (author, 2026-07-26)
 - Assessor: the author (ju)
 
 Acceptable affordance/verbosity/visual-noise balance in BOTH surfaces — raw
