@@ -8,6 +8,12 @@ machinery. Nothing here is proof of dead code — invisible consumers exist
 (IDE affordances, manual fixture use, upstream-parity intent); only a dig's
 negative certificate licenses deletion.
 
+Digs `excavate-upstream-parity` (Q1/Q2, 2026-07-26) and
+`excavate-drift-reconciliation` (Q3/Q4, grades C1–C23 and promotions
+confirmed 2026-07-26) adjudicated the whole frontier — with ZERO negative
+certificates: every candidate resolved to deferred capability, live
+surface, or retained cue. The campaign is closed; frontier clear.
+
 ## Frontier
 
 - [x] Q1 (`answered` → `docs/adr/0002-port-to-eslint.md`, C14) — The `schemas` option: declared in the rule's options
@@ -26,16 +32,24 @@ negative certificate licenses deletion.
       miswired" attempts retained as cues for the planned error-surfacing
       repass over ESLint's API capabilities. No certificate; the repass
       decides their final form.
-- [ ] Q3 (`open`) — Orphaned fixtures: `fixtures/sample.md` is referenced by
-      no test (grep over `src/tests/`), and `fixtures/.dev.invalid.schema.json`
-      is untracked via the `.dev*` ignore (`.gitignore`). Invisible-consumer
-      caveat: `README.md:128` invites cloning and trying the fixtures manually in
-      an IDE, and the dogfood config lints all `**/*.md`
-      (`eslint.config.js:131-161`).
-- [ ] Q4 (`open`) — `meta.fixable: 'code'` (`src/rules/frontmatter-schema.ts:27`)
-      with no `fix` ever attached: inert or load-bearing for editor affordances?
-      Resolves jointly with `02-campaign-drift` Q2 — either fixes arrive or flag
-      and README claim go together.
+- [x] Q3 (`answered` → `docs/adr/0003-drift-dispositions.md`, C21/C22) —
+      Orphaned fixtures: `fixtures/sample.md` referenced by no test;
+      `fixtures/.dev.invalid.schema.json` untracked via `.dev*`.
+      Adjudicated 2026-07-26: NO certificate — the invisible consumer is
+      real (`sample.md` is an intentionally-erroring in-IDE demo under the
+      dogfood config, 2 live errors, C22) and the steward imposed a
+      fixture/test moratorium pending the post-excavation clean-slate
+      redesign (C21). `.dev.invalid.schema.json` (untracked byte-duplicate
+      of `valid.schema.json`) awaits the same redesign's broom.
+- [x] Q4 (`answered` → `docs/adr/0003-drift-dispositions.md`, C6/C8) —
+      `meta.fixable: 'code'` with no `fix` ever attached. Adjudicated
+      2026-07-26: inert today (`--fix` verifiably applies nothing, C6) but
+      NOT dead weight — fix affordances are indispensable planned
+      capability; the flag stays as a capability cue and the
+      error-surfacing repass decides its final form (C8). Resolved jointly
+      with `02-campaign-drift` Q2, third way: neither "fixes arrive now"
+      nor "flag and claim go" — cue retained, claim wording aligns in
+      ordinary work.
 
 ## Resolved
 
@@ -46,10 +60,17 @@ negative certificate licenses deletion.
 - Q1 and Q2 adjudication delivered 2026-07-26 by dig
   `excavate-upstream-parity` (01-Q7): claims C14/C15, filed in ADR 0002.
 - Q3 sequences with `02-campaign-drift` Q1(a) so fixture churn happens once.
-- Q4 pairs with `02-campaign-drift` Q2.
+  Delivered 2026-07-26 by dig `excavate-drift-reconciliation`: no churn —
+  moratorium (C21); churn authority is the post-excavation clean slate.
+- Q4 pairs with `02-campaign-drift` Q2. Delivered 2026-07-26, same dig:
+  cue retained (C8).
 
 ## Accrual
 
 - `docs/adr/0002-port-to-eslint.md` — shadow ADR carrying the Q1/Q2
   adjudication (C14/C15) and the upstream/port divergence matrix, promoted
   2026-07-26 from dig `excavate-upstream-parity` (campaign 01 Q7).
+- `docs/adr/0003-drift-dispositions.md` — shadow ADR carrying the Q3/Q4
+  adjudication (C21/C22, C6/C8: moratorium, zero certificates, cue
+  retained) and the 11-row drift register, promoted 2026-07-26 from dig
+  `excavate-drift-reconciliation`.

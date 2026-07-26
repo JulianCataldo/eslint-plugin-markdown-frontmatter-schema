@@ -42,7 +42,12 @@ This spec deliberately does NOT carry uniform intent status. Three zones:
   `excavate-upstream-parity` (C17, B2, 2026-07-26): the steward sides with
   upstream's delete-`$schema`-before-validation direction, pending LS
   behavior-mapping — the payload-validation requirement below stays
-  de-facto only.
+  de-facto only. Dig `excavate-drift-reconciliation` (C5, B2, 2026-07-26):
+  absence of an associated schema is intended as an acceptable freeform
+  state — 'No explicit schema = no constraints = no errors'; both the
+  current `schemaMalformed` actual and the red test's `schemaNotFound`
+  expectation diverge from this intent, which the planned error-surfacing
+  repass supersedes.
 - **Parsing and validated payload — de-facto.** No intent testimony either
   way; candidates for ratification in a later pass.
 - **Reporting and suggestions — de-facto with known intent delta (C15).**
@@ -52,7 +57,12 @@ This spec deliberately does NOT carry uniform intent status. Three zones:
   (`10e458f`, Andrew Petersen) with commit-authorship credit. Corroborated
   2026-07-26: real ranges were original, initially-working upstream
   behavior (`excavate-upstream-parity` C19, B1) — the point-location
-  behavior is a port regression, not a design.
+  behavior is a port regression, not a design. Same-day dig
+  `excavate-drift-reconciliation` (C8, B1; C6/C7, A1): fix affordances,
+  YAML-parse-error surfacing, and rule metadata are indispensable planned
+  capabilities — `meta.fixable` and the unreported `yamlSyntaxError`
+  messageId are retained as capability cues; `--fix` verifiably applies
+  nothing today and the README's day-one claim never matched any commit.
 
 ## Requirements
 

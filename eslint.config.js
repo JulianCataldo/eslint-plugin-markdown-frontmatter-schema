@@ -128,6 +128,7 @@ export default [
 		},
 	},
 
+	// @adr 0003 — `drift-dispositions`
 	{
 		files: ['**/*.md'],
 		language: 'markdown/gfm',

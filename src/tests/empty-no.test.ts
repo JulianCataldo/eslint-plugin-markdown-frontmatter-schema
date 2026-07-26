@@ -31,6 +31,7 @@ await test('ESLint plugin: Empty/No schema', async (t) => {
 
 		console.dir({ results }, { depth: null });
 
+		// @adr 0003 — `drift-dispositions`
 		assert.deepStrictEqual(
 			results.at(0)?.messages.at(0)?.messageId,
 			'schemaNotFound',

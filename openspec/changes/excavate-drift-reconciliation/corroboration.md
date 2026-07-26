@@ -14,8 +14,8 @@ current as statuses change; write "none" rather than deleting a line. -->
 - Testimony requests outstanding: none — TR1–TR10 answered → E36–E45
   (TR4 caveat-wording half unaddressed → C10 held at hypothesis; TR9
   breadcrumb half implicit — pattern declared retired)
-- Promotions awaiting confirmation: 2 — shadow ADR 0003 and the pool-spec
-  intent-delta touch-up (gate pending, see below)
+- Promotions awaiting confirmation: none — both confirmed and filed
+  2026-07-26
 
 ## Grade confirmations (human gate)
 
@@ -48,11 +48,12 @@ All confirmed via in-session gate question, option "Confirm all C1–C23":
 ## Output promotions (human gate)
 
 - outputs/shadow-adr-0003-drift-dispositions.md →
-  docs/adr/0003-drift-dispositions.md: AWAITING human confirmation. Would
-  file as `Status: proposed` under the ordinary ADR lifecycle (next free
-  number after 0002); acceptance review is a later, separate human act.
+  docs/adr/0003-drift-dispositions.md: confirmed by Julian Cataldo
+  (steward), 2026-07-26 — via in-session gate question, option "Promote
+  both"; filed the same day as `Status: proposed` (ADR-lifecycle
+  acceptance remains a separate human act).
 - pool-spec intent-delta touch-up →
-  openspec/specs/rule-runtime-contract/spec.md § Intent status: AWAITING
-  human confirmation. Destination EXISTS — explicit merge decision
-  required, never a silent overwrite; the two proposed verbatim lines are
-  recorded in outputs/index.md § 1.2.
+  openspec/specs/rule-runtime-contract/spec.md § Intent status: confirmed
+  by Julian Cataldo (steward), 2026-07-26 — same gate; the two verbatim
+  lines from outputs/index.md § 1.2 merged into the existing pool spec
+  (explicit merge decision: ingestion + reporting zone bullets).

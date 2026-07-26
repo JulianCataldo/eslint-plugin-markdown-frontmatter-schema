@@ -6,13 +6,15 @@ never confirms promotions. -->
 
 ## 1. Drafted outputs
 
-- [ ] 1.1 `shadow-adr-0003-drift-dispositions.md` →
+- [x] 1.1 (promotion confirmed by the steward and filed 2026-07-26)
+      `shadow-adr-0003-drift-dispositions.md` →
       `docs/adr/0003-drift-dispositions.md` — shadow ADR (epistemics B2,
       anchor), files as `Status: proposed` under the ordinary ADR lifecycle
       and numbering (next free number after 0002). Its later
       proposed → accepted review is the ADR lifecycle's own human act, not
       part of this dig.
-- [ ] 1.2 Pool-spec intent-delta touch-up →
+- [x] 1.2 (promotion confirmed by the steward and merged 2026-07-26)
+      Pool-spec intent-delta touch-up →
       `openspec/specs/rule-runtime-contract/spec.md` § Intent status —
       destination EXISTS: explicit merge decision required, never a silent
       overwrite. Proposed delta, verbatim:

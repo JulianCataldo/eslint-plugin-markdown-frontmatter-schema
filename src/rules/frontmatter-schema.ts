@@ -29,6 +29,7 @@ export const frontmatterSchema: RuleModule = {
 		},
 		// @spec `rule-runtime-contract`
 		// + `meta.fixable` is inert
+		// @adr 0003 — `drift-dispositions`
 		fixable: 'code',
 
 		hasSuggestions: true,

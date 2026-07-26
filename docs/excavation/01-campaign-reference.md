@@ -18,7 +18,8 @@ tests); grades C1–C16 and the promotion both confirmed by the steward
 promotions confirmed by the steward 2026-07-26) answered Q7 the same day:
 shadow ADR 0002 filed as `proposed`, intent-delta lines merged into the
 pool spec, adjudication inputs delivered to campaign 03 Q1/Q2. The
-campaign's frontier is clear.
+campaign's frontier is clear. Campaign closed 2026-07-26 (all questions
+answered; entries below retained as history).
 
 - [x] Q1 (`answered` → `openspec/specs/rule-runtime-contract/spec.md`) — What is the exact schema resolution contract? Inline
       `$schema` beats `defaultSchema` via `??` (`src/create-reports.ts:34`);
@@ -97,7 +98,11 @@ campaign's frontier is clear.
 - `docs/adr/0002-port-to-eslint.md` — shadow ADR (epistemics B2, anchor;
   `proposed`), promoted 2026-07-26 from dig `excavate-upstream-parity`
   (Q7); carries the upstream/port divergence matrix as appendix. Probe rig
-  re-runnable from that dig's `attachments/upstream-probes/`.
+  re-runnable from that dig's `attachments/upstream-probes/`. Its C20
+  verification flag was resolved 2026-07-26 by dig
+  `excavate-drift-reconciliation` (C16): ESLint v9 config lookup is
+  cwd-based; nearest-from-file ships behind `v10_config_lookup_from_file`
+  and becomes the v10 default (ADR 0003 decision 8).
 - Pool-spec intent-delta (C17 ingestion, C19 reporting) merged into
   `openspec/specs/rule-runtime-contract/spec.md` § Intent status,
   2026-07-26, same dig.
