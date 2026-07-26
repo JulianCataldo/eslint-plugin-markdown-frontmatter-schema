@@ -11,6 +11,9 @@
       sub-requirement lines, `// @spec` for inline and module levels — per
       in-session author follow-ups (round 3 + appendix); live annotations
       converted, hover re-verified
+- [x] 1.4 @adr joins the moniker shape (number + backticked ADR filename
+      slug); annotation-maintenance clause (HARD, no drift) reinforced in the
+      companion doc and config hook lines — in-session follow-up round 5
 
 ## 2. Acceptance gate (do not tick during apply)
 

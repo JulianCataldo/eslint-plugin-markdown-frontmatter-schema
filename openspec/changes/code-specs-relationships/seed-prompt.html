@@ -261,3 +261,50 @@
 
 	<s-REMEDY> We user `//`, too </s-REMEDY>
 </s-FOLLOWUP>
+
+<s-FOLLOWUP>
+	<s-PASS>
+		Same for ADRs:
+		<pre>
+      // @adr 0002 — [Port frontmatter-schema linting to ESLint; remark rule in dormancy](../../docs/adr/0002-port-to-eslint.md)
+      should be
+      // @adr 0002 — `port-to-eslint`
+    </pre>
+	</s-PASS>
+
+	<s-PROPOSAL>
+		Maybe we already have some nudges for this in the instructions, but just
+		want to confirm, and possibly reinforce:
+
+		<s-SCENARIO>
+			<s-GIVEN>
+				User has a codebase with @spec and @adr a little bit everywhere.
+			</s-GIVEN>
+
+			<s-WHEN>
+				Some change's "apply" is done by the LLM, the "spec/code rels.
+				post-hook" is triggered
+			</s-WHEN>
+
+			<s-THEN> LLM should update the req/scenarios + texts</s-THEN>
+		</s-SCENARIO>
+
+		<s-RATIONALE>
+			It's pretty cheap. You change a Heading in a spec? You search it as-is and
+			swap with the new. 1:1 mechanical operation.
+		</s-RATIONALE>
+
+		<s-HARD>Any drifts here are undesirable</s-HARD>
+		<s-HUNCH>
+			If <em>some</em> drifts inadvertently happen, at least @spec `change-name`
+			is there to grossly scope, so a LLM can repair the drift quite easily (and
+			ultimately, search for in code "stale" strings in the git history).
+		</s-HUNCH>
+	</s-PROPOSAL>
+</s-FOLLOWUP>
+
+<s-FOLLOWUP>
+	Beware about the `1:1` wording I used. I was wrong-ish. It can be `1:many`.
+	The "1" is the spec#sub-section, and the "many" are every occurence in the
+	codebase.
+</s-FOLLOWUP>

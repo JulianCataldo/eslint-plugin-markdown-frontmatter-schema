@@ -1,0 +1,124 @@
+
+===== U1 — $schema key + additionalProperties:false (deletion check)
+md: "---\n$schema: ./basic.schema.json\ntitle: hi\n---\n"
+path: content/doc.md | settings: {}
+messages (0):
+
+===== U2 — precedence: local $schema vs embed (embed-wins check)
+md: "---\n$schema: ./basic.schema.json\ntitle: hi\n---\n"
+path: content/doc.md | settings: {"embed":{"required":["zzz"],"type":"object"}}
+messages (1):
+{"message":"Must have required property 'zzz' • content/basic.schema.json • #/required","note":"Keyword: required\nMissing property: zzz\nSchema path: content/basic.schema.json · #/required","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U3 — tab-indent YAML (recovering parser check)
+md: "---\n\tfoo: 1\n---\n"
+path: content/doc.md | settings: {"embed":{"required":["foo"],"type":"object"}}
+messages (0):
+
+===== U3b — duplicate keys (last-wins check via const)
+md: "---\na: 1\na: 2\n---\n"
+path: content/doc.md | settings: {"embed":{"properties":{"a":{"const":2}},"required":["a"],"type":"object"}}
+messages (0):
+
+===== U4 — real squiggle positions for a type violation
+md: "---\n$schema: ./basic.schema.json\ntitle: 1234\n---\n"
+path: content/doc.md | settings: {}
+messages (1):
+{"message":"Must be string • content/basic.schema.json • #/properties/title/type","line":3,"column":8,"position":{"start":{"line":3,"column":8},"end":{"line":3,"column":12}},"actual":"1234","note":"Keyword: type\nType: string\nSchema path: content/basic.schema.json · #/properties/title/type","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U5 — enum + const suggestions (message.expected)
+md: "---\n$schema: ./enum.schema.json\nkind: Rock\nstatus: published\n---\n"
+path: content/doc.md | settings: {}
+messages (2):
+{"message":"Must be equal to one of the allowed values: `Movie`, `Song` • content/enum.schema.json • #/properties/kind/enum","line":3,"column":7,"position":{"start":{"line":3,"column":7},"end":{"line":3,"column":11}},"expected":["Movie","Song"],"actual":"Rock","note":"Keyword: enum\nAllowed values: Movie, Song\nSchema path: content/enum.schema.json · #/properties/kind/enum","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+{"message":"Must be equal to constant: `draft` • content/enum.schema.json • #/properties/status/const","line":4,"column":9,"position":{"start":{"line":4,"column":9},"end":{"line":4,"column":18}},"expected":["draft"],"actual":"published","note":"Keyword: const\nAllowed value: draft\nSchema path: content/enum.schema.json · #/properties/status/const","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U6a — $id schema, file a (fresh-Ajv-per-call check)
+md: "---\n$schema: ./withid.schema.json\ntitle: 1234\n---\n"
+path: content/a.md | settings: {}
+messages (1):
+{"message":"Must be string • content/withid.schema.json • #/properties/title/type","line":3,"column":8,"position":{"start":{"line":3,"column":8},"end":{"line":3,"column":12}},"actual":"1234","note":"Keyword: type\nType: string\nSchema path: content/withid.schema.json · #/properties/title/type","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U6b — $id schema, file b — port crashes here, upstream?
+md: "---\n$schema: ./withid.schema.json\ntitle: 1234\n---\n"
+path: content/b.md | settings: {}
+messages (1):
+{"message":"Must be string • content/withid.schema.json • #/properties/title/type","line":3,"column":8,"position":{"start":{"line":3,"column":8},"end":{"line":3,"column":12}},"actual":"1234","note":"Keyword: type\nType: string\nSchema path: content/withid.schema.json · #/properties/title/type","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U6c — $id schema, file a AGAIN (IDE-resave analog)
+md: "---\n$schema: ./withid.schema.json\ntitle: 1234\n---\n"
+path: content/a.md | settings: {}
+messages (1):
+{"message":"Must be string • content/withid.schema.json • #/properties/title/type","line":3,"column":8,"position":{"start":{"line":3,"column":8},"end":{"line":3,"column":12}},"actual":"1234","note":"Keyword: type\nType: string\nSchema path: content/withid.schema.json · #/properties/title/type","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U7 — draft-2020-12 meta-schema (compile-failure catch check)
+md: "---\n$schema: ./draft2020.schema.json\ntitle: hi\n---\n"
+path: content/doc.md | settings: {}
+messages (1):
+{"message":"JSON schema malformed: content/draft2020.schema.json — Error: no schema with key or ref \"https://json-schema.org/draft/2020-12/schema\"","name":"content/doc.md:1:1","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U8 — schemas glob map association (no local $schema)
+md: "---\ntitle: 1234\n---\n"
+path: content/globbed.md | settings: {"schemas":{"content/basic.schema.json":["content/*.md"]}}
+messages (1):
+{"message":"Must be string • /private/tmp/claude-502/-Volumes-n-1024a-Projects-Repositories-packages-eslint-plugin-markdown-frontmatter-schema/94c93d17-17b9-4319-8066-ed1d3a3d65d5/scratchpad/upstream-probes/content/basic.schema.json • #/properties/title/type","line":2,"column":8,"position":{"start":{"line":2,"column":8},"end":{"line":2,"column":12}},"actual":"1234","note":"Keyword: type\nType: string\nSchema path: /private/tmp/claude-502/-Volumes-n-1024a-Projects-Repositories-packages-eslint-plugin-markdown-frontmatter-schema/94c93d17-17b9-4319-8066-ed1d3a3d65d5/scratchpad/upstream-probes/content/basic.schema.json · #/properties/title/type","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U8b — local $schema beats the glob map
+md: "---\n$schema: ./enum.schema.json\nkind: Rock\n---\n"
+path: content/globbed.md | settings: {"schemas":{"content/basic.schema.json":["content/*.md"]}}
+messages (1):
+{"message":"Must be equal to one of the allowed values: `Movie`, `Song` • content/enum.schema.json • #/properties/kind/enum","line":3,"column":7,"position":{"start":{"line":3,"column":7},"end":{"line":3,"column":11}},"expected":["Movie","Song"],"actual":"Rock","note":"Keyword: enum\nAllowed values: Movie, Song\nSchema path: content/enum.schema.json · #/properties/kind/enum","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U9 — https:// $schema (URL handling check — expect mangled path)
+md: "---\n$schema: https://json.schemastore.org/prettierrc.json\ntitle: hi\n---\n"
+path: content/doc.md | settings: {}
+messages (1):
+{"message":"YAML schema file load/parse: /private/tmp/claude-502/-Volumes-n-1024a-Projects-Repositories-packages-eslint-plugin-markdown-frontmatter-schema/94c93d17-17b9-4319-8066-ed1d3a3d65d5/scratchpad/upstream-probes/https:/json.schemastore.org/prettierrc.json — ResolverError: Error opening file \"/private/tmp/claude-502/-Volumes-n-1024a-Projects-Repositories-packages-eslint-plugin-markdown-frontmatter-schema/94c93d17-17b9-4319-8066-ed1d3a3d65d5/scratchpad/upstream-probes/https:/json.schemastore.org/prettierrc.json\" \nENOENT: no such file or directory, open '/private/tmp/claude-502/-Volumes-n-1024a-Projects-Repositories-packages-eslint-plugin-markdown-frontmatter-schema/94c93d17-17b9-4319-8066-ed1d3a3d65d5/scratchpad/upstream-probes/https:/json.schemastore.org/prettierrc.json'","name":"content/doc.md:1:1","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U10 — empty frontmatter + embed (validate(null) check)
+md: "---\n---\n"
+path: content/doc.md | settings: {"embed":{"required":["title"],"type":"object"}}
+messages (1):
+{"message":"Must be object • #/type","note":"Keyword: type\nType: object\nSchema path:  · #/type","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U10b — empty frontmatter + glob map (association skip check)
+md: "---\n---\n"
+path: content/globbed.md | settings: {"schemas":{"content/basic.schema.json":["content/*.md"]}}
+messages (0):
+
+===== U11 — format keyword (ajv-formats check)
+md: "---\n$schema: ./format.schema.json\nwhen: not-a-date\n---\n"
+path: content/doc.md | settings: {}
+messages (1):
+{"message":"Must match format \"date\" • content/format.schema.json • #/properties/when/format","line":3,"column":7,"position":{"start":{"line":3,"column":7},"end":{"line":3,"column":17}},"actual":"not-a-date","note":"Keyword: format\nSchema path: content/format.schema.json · #/properties/when/format","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U12 — missing local schema (load-failure message shape)
+md: "---\n$schema: ./nope.schema.json\ntitle: hi\n---\n"
+path: content/doc.md | settings: {}
+messages (1):
+{"message":"YAML schema file load/parse: /private/tmp/claude-502/-Volumes-n-1024a-Projects-Repositories-packages-eslint-plugin-markdown-frontmatter-schema/94c93d17-17b9-4319-8066-ed1d3a3d65d5/scratchpad/upstream-probes/nope.schema.json — ResolverError: Error opening file \"/private/tmp/claude-502/-Volumes-n-1024a-Projects-Repositories-packages-eslint-plugin-markdown-frontmatter-schema/94c93d17-17b9-4319-8066-ed1d3a3d65d5/scratchpad/upstream-probes/nope.schema.json\" \nENOENT: no such file or directory, open '/private/tmp/claude-502/-Volumes-n-1024a-Projects-Repositories-packages-eslint-plugin-markdown-frontmatter-schema/94c93d17-17b9-4319-8066-ed1d3a3d65d5/scratchpad/upstream-probes/nope.schema.json'","name":"content/doc.md:1:1","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U13a — two violations, default ajv options (allErrors:true)
+md: "---\nx: 1\n---\n"
+path: content/doc.md | settings: {"embed":{"required":["a","b"],"type":"object"}}
+messages (2):
+{"message":"Must have required property 'a' • #/required","note":"Keyword: required\nMissing property: a\nSchema path:  · #/required","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+{"message":"Must have required property 'b' • #/required","note":"Keyword: required\nMissing property: b\nSchema path:  · #/required","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U13b — same, ajvOptions:{allErrors:false} passthrough
+md: "---\nx: 1\n---\n"
+path: content/doc.md | settings: {"ajvOptions":{"allErrors":false},"embed":{"required":["a","b"],"type":"object"}}
+messages (1):
+{"message":"Must have required property 'a' • #/required","note":"Keyword: required\nMissing property: a\nSchema path:  · #/required","name":"Markdown YAML frontmatter error (JSON Schema)","fatal":false,"ruleId":"frontmatter-schema","source":"remark-lint"}
+
+===== U14 — no frontmatter at all (gating check)
+md: "# just a heading\n\nbody\n"
+path: content/doc.md | settings: {"embed":{"required":["title"],"type":"object"}}
+messages (0):
+
+===== local-dist-probe
+LOCAL DIST IMPORT FAILED: SyntaxError: The requested module 'minimatch' does not provide an export named 'default'
+
+===== P1 — port: format keyword without ajv-formats
+messages (1):
+{"ruleId":"frontmatter-schema/frontmatter-schema","severity":2,"message":"YAML schema validation error: must match format \"date\" at /when","line":3,"column":7,"nodeType":"yaml","endLine":3,"endColumn":7}

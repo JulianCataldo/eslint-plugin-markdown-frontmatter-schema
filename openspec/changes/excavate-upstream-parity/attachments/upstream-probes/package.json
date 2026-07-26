@@ -1,0 +1,11 @@
+{
+  "name": "upstream-probes",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "remark": "15.0.1",
+    "remark-frontmatter": "5.0.0",
+    "remark-lint-frontmatter-schema": "3.15.3",
+    "vfile-reporter": "8.1.1"
+  }
+}

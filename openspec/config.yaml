@@ -35,6 +35,11 @@ context: |
     code→spec/ADR relationships as JSDoc annotations per
     docs/adr/0001-code-spec-relationship-annotations.md (details unrolled in
     its companion doc, docs/excavation/code-specs-relationships.md).
+  - Annotation maintenance is part of the same pass (HARD — drift is
+    undesirable): editing spec/ADR text, headings especially, means
+    mechanically swapping every verbatim occurrence in code annotations —
+    a 1:many search-as-is, replace-with-new sweep (one sub-section heading,
+    every codebase occurrence).
 
 # Per-artifact rules. Keys mirror the installed schema's artifact IDs.
 rules:

@@ -14,8 +14,11 @@ stays out — own dig, shared with campaign 03). Survey scope confirmed by the
 steward 2026-07-26; evidence complete (E1–E33, 27 locked characterization
 tests); grades C1–C16 and the promotion both confirmed by the steward
 2026-07-26 — the participant spec is filed to the pool. Q1–Q6 are
-`answered`; Q7 is the campaign's remaining open question (own dig, shared
-with campaign 03).
+`answered`. Dig `excavate-upstream-parity` (scope, grades C1–C22, and both
+promotions confirmed by the steward 2026-07-26) answered Q7 the same day:
+shadow ADR 0002 filed as `proposed`, intent-delta lines merged into the
+pool spec, adjudication inputs delivered to campaign 03 Q1/Q2. The
+campaign's frontier is clear.
 
 - [x] Q1 (`answered` → `openspec/specs/rule-runtime-contract/spec.md`) — What is the exact schema resolution contract? Inline
       `$schema` beats `defaultSchema` via `??` (`src/create-reports.ts:34`);
@@ -54,7 +57,7 @@ with campaign 03).
       — the red `Empty frontmatter` test observes this divergence
       (`src/tests/empty-no.test.ts:17,34-37`, expects `schemaNotFound`). What
       should each shape do, including for empty frontmatter blocks?
-- [ ] Q7 (`open`) — Which upstream `remark-lint-frontmatter-schema` behaviors
+- [x] Q7 (`answered` → `docs/adr/0002-port-to-eslint.md`) — Which upstream `remark-lint-frontmatter-schema` behaviors
       were intended to carry over? The README claims "the API is kept very
       similar" (`README.md:20`); the declared-but-dead `schemas` glob map option
       mirrors upstream's global association feature
@@ -68,7 +71,8 @@ with campaign 03).
 ## Cross-cutting dependencies
 
 - Q7's upstream-parity answer is the adjudication input for
-  `03-campaign-elimination` Q1/Q2 — one corpus read serves all three.
+  `03-campaign-elimination` Q1/Q2 — delivered 2026-07-26 (dig
+  `excavate-upstream-parity` claims C14/C15; both flipped to answered).
 - Q5 shares its root cause with `02-campaign-drift` Q1(a): restoring an
   enum-invalid fixture would restore the suggestion branch's executable
   evidence.
@@ -79,7 +83,9 @@ with campaign 03).
   acknowledged accidental ("murky", "I screwed up", semi clean slate) and
   upstream had the same class of problems ("less deceptive") — weakens the
   upstream intent oracle for ingestion parity. Adjudication input for Q7
-  here and for `03-campaign-elimination` Q1/Q2.
+  here and for `03-campaign-elimination` Q1/Q2. (Extended 2026-07-26 by the
+  Q7 dig's testimony round, E37–E44 there: LS-parity is the governing
+  target; upstream dormant, port successor.)
 
 ## Accrual
 
@@ -88,3 +94,10 @@ with campaign 03).
   non-ratified per steward testimony), promoted 2026-07-26 from dig
   `excavate-rule-runtime-contract`. Executable twin:
   `src/tests/runtime-contract.characterization.test.ts` (27 locked tests).
+- `docs/adr/0002-port-to-eslint.md` — shadow ADR (epistemics B2, anchor;
+  `proposed`), promoted 2026-07-26 from dig `excavate-upstream-parity`
+  (Q7); carries the upstream/port divergence matrix as appendix. Probe rig
+  re-runnable from that dig's `attachments/upstream-probes/`.
+- Pool-spec intent-delta (C17 ingestion, C19 reporting) merged into
+  `openspec/specs/rule-runtime-contract/spec.md` § Intent status,
+  2026-07-26, same dig.

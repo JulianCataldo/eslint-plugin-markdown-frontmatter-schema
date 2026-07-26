@@ -38,14 +38,21 @@ This spec deliberately does NOT carry uniform intent status. Three zones:
   testing. Its requirements below bind the characterization snapshot as a
   refactoring safety net for the pending ingestion redesign. They MUST NOT
   be read as design intent, and future changes to this zone are not
-  spec violations — they retire the snapshot.
+  spec violations — they retire the snapshot. Subsequent dig
+  `excavate-upstream-parity` (C17, B2, 2026-07-26): the steward sides with
+  upstream's delete-`$schema`-before-validation direction, pending LS
+  behavior-mapping — the payload-validation requirement below stays
+  de-facto only.
 - **Parsing and validated payload — de-facto.** No intent testimony either
   way; candidates for ratification in a later pass.
 - **Reporting and suggestions — de-facto with known intent delta (C15).**
   Author intent for locations is real-location mapping; the current
   root-error 1:1 default is an acknowledged bug. The eventual resolution
   is expected to build on branch `pr/2-ksh-actual-squiggle-positions`
-  (`10e458f`, Andrew Petersen) with commit-authorship credit.
+  (`10e458f`, Andrew Petersen) with commit-authorship credit. Corroborated
+  2026-07-26: real ranges were original, initially-working upstream
+  behavior (`excavate-upstream-parity` C19, B1) — the point-location
+  behavior is a port regression, not a design.
 
 ## Requirements
 

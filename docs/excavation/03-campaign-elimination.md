@@ -10,15 +10,22 @@ negative certificate licenses deletion.
 
 ## Frontier
 
-- [ ] Q1 (`open`) — The `schemas` option: declared in the rule's options
+- [x] Q1 (`answered` → `docs/adr/0002-port-to-eslint.md`, C14) — The `schemas` option: declared in the rule's options
       schema (`src/rules/frontmatter-schema.ts:42-48`) and read by no code path
       (`grep -rn "schemas" src/` → the declaration only). It mirrors upstream's
       glob-association map. Implement it (parity, see 01-Q7) or certify and
-      delete it?
-- [ ] Q2 (`open`) — MessageIds `fixDescription` and `yamlSyntaxError`
+      delete it? Adjudicated 2026-07-26: NOT a certificate candidate —
+      consciously deferred capability awaiting the semi-clean-slate
+      ingestion redesign (LS blueprint); its minimatch-glob shape is
+      already obsolete under ESLint (steward: "null and void"). Deletion
+      off the table; the implementation shape belongs to the redesign.
+- [x] Q2 (`answered` → `docs/adr/0002-port-to-eslint.md`, C15) — MessageIds `fixDescription` and `yamlSyntaxError`
       (`src/rules/frontmatter-schema.ts:31,34`): declared, never passed to any
       report. Latent intent (planned YAML-syntax reporting, see 01-Q2) or dead
-      weight?
+      weight? Adjudicated 2026-07-26: NOT dead weight — "aborted or
+      miswired" attempts retained as cues for the planned error-surfacing
+      repass over ESLint's API capabilities. No certificate; the repass
+      decides their final form.
 - [ ] Q3 (`open`) — Orphaned fixtures: `fixtures/sample.md` is referenced by
       no test (grep over `src/tests/`), and `fixtures/.dev.invalid.schema.json`
       is untracked via the `.dev*` ignore (`.gitignore`). Invisible-consumer
@@ -36,11 +43,13 @@ negative certificate licenses deletion.
 
 ## Cross-cutting dependencies
 
-- Q1 and Q2 adjudication waits on the upstream-parity read
-  (`01-campaign-reference` Q7).
+- Q1 and Q2 adjudication delivered 2026-07-26 by dig
+  `excavate-upstream-parity` (01-Q7): claims C14/C15, filed in ADR 0002.
 - Q3 sequences with `02-campaign-drift` Q1(a) so fixture churn happens once.
 - Q4 pairs with `02-campaign-drift` Q2.
 
 ## Accrual
 
-(no pool artifacts yet)
+- `docs/adr/0002-port-to-eslint.md` — shadow ADR carrying the Q1/Q2
+  adjudication (C14/C15) and the upstream/port divergence matrix, promoted
+  2026-07-26 from dig `excavate-upstream-parity` (campaign 01 Q7).

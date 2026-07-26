@@ -32,6 +32,7 @@ export const frontmatterSchema: RuleModule = {
 		fixable: 'code',
 
 		hasSuggestions: true,
+		// @adr 0002 — `port-to-eslint`
 		messages: {
 			fixDescription: 'Fix the frontmatter by replacing with a valid value.',
 			schemaMalformed: 'Schema is malformed ',
@@ -43,6 +44,7 @@ export const frontmatterSchema: RuleModule = {
 
 		// @spec `rule-runtime-contract`
 		// + Options-shape edges
+		// @adr 0002 — `port-to-eslint`
 		schema: [
 			{
 				additionalProperties: false,
