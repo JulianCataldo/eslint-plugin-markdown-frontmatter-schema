@@ -1,0 +1,38 @@
+{
+ "fix": false,
+ "errorCount": 1,
+ "outputProperty": "(absent — nothing applied)",
+ "fileChangedOnDisk": false,
+ "messages": [
+  {
+   "message": "YAML schema validation error: must be equal to one of the allowed values at /category",
+   "suggestionCount": 3,
+   "firstSuggestionFix": {
+    "range": [
+     14,
+     19
+    ],
+    "text": "Book"
+   }
+  }
+ ]
+}
+{
+ "fix": true,
+ "errorCount": 1,
+ "outputProperty": "(absent — nothing applied)",
+ "fileChangedOnDisk": false,
+ "messages": [
+  {
+   "message": "YAML schema validation error: must be equal to one of the allowed values at /category",
+   "suggestionCount": 3,
+   "firstSuggestionFix": {
+    "range": [
+     14,
+     19
+    ],
+    "text": "Book"
+   }
+  }
+ ]
+}

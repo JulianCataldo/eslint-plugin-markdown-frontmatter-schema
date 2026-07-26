@@ -1,0 +1,15 @@
+eslint version: 9.39.5
+cwd=root                  → [
+  "YAML schema validation error: must have required property 'rootMarker' at root"
+]
+cwd=root/sub              → [
+  "YAML schema validation error: must have required property 'subMarker' at root"
+]
+(node:12310) ESLintInactiveFlag_unstable_config_lookup_from_file: The flag 'unstable_config_lookup_from_file' is inactive: This flag has been renamed 'v10_config_lookup_from_file' to reflect its stabilization. Please use 'v10_config_lookup_from_file' instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+cwd=root flag[unstable_config_lookup_from_file] → [
+  "YAML schema validation error: must have required property 'subMarker' at root"
+]
+cwd=root flag[v10_config_lookup_from_file] → [
+  "YAML schema validation error: must have required property 'subMarker' at root"
+]
